@@ -1,0 +1,12 @@
+---
+interface Props {
+  encounter?: number;
+}
+const { encounter } = Astro.props;
+---
+
+{encounter && (
+  <span class="badge badge--bayes" title={`Bayes' theorem thread — encounter ${encounter} of 4`}>
+    ⬡ Bayes {encounter}/4
+  </span>
+)}

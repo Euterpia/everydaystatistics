@@ -1,0 +1,17 @@
+---
+interface Props {
+  tier?: number;
+}
+const { tier } = Astro.props;
+---
+
+{tier === 1 && (
+  <span class="badge badge--tier-1" title="Tier 1: Essential — learn this first">
+    ★ Essential
+  </span>
+)}
+{tier === 2 && (
+  <span class="badge badge--tier-2" title="Tier 2: Powerful — high return on investment">
+    ◆ Powerful
+  </span>
+)}

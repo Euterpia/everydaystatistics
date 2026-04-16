@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TierBadge from '../components/TierBadge.astro';
+
+const allUnits = await getCollection('units');
+allUnits.sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+function slugify(id: string) { return id.replace('.', '-'); }
+---
+
+<Base
+  title="Reference Library"
+  description="Browse every statistical concept in the Everyday Statistics curriculum, alphabetically."
+>
+  <div class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+    <div style="max-width: 640px; margin-bottom: 3rem;">
+      <h1 style="font-size: var(--text-3xl); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 1rem;">
+        Reference Library
+      </h1>
+      <p style="font-size: var(--text-lg); color: var(--text-muted); line-height: 1.7;">
+        Every concept in the curriculum, in alphabetical order. Each page is self-contained —
+        arrive from a search engine and find enough context to understand, plus links to prerequisites.
+      </p>
+    </div>
+
+    <div class="unit-list">
+      {allUnits.map(unit => (
+        <a
+          href={`/unit/${slugify(unit.data.unitId)}`}
+          class="unit-card"
+          data-area={unit.data.area}
+        >
+          <div class="unit-card__id">{unit.data.unitId}</div>
+          <div>
+            <div class="unit-card__title">{unit.data.title}</div>
+            <div class="unit-card__meta">
+              <TierBadge tier={unit.data.tier} />
+              <span class="badge badge--area">{unit.data.areaName.split(':')[0].trim()}</span>
+            </div>
+          </div>
+          <p class="unit-card__summary">{unit.data.summary}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>
