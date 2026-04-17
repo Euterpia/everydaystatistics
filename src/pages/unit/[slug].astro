@@ -45,9 +45,50 @@ const areaNames: Record<number, string> = {
 const displayAreaName = unit.data.areaName ?? areaNames[unit.data.area] ?? `Area ${unit.data.area}`;
 
 function slugify(id: string) { return id.replace('.', '-'); }
+
+const canonicalUrl = `https://everydaystatistics.com/unit/${slugify(unit.data.unitId)}/`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["Article", "LearningResource"],
+  "headline": unit.data.title,
+  "description": unit.data.summary,
+  "url": canonicalUrl,
+  "inLanguage": "en-GB",
+  "educationalLevel": unit.data.area === 0 ? "Beginner" : unit.data.area <= 2 ? "Intermediate" : "Advanced",
+  "learningResourceType": "Article",
+  "teaches": unit.data.title,
+  "isPartOf": {
+    "@type": "Course",
+    "name": "Everyday Statistics",
+    "url": "https://everydaystatistics.com/curriculum/",
+    "provider": {
+      "@type": "Organization",
+      "name": "Everyday Statistics",
+      "url": "https://everydaystatistics.com"
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "David Mackay"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Everyday Statistics",
+    "url": "https://everydaystatistics.com"
+  },
+  "timeRequired": `PT${unit.data.duration}M`,
+  ...(unit.data.prerequisites.length > 0 && {
+    "competencyRequired": unit.data.prerequisites.map(
+      id => `https://everydaystatistics.com/unit/${slugify(id)}/`
+    )
+  }),
+};
 ---
 
 <Base title={unit.data.title} description={unit.data.summary}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+
   <div class="unit-page">
 
     <!-- Breadcrumb -->
