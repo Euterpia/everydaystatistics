@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Laws of Probability — Everyday Statistics Day 8</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 8 of 44 &nbsp;·&nbsp; Unit 1.3 &nbsp;·&nbsp; 18% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:18%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Today we make probability formal — but just formal enough. Four rules: addition for exclusive events, addition for non-exclusive events, multiplication for independent events, and the complementary rule. These are the tools behind every probability claim you'll ever encounter, and behind some of the most effective ways those claims mislead.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>In 1999, a British solicitor named Sally Clark stood in a courtroom accused of murdering her two infant sons. Both boys had died, in separate incidents, two years apart. The Crown's expert witness, a paediatric consultant named Sir Roy Meadow, told the jury that the probability of a single cot death in a family like the Clarks was 1 in 8,543. He then multiplied that figure by itself: 1 in 8,543 multiplied by 1 in 8,543 equals 1 in 73 million. He presented that number to the jury as the probability that both deaths were natural.</p>
+<p>Sally Clark was convicted. She spent more than three years in prison before her conviction was overturned.</p>
+<p>The number 73 million was wrong. Not slightly wrong, not wrong at the margins, but structurally wrong, produced by misapplying one of the four basic rules of probability. The multiplication rule Meadow used only holds when two events are independent of each other. Cot deaths in the same family are not independent: a second cot death in a family that has already experienced one is far more likely than in the general population, probably because of shared genetic or environmental factors. The Royal Statistical Society formally condemned the calculation in 2001.</p>
+<p>A number that should never have entered a courtroom, constructed by breaking a rule you are about to learn, contributed to a wrongful conviction. The laws of probability are not just academic machinery. They are tools that can be used carefully or recklessly, and the consequences of recklessness are not always abstract.</p>
+<h2>The Concept</h2>
+<p>Probability is measured on a scale from 0 to 1. An impossible event has probability 0. A certain event has probability 1. Everything in between is expressed as a decimal or as a percentage: a probability of 0.5 is the same as 50 percent, which is the same as saying the event happens roughly half the time in the long run.</p>
+<p>Four rules govern how probabilities combine. Every manipulation of probability you will encounter in public life either follows these rules correctly, ignores them, or pretends to follow them while quietly breaking them.</p>
+<p><strong>The addition rule for mutually exclusive events.</strong> Two events are mutually exclusive when they cannot both happen at the same time. A single coin flip cannot be both heads and tails. A single card drawn from a deck cannot be both the ace of spades and the seven of hearts. When events are mutually exclusive, the probability that one or the other occurs is simply the sum of their individual probabilities.</p>
+<p>If the probability of drawing a club from a standard deck is 1/4 (there are 13 clubs in 52 cards), and the probability of drawing a diamond is also 1/4, then the probability of drawing either a club or a diamond is 1/4 + 1/4 = 1/2. The two events are mutually exclusive because a card cannot be both a club and a diamond. You add the probabilities directly.</p>
+<p>Written formally: P(A or B) = P(A) + P(B), but only when A and B cannot both occur.</p>
+<p><strong>The addition rule for non-exclusive events.</strong> When two events can both occur at the same time, the simple addition rule overcounts. Suppose you want to know the probability of drawing a card that is either a club or a face card (jack, queen, or king). There are 13 clubs and 12 face cards, but three of those face cards are also clubs: the jack, queen, and king of clubs. If you just added 13/52 + 12/52, you would count those three cards twice. The corrected rule subtracts the overlap.</p>
+<p>P(A or B) = P(A) + P(B) minus P(A and B).</p>
+<p>In this case: 13/52 + 12/52 minus 3/52 = 22/52, a little under half the deck. The subtraction removes the double-counting. Forget this correction and you will overestimate the probability of combined events, sometimes dramatically.</p>
+<p><strong>The multiplication rule for independent events.</strong> Two events are independent when knowing that one has occurred gives you no information about whether the other has occurred. The outcome of one fair coin flip tells you nothing about the outcome of the next. If the probability of heads on a single flip is 1/2, then the probability of heads on both of two successive flips is 1/2 multiplied by 1/2 = 1/4.</p>
+<p>This is the rule Roy Meadow applied in the Sally Clark case. It is correct when events are independent. It gives badly wrong answers when events are not independent, because the probability of the second event changes depending on what happened first.</p>
+<p>Written formally: P(A and B) = P(A) multiplied by P(B), but only when A and B are independent.</p>
+<p>When independence does not hold, this version of the rule breaks. The correct version uses conditional probability, which is the subject of the next unit. For now, the key thing to absorb is that the multiplication rule has a condition attached to it, and that condition is frequently ignored.</p>
+<p><strong>The complementary rule.</strong> Every event either happens or it does not. The probability of an event happening plus the probability of it not happening must equal 1, because one of those two things is certain to be the case. This means that P(not A) = 1 minus P(A).</p>
+<p>If the probability of rain tomorrow is 0.3, then the probability of no rain is 0.7. If the probability that a component works correctly is 0.99, then the probability it fails is 0.01. This rule is simple, but it has a powerful application: when you want to know the probability that something goes wrong in a complex system, it is often much easier to calculate the probability that everything goes right and subtract from 1.</p>
+<p>Suppose a system has five independent checks, each of which passes correctly 99 percent of the time. The probability that all five pass is 0.99 multiplied by itself five times: 0.99 to the fifth power, which equals approximately 0.951. The complementary rule then tells you that the probability at least one check fails is 1 minus 0.951 = 0.049, or about 5 percent. Five apparently reliable checks, each individually 99 percent dependable, still fail somewhere roughly one time in twenty when run together. This is not a marginal effect. It is the reason complex systems fail more often than their designers expect.</p>
+<h2>Why It Matters</h2>
+<p>These four rules are the grammar of probability. Break them, and the sentences you construct with probability will say things that are not true. The specific ways they get broken in public life fall into a consistent pattern.</p>
+<p>The most common misuse is Roy Meadow's: applying the multiplication rule for independent events when the events are not independent. If two things tend to occur together, whether because one causes the other, because both share a common cause, or because shared background conditions make both more likely, then multiplying their individual probabilities will produce a number far smaller than the true probability of both occurring. That spuriously tiny number can then be used to argue that any explanation other than deliberate action is essentially impossible.</p>
+<p>The complementary rule gets inverted. Someone who wants to argue that an outcome was unacceptably risky emphasises the probability of success and asks you to accept that the small complementary probability of failure means failure essentially cannot happen. Someone who wants to argue the reverse does the same trick in the other direction. The rule itself is simple arithmetic. The manipulation is in the framing of which number to foreground.</p>
+<p>The addition rule for non-exclusive events is violated every time someone argues that a collection of risk factors, each individually minor, can simply be added together. If you want to know the probability that a person will experience at least one of several overlapping health risks, adding the individual probabilities without subtracting the overlaps will substantially overstate the combined risk.</p>
+<p>None of these errors require ill intent. Some are honest mistakes. The Sally Clark case almost certainly involved a well-credentialed expert who did not notice the independence assumption he was embedding in his calculation. The defence counsel and judge did not notice either. A courtroom full of educated people sat through testimony built on a fundamental probability error and no one caught it. That is not primarily a story about incompetence. It is a story about how invisible these rules are to people who have never been taught to check for them.</p>
+<h2>How to Spot It</h2>
+<p>The documented case is the Sally Clark conviction. The expert witness multiplied two probabilities together to produce a joint probability, and the step he skipped was checking whether those two events were independent of each other.</p>
+<p>The tell is the multiplication itself. Whenever you see two probabilities multiplied together to produce a claim about how unlikely a combination of events is, ask one question: are these events actually independent? Are they the kind of events where knowing one occurred tells you nothing about the other? If the answer is no, the resulting number is wrong, and it will almost always be wrong in the direction of making the combination look rarer than it is.</p>
+<p>In court cases, this tends to appear as arguments that two or more suspicious events occurring together in the same family or location is astronomically unlikely by chance. In finance, it appears as risk models that treat the simultaneous failure of multiple assets as vanishingly improbable, which is part of why the 2008 financial crisis hit harder than the models predicted: mortgage defaults in different parts of the country were treated as independent when they were actually correlated. In medicine, it appears in arguments about whether a cluster of symptoms, each individually uncommon, could plausibly co-occur by chance.</p>
+<p>The language to watch for is any phrase that moves from individual probabilities to a combined probability without specifying the relationship between the events. "The probability of each event was one in X, so the probability of both was one in X squared" is doing the thing. Whether it is valid depends entirely on independence.</p>
+<h2>Your Challenge</h2>
+<p>A security system for a building has five independent checks, each designed to detect an intrusion. The manufacturer states that each individual check has a 2 percent probability of failing to detect a genuine intrusion in any given event.</p>
+<p>What is the probability that all five checks simultaneously fail to detect an intrusion? What is the probability that at least one check succeeds? Now consider: the manufacturer uses the individual failure rate of 2 percent in their marketing. Should they? What number would give a more honest picture of the system's reliability?</p>
+<p>Work out the numbers. There is no answer on this page.</p>
+<h2>References</h2>
+<p>Sally Clark case and the misuse of the multiplication rule: Royal Statistical Society, "Royal Statistical Society concerned by issues raised in Sally Clark case" (October 2001). Press release. URL: https://rss.org.uk/RSS/media/News-and-publications/Publications/Reports%20and%20guides/A-Guide-to-Statistics-in-Medicine-and-Health-Care.pdf</p>
+<p>Detailed statistical analysis of the case: Dawid, A.P., "Statistics and the Law," in <em>Statistics: A Very Short Introduction</em> (Oxford University Press, 2008). Also: Nobles, R. and Schiff, D., "Misleading Statistics Within Criminal Trials: The Sally Clark Case," <em>Significance</em> (2004). URL: https://significancemagazine.com/statistics-in-court-incorrect-probabilities/</p>
+<p>Medical review of the probabilistic error: Hill, R., "Multiple sudden infant deaths — coincidence or beyond coincidence?," <em>Paediatric and Perinatal Epidemiology</em> 18(5), 320–326 (2004). Also: Watkins, S.J., "Conviction by mathematical error?: Doctors and lawyers should get probability theory right," <em>BMJ</em> 320(7226), 2–3 (2000). URL: https://pmc.ncbi.nlm.nih.gov/articles/PMC1117305/</p>
+<p>Sally Clark biographical summary and case outcome: Wikipedia, "Sally Clark." URL: https://en.wikipedia.org/wiki/Sally_Clark</p>
+<p>Birthday problem and the counterintuitive behaviour of combined probabilities: Weisstein, E.W., "Birthday Problem," <em>MathWorld</em>. URL: https://mathworld.wolfram.com/BirthdayProblem.html. Also: British Columbia Open Textbook, <em>Introductory Business Statistics</em> (2023), Chapter on Probability.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/1-3">https://everydaystatistics.com/unit/1-3</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

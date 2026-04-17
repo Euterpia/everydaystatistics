@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survivorship Bias — Everyday Statistics Day 27</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 27 of 44 &nbsp;·&nbsp; Unit 3.4 &nbsp;·&nbsp; 61% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:61%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>During World War II, Abraham Wald was asked to recommend where to reinforce returning bombers based on where they had been hit. His insight — that the returning planes were the survivors — saved lives. The same blind spot distorts investment returns, entrepreneurship mythology, and medical evidence wherever failures disappear from the data before you see it.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>In 1943, the United States military had a problem it could not solve with firepower alone. American bombers flying missions over occupied Europe were being shot down at a rate that was unsustainable. The obvious response was to add armour. Armour is heavy, though — too much of it and the planes become sluggish and fuel-hungry. The question was therefore specific and urgent: where, exactly, should the armour go?</p>
+<p>The military had data. When planes returned from missions, analysts recorded the location of every bullet hole across the fuselage. The data was painstakingly collected and carefully mapped. The pattern was clear. There were many bullet holes concentrated in the fuselage and around the fuel system. There were relatively few on the engines. The conclusion the military drew from this seemed like common sense: reinforce the areas getting hit.</p>
+<p>A mathematician named Abraham Wald looked at the same data and reached the opposite conclusion.</p>
+<p>Wald was Romanian-born, Jewish, and had fled Austria after the Nazi annexation in 1938. He was working for the Statistical Research Group at Columbia University, a classified wartime operation that applied statistical expertise to military problems. Wald was an enemy alien by legal classification, which created the absurd situation that secretaries were required to remove his classified work from his hands as he finished each page, since he was technically not cleared to read it.</p>
+<p>He read the bullet hole data, and he noticed something missing. All the data came from planes that had returned. No data existed from planes that had not returned, because those planes were at the bottom of the sea or in pieces over Germany. They could not be counted.</p>
+<p>Now the pattern in the data looked different. The fuselage was covered in bullet holes because planes with bullet holes in the fuselage came back. The engines had almost no bullet holes for a different reason: planes with bullet holes in the engines did not come back. They went down. The engines were not being spared by enemy fire. They were the places where a hit was lethal.</p>
+<p>Wald's recommendation was to armour the engines and the areas that showed the least damage on returning aircraft. The data was pointing backwards from where everyone assumed it pointed. What looked like evidence of durability was actually evidence that the thing was absent from the dataset.</p>
+<p>This insight was applied across the US air campaign. Wald published a series of classified memoranda on aircraft vulnerability, and the work was used through World War II, Korea, and Vietnam. The original papers were not declassified until decades later.</p>
+<p>The idea at the centre of it is now called survivorship bias. Wald did not name it. He simply noticed that the planes in front of him were a very particular kind of sample.</p>
+<h2>The Concept</h2>
+<p>Survivorship bias occurs whenever the data you can examine is restricted to the things that survived a filtering process, and the things that did not survive are missing from view. The filter is invisible. The data looks complete. It is not.</p>
+<p>The name comes from the fact that only the survivors are visible to you. The failures, the dropouts, the planes that went down, are absent. They left no record in the data you have access to. So you study the survivors, draw conclusions about what makes something succeed, and those conclusions are systematically wrong in a particular direction: they are built on the properties of the things that passed through the filter, and you have no information about the things that did not.</p>
+<p>The most widely understood modern instance is in investment performance. Pick up a brochure from almost any fund management company and you will find a fund that has delivered impressive returns over ten years. What you will not find, because it no longer exists, is the sister fund launched at the same time that underperformed for three years and was quietly merged into another fund or closed down. The data on the closed fund is gone. It does not appear in the company's performance figures. It is not counted in industry averages. The surviving funds look like a record of skill. They are partly a record of which funds happened to still exist when the brochure was printed.</p>
+<p>This is not a small effect. A Vanguard study covering 1997 to 2011 found that only 54 percent of funds survived the full period. Of the funds that were merged or closed, 87 percent had underperformed before they disappeared. The performance record advertised to you contains none of those funds. When researchers at the Center for Research in Security Prices examined the full dataset, including dead funds, they found that reported annual returns were overstated by roughly 1.5 percentage points on average over long periods. That gap, compounded over decades, is the difference between a comfortable retirement and a disappointing one.</p>
+<p>Business biography operates by the same logic. The entrepreneurship mythology of the last thirty years rests heavily on the stories of people who succeeded. The dropout who started a company in a garage and built it into something extraordinary. The detail that appears again and again in these accounts is the dropped-out-of-college part, because it appears in so many of the famous success stories that it seems to carry signal. It feels like evidence that formal education is an obstacle to entrepreneurial success.</p>
+<p>But the dropout-who-succeeded is visible. The dropout-who-failed is not. The person who left university at twenty-two to start a company, burned through savings, closed the business after three years, and went back to work in an unrelated field is not the subject of a book. The selection process for business biographies is severe: you must have succeeded, publicly and dramatically, for anyone to write your story. The lessons extracted from that selected sample tell you what successful people had in common. They tell you almost nothing about what separates successful people from unsuccessful ones.</p>
+<p>The management classic "In Search of Excellence" by Tom Peters and Robert Waterman, published in 1982, studied forty-three companies identified as exemplary and extracted eight principles of excellence from their practices. It became one of the bestselling business books in history. Within five years, a significant proportion of the companies it had held up as models of excellence were in serious difficulty. The problem was not that Peters and Waterman observed inaccurately. The problem was that they only looked at companies that had already succeeded. Whatever traits those companies shared may have been present in the failures too.</p>
+<p>Survivorship bias also distorts medical evidence in a way that has direct consequences for treatment. Clinical trials involve patients who enrol, follow the protocol, and return for follow-up assessments. But patients also drop out of trials. They stop taking the medication because of side effects, they lose interest, they move away, they get sicker. Dropout is rarely random. The patients most likely to drop out are often the ones for whom the treatment is working least well, or the ones experiencing the worst side effects. The patients who remain to be measured at the end of the trial are a selected group. The results reported are the results for the survivors of the trial. This is called attrition bias, and it is a form of survivorship bias that inflates apparent treatment effectiveness.</p>
+<h2>Why It Matters</h2>
+<p>The reason survivorship bias is a Tier 1 concept — one of the eight things most worth knowing — is that it operates in domains that shape major life decisions, and it always pushes in the same direction. The evidence looks better than it is. The failures are gone.</p>
+<p>Investment advertising is the most commercially concentrated instance. Advertisers are legally required in many jurisdictions to include the disclaimer that past performance is not a guide to future results. That disclaimer exists precisely because of survivorship bias in reported performance. The fund that advertises "12 percent annual returns over ten years" was probably not the fund you would have found and chosen ten years ago. You are seeing the winner of a backward-looking competition that was run after the results were known. The funds that lost the competition are not in the advertisement.</p>
+<p>Business biographies present perhaps the most culturally pervasive version of the problem. Books that identify the habits, traits, or practices of successful people are doing something that looks like analysis and functions more like storytelling. They are finding patterns in a curated sample of successes. Without the corresponding data on people who shared those same traits and failed, the patterns mean very little. They are portraits of people who made it through the filter, not maps of the filter itself.</p>
+<p>Medical studies with high attrition deserve particular scrutiny. When a trial reports that 70 percent of patients showed improvement, the relevant question is: 70 percent of how many, and what happened to the ones who are not in that figure? If a trial enrolled 200 patients and 60 dropped out before the endpoint, the 70 percent figure applies to 140 people. The 60 who left are not counted. If many of them left because the treatment was not working or was causing harm, the reported effectiveness figure is misleading.</p>
+<h2>How to Spot It</h2>
+<p>The tell is always the same: ask what happened to the ones you do not see.</p>
+<p>When someone shows you the performance record of a fund, ask how many other funds the company ran over the same period. When you read about the characteristics of successful entrepreneurs, ask what the base rate of success is among all entrepreneurs, and whether the characteristics described are any less common among people who failed. When a clinical trial reports results, ask what the dropout rate was and whether dropout was random.</p>
+<p>The one additional documented case that makes the structure clear is the history of a type of hedge fund database research. For years, academic finance researchers used databases of hedge fund returns to study the industry. In the 1990s, Elroy Dimson, Paul Marsh, and others began pointing out that these databases systematically excluded funds that had closed. The funds that stopped reporting returns were mostly the ones that had suffered catastrophic losses. The funds that survived to be included were the ones with positive track records. Studies of hedge fund performance built on these databases showed a strong alpha — apparent skill above the market. Studies that corrected for survivorship bias found the alpha largely disappeared.</p>
+<p>The tell in that case, and in most others, is the question of how the sample was assembled. If the sample is assembled by looking backward from success, or if it contains only the entities that survived long enough to be counted, survivorship bias is present.</p>
+<h2>Your Challenge</h2>
+<p>A management author publishes a book about highly innovative companies. She identifies twenty firms that have been consistently ranked among the most innovative in their industries for at least a decade. She interviews executives at each company, analyses their internal structures, and identifies five practices that all twenty firms share: flat hierarchies, internal hackathons, generous R and D budgets, strong founder cultures, and rapid product iteration cycles.</p>
+<p>The book is well researched. The interviews are detailed. The case studies are compelling. The author argues that companies that adopt these five practices are more likely to sustain innovation over the long term.</p>
+<p>What is the fundamental problem with the methodology? What data would you need to evaluate the author's claim properly? What could the presence of all five practices in every case study possibly tell you, and what can it not tell you?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>The Wald story: the primary account with the most documentary rigour is Mangel, M. and Samaniego, F.J., "Abraham Wald's Work on Aircraft Survivability," Journal of the American Statistical Association, 79(386), pp.259–267 (1984). URL: https://www.tandfonline.com/doi/abs/10.1080/01621459.1984.10478038. The Statistical Research Group context, including the detail about Wald's status as an enemy alien and the secretaries removing his papers, is drawn from Ellenberg, Jordan, "How Not to Be Wrong: The Power of Mathematical Thinking" (Penguin Press, 2014). An excerpt covering the Wald story is available at: https://medium.com/@penguinpress/an-excerpt-from-how-not-to-be-wrong-by-jordan-ellenberg-664e708cfc3d. A note on verifiability: the American Mathematical Society has noted that some elements of the Wald story exist in forms that cannot be fully corroborated from surviving documents, though Wald's SRG memoranda on aircraft vulnerability are documented and were republished by the Center for Naval Analyses. AMS discussion: https://www.ams.org/publicoutreach/feature-column/fc-2016-06</p>
+<p>Mutual fund survivorship bias and the 54 percent survival rate over 1997–2011: Vanguard Research, referenced and discussed in "Mutual Fund Performance and Survivorship Bias," available via the Bogleheads wiki: https://www.bogleheads.org/wiki/Survivorship_bias. The 87 percent underperformance figure for merged/closed funds is from the same source. Return overstatement of approximately 1.5 percentage points: Center for Research in Security Prices, cited in Dimensional Fund Advisors, "Why Worry About Survivorship Bias" (2024): https://www.dimensional.com/us-en/insights/why-worry-about-survivorship-bias</p>
+<p>"In Search of Excellence" and subsequent company performance: Peters, T.J. and Waterman, R.H., "In Search of Excellence" (Harper and Row, 1982). The underperformance of featured companies is documented in Business Week, "Who's Excellent Now?" (November 1984), and discussed in detail at: https://en.wikipedia.org/wiki/In<em>Search</em>of_Excellence</p>
+<p>Hedge fund database survivorship bias: Dimson, E. and Marsh, P., "Murphy's Law and Market Anomalies," Journal of Portfolio Management, 25(2), pp.53–69 (1999). The broader documented problem is discussed in Brown, S.J., Goetzmann, W., Ibbotson, R.G. and Ross, S.A., "Survivorship Bias in Performance Studies," Review of Financial Studies, 5(4), pp.553–580 (1992). URL: https://terpconnect.umd.edu/~wermers/ftpsite/FAME/Brown<em>Goetzmann</em>Ibbotson_Ross.pdf</p>
+<p>Attrition bias in clinical trials: Higgins, J.P.T. and Green, S. (eds), "Cochrane Handbook for Systematic Reviews of Interventions," Chapter 8 (The Cochrane Collaboration, 2011). URL: https://handbook-5-1.cochrane.org/</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/3-4">https://everydaystatistics.com/unit/3-4</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

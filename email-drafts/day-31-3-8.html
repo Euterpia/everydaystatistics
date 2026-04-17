@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ecological Fallacy — Everyday Statistics Day 31</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 31 of 44 &nbsp;·&nbsp; Unit 3.8 &nbsp;·&nbsp; 70% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:70%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>The ecological fallacy is the mistake of drawing conclusions about individuals from data measured at the group level. It sounds obvious. It is not obvious in practice, and it has generated some deeply misleading — and occasionally damaging — public health conclusions. Today you learn to spot the unit of analysis before you read any result.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>In 2012, a paper appeared in the New England Journal of Medicine. The author, Dr Franz Messerli of Columbia University, had plotted the per-capita chocolate consumption of twenty-three countries against the number of Nobel Prize winners each country had produced per ten million people. The correlation was striking: r = 0.791. The more chocolate a country ate, the more Nobel laureates it produced. The paper was titled "Chocolate Consumption, Cognitive Function, and Nobel Laureates."</p>
+<p>The New England Journal of Medicine is the most prestigious medical journal in the world. The study was covered by the New York Times, the BBC, and dozens of other outlets. Some readers got the joke. Many did not. The paper was received as genuine evidence that eating chocolate improves brain function.</p>
+<p>Here is what the paper actually showed. Countries with high chocolate consumption also tend to be wealthy, northern European countries. Wealthy, northern European countries also tend to produce a lot of Nobel laureates. The country-level data tells you something about countries. It tells you nothing about what happens inside the brain of any individual chocolate eater. The person consuming the relevant data — a reader of the New England Journal of Medicine — is an individual, not a country. But the data being presented is about countries. The gap between those two levels of analysis is where the deception lives.</p>
+<p>This is the ecological fallacy.</p>
+<h2>The Concept</h2>
+<p>The ecological fallacy is the error of using statistics calculated at the group level to draw conclusions about individuals. The word "ecological" here does not refer to the natural environment. It refers to populations, or ecological units, as distinct from the individuals within them. The error is inferring something about one level of analysis (the person) from data collected at a different level of analysis (the neighbourhood, the country, the ward, the region).</p>
+<p>The foundational demonstration came in 1950, when the American sociologist W.S. Robinson published a paper in the American Sociological Review. Robinson took US census data and looked at the relationship between race and illiteracy. At the level of US states, the correlation between the proportion of Black residents and the illiteracy rate was very high: around 0.95. If you had looked only at that number, you might conclude that race and illiteracy were tightly linked. But when Robinson computed the same correlation at the individual level — looking at actual people rather than states — the correlation dropped to around 0.20. The state-level finding and the individual-level finding were pointing to something quite different. The state-level correlation was driven by historical geography: states with higher proportions of Black residents were, in 1930, largely southern states with systematically underfunded education for all their residents. The high ecological correlation was picking up the legacy of policy, not a characteristic of individuals. Using the state-level number to say something about any particular person would have been not just wrong, but badly wrong in a way that had real consequences.</p>
+<p>A closely related phenomenon is Simpson's Paradox, named after the statistician E.H. Simpson who described it formally in 1951. Simpson's Paradox occurs when a trend that appears in all subgroups of a data set disappears, or reverses, when the groups are combined. The Berkeley admissions case is the most widely cited example. In the autumn of 1973, Berkeley's graduate school admitted around 44 percent of male applicants and 35 percent of female applicants. Looked at in aggregate, this appeared to show systematic bias against women. When the statistician Peter Bickel disaggregated the data by department, a different picture emerged: in four out of six departments, women were actually more likely to be admitted than men. What was happening was that women had applied in larger numbers to highly competitive departments (like English) that admitted a small fraction of all applicants regardless of gender, while men had applied in larger numbers to departments with higher admission rates (like mechanical engineering). The aggregate number was technically accurate and completely misleading. The paradox arises whenever subgroups differ not just in the outcome of interest but in some underlying variable that itself affects the outcome.</p>
+<p>There is also a mirror-image error called the atomistic fallacy. Where the ecological fallacy goes from group to individual, the atomistic fallacy goes from individual to group. If you know that a particular person who exercises daily is in excellent health, you cannot conclude that a neighbourhood where most people exercise will therefore have excellent aggregate health outcomes. Individual health data does not simply aggregate into group health. Social determinants, infrastructure, collective stress, and resource availability operate at the group level and are not reducible to the sum of individual characteristics. Both errors have the same root structure: they assume that patterns found at one level of analysis will transfer cleanly to another level. They almost never do.</p>
+<p>Cross-national comparisons are a rich source of ecological fallacies precisely because the data is readily available and the temptation to conclude something about individuals from national-level patterns is very strong. Countries with higher internet access tend to have lower rates of some diseases. Countries with higher GDP per capita tend to have lower rates of many adverse outcomes. Countries with different dietary patterns have different rates of certain cancers. Every one of these observations may be true at the national level and tell you almost nothing about whether any individual in any of those countries should change their behaviour. The national-level correlation could be driven entirely by infrastructure, inequality, climate, healthcare access, or any number of other structural factors. To take the national average and apply it to an individual is to confuse the map for the territory.</p>
+<h2>Why It Matters</h2>
+<p>The ecological fallacy is not an abstract statistical point. It shows up in three areas of public life with significant consequences.</p>
+<p>The first is area-based health policy. Public health services in the UK and elsewhere routinely use deprivation indices, which assign scores to small geographic areas (electoral wards, census tracts, postcodes) based on factors like unemployment, income, housing quality, and education levels. These indices are useful for allocating resources at scale. The fallacy enters when the area score is applied to individuals in that area. A 2002 study in the Journal of the Royal Statistical Society, by Lancaster and Green, examined exactly this problem. They compared individual-level health data with ward-level deprivation scores from the 1991 UK census and found substantial divergence. Many individuals living in deprived wards are not themselves deprived. Many individuals living in affluent wards face significant hardship. Using the area score as a proxy for the individual's situation produces both false positives (treating non-deprived individuals as deprived) and false negatives (missing deprived individuals in relatively affluent areas). More recent research, published in the Journal of Public Health in 2025, confirmed that household income predicts child health outcomes significantly better than neighbourhood deprivation scores. The individual measure outperforms the ecological one. This matters because it shapes which interventions get funded, which populations get screened, and which people get missed.</p>
+<p>The second area is criminal profiling and law enforcement. When an area has a higher crime rate, this is a statement about events in a geography, not a statement about the inhabitants of that geography. Using area-level crime statistics to treat every resident as a suspect is the ecological fallacy operationalised as policy. An individual who lives in a high-crime area may have no elevated probability of committing crime. The correlation between area crime rates and individual behaviour is always much weaker than the area statistics suggest, for exactly the reasons Robinson identified in 1950: the area statistic reflects structural conditions (poverty, unemployment, housing quality, policing patterns, historical disinvestment) more than it reflects individual propensity.</p>
+<p>The third area is cross-national policy borrowing. Governments frequently look at other countries and conclude that policies which are associated with good outcomes over there should be imported. Finland's educational system produces high PISA scores. South Korea has low rates of a particular disease. Denmark scores highly on happiness indices. Each of these is a statement about a national aggregate. The structural, cultural, historical, and institutional differences between countries are so substantial that the ecological correlation between a policy and an outcome in one country provides only weak evidence about what would happen if you implemented the same policy in a different country. This does not mean cross-national comparisons are worthless. It means they are starting points for inquiry, not conclusions.</p>
+<h2>How to Spot It</h2>
+<p>The tell for the ecological fallacy is a gap between the level at which data was collected and the level at which a claim is being made.</p>
+<p>The documented case that set the standard is Robinson (1950). Robinson himself spelled out the tell: he showed that you can have a very high ecological correlation and a very low individual-level correlation for the same pair of variables, in the same dataset, at the same moment in time. The state-level number (0.95) was not a weak version of the individual-level number (0.20). It was measuring something categorically different. The fact that two numbers are called by the same name (correlation between race and literacy) does not make them the same thing. One is about geography, the other is about people.</p>
+<p>When you encounter a statistical claim, the question to ask is: at what level was this data collected? If the data is about countries, regions, cities, areas, wards, or any other geographic or institutional unit, and the conclusion is about individuals within those units, the ecological fallacy may be operating. Ask whether the relationship found between group averages is likely to hold within any particular group, or whether it is driven by between-group differences that say nothing about individual variation.</p>
+<p>The secondary tell is a very high correlation. Ecological correlations tend to be higher than individual-level correlations because averaging smooths out individual variation. When you see a strikingly clean correlation in data aggregated across units, this is a reason for more scepticism, not less. The Messerli chocolate paper had a correlation of 0.79. That number should raise an eyebrow, not lower a guard. Very high correlations in cross-national or cross-regional data are usually a sign that both variables are being driven by some underlying structural factor, not that one causes the other at the individual level.</p>
+<h2>Your Challenge</h2>
+<p>A study published in a public health journal examines US states. It finds that states with higher rates of gun ownership also have higher murder rates. The correlation is statistically significant and has been replicated in multiple studies. A commentator argues that this proves individual gun ownership causes homicide. A gun rights advocate responds that the vast majority of individual gun owners never commit any crime, so the statistic cannot tell us anything about individuals.</p>
+<p>One of these people is making the ecological fallacy. The other is making the atomistic fallacy. Which is which? What would you need to know to move from the state-level correlation to a well-founded claim about what happens at the individual level? And what is the third variable problem lurking behind both positions?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>Messerli, F.H. "Chocolate Consumption, Cognitive Function, and Nobel Laureates." <em>New England Journal of Medicine</em> 367 (2012): 1562–1564. https://www.nejm.org/doi/abs/10.1056/NEJMon1211064</p>
+<p>Robinson, W.S. "Ecological correlations and the behavior of individuals." <em>American Sociological Review</em> 15, no. 3 (1950): 351–357. Discussed and analysed in: Freedman, D.A., "Ecological Inference and the Ecological Fallacy," Stanford University. https://web.stanford.edu/class/ed260/freedman549.pdf</p>
+<p>Bickel, P.J., Hammel, E.A., and O'Connell, J.W. "Sex Bias in Graduate Admissions: Data from Berkeley." <em>Science</em> 187, no. 4175 (1975): 398–404. Summarised at refsmmat.com: https://www.refsmmat.com/posts/2016-05-08-simpsons-paradox-berkeley.html</p>
+<p>Lancaster, G.A. and Green, M. "Deprivation, ill-health and the ecological fallacy." <em>Journal of the Royal Statistical Society: Series A (Statistics in Society)</em> 165, no. 2 (2002): 263–278. https://academic.oup.com/jrsssa/article/165/2/263/7084157</p>
+<p>Fieldhouse, E.A. and Tye, R. "Deprived People or Deprived Places? Exploring the Ecological Fallacy in Studies of Deprivation with the Samples of Anonymised Records." <em>Environment and Planning A</em> 28, no. 2 (1996): 237–259. https://journals.sagepub.com/doi/abs/10.1068/a280237</p>
+<p>Oxford Academic Journal of Public Health, "Does household income predict health and educational outcomes in childhood better than neighbourhood deprivation?" (2025). https://academic.oup.com/jpubhealth/article/47/1/62/7903429</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/3-8">https://everydaystatistics.com/unit/3-8</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

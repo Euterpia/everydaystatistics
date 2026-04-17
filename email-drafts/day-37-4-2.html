@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base Rate Neglect — Everyday Statistics Day 37</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 37 of 44 &nbsp;·&nbsp; Unit 4.2 &nbsp;·&nbsp; 84% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:84%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Base rate neglect is the failure to weight prior probability correctly when evaluating new information. It is the cognitive version of what Bayes' theorem corrects for mathematically. Today you see the specific ways it manifests — in medical decision-making, criminal justice, and everyday risk assessment — and what 'correcting' for it actually involves.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>A city has two cab companies. Eighty-five percent of the cabs on the road are green. The remaining fifteen percent are blue.</p>
+<p>One night, a cab is involved in a hit-and-run accident. A witness was present. She identified the cab as blue. The witness was tested under similar visibility conditions: she correctly identified the colour of a cab 80 percent of the time, and made an error 20 percent of the time.</p>
+<p>Question: what is the probability that the cab involved in the accident was actually blue?</p>
+<p>Most people say: around 80 percent. The witness was tested, she is 80 percent reliable, she said blue, so blue is probably right. Perhaps 75 percent, perhaps 85 percent, but somewhere in that territory.</p>
+<p>The correct answer is 41 percent.</p>
+<p>That is not a misprint. Given everything above, a blue cab is no more likely than a green one. The most probable conclusion from this evidence, if you run the arithmetic, is that the cab was green. Not blue.</p>
+<p>The witness who said blue is probably wrong — not because she is a liar or unusually bad at her job, but because there are so many more green cabs in the world than blue ones that even a moderately reliable identification system will produce more errors about blue cabs than correct identifications of them. The distribution of cabs in the city is doing most of the work. And most people, when reading this problem, do not think about the distribution of cabs in the city at all.</p>
+<p>That is base rate neglect.</p>
+<p>The cab problem was constructed by Daniel Kahneman and Amos Tversky in the 1970s as part of their systematic investigation of how people reason about probability. They found, across population after population, that when people are given specific case information alongside statistical background information, they weight the specific information far too heavily and the statistical background almost not at all. This is not a defect in certain kinds of thinkers. It is a near-universal tendency. Professionals fall into it. Experts fall into it. You fall into it.</p>
+<p>Here is the arithmetic for the cab case, worked the way that makes it visible.</p>
+<p>Imagine not one accident but 1,000 accidents involving cabs from this city, where the same 85/15 split holds. In 850 of those accidents, the cab was green. In 150, it was blue.</p>
+<p>Now apply the witness to each group. For the 150 genuinely blue cabs: the witness correctly identifies 80 percent as blue, which is 120 correct identifications, and misidentifies 20 percent as green, which is 30 errors. For the 850 genuinely green cabs: the witness correctly identifies 80 percent as green, which is 680 correct identifications, and misidentifies 20 percent as blue, which is 170 errors.</p>
+<p>So across 1,000 accidents, how many times does the witness say blue? She says blue 120 times correctly and 170 times incorrectly, for a total of 290 "blue" identifications. Of those 290, only 120 are accurate. That is 120 out of 290, or 41 percent.</p>
+<p>The witness has given you real information. Before her testimony, you would have estimated only a 15 percent chance of a blue cab. After her testimony, your probability has risen from 15 percent to 41 percent. That is a meaningful update. But the witness has not told you the cab was blue. She has told you the cab was probably blue, in the sense that 41 percent is higher than 15 percent, but probably green in the sense that 59 percent is higher than 41 percent.</p>
+<p>The instinct to hear "the witness said blue" and conclude "the cab was blue" is almost irresistible. It feels like the reasonable thing to do. That instinct is what we are here to dismantle.</p>
+<hr>
+<h2>The Concept</h2>
+<p>The <strong>base rate</strong> is the background frequency of something in the relevant population before any specific information about a particular case is considered. It is what you would know if you knew nothing about the individual incident except that it was drawn from this population. In the cab problem, the base rate is the 85/15 split in the city's cab fleet. In the disease test problem from Unit 1.7, the base rate was the prevalence of the disease in the population: 1 in 10,000.</p>
+<p><strong>Base rate neglect</strong> is the tendency to ignore this background frequency when a specific, vivid piece of evidence arrives. The witness statement feels like the real evidence. The distribution of cabs in the city feels like an abstract statistic. One grabs the attention; the other slides past it. This is not laziness or ignorance. It is a deep feature of how the human mind processes information. Specific case evidence triggers a different kind of reasoning from statistical background information, and the specific tends to win.</p>
+<p>Kahneman's work describes two systems of thought: a fast, associative system that matches patterns and reaches intuitive conclusions, and a slow, deliberate system that can compute probabilities but requires effort. Base rate neglect is what happens when you let the fast system answer a question that requires the slow one. The witness says blue. The fast system says: reliable witness, confident identification, must be blue. The slow system says: wait, how many green cabs are there?</p>
+<p>The problem reappears constantly in medical reasoning. You met it in Unit 1.7 in the form of a disease test: if the disease is rare enough, even a very accurate test will produce more false positives than true ones when applied to a general population. The underlying structure is identical to the cab problem. The base rate of the disease (the prior probability that any given person has it) is the distribution of the cab fleet. The test result is the witness testimony. Ignoring the base rate of the disease when interpreting a positive test is the same cognitive error as ignoring the green/blue split when interpreting the witness's identification.</p>
+<p>This is not a coincidence. All these cases have the same mathematical structure, and they all call for the same mathematical tool.</p>
+<p><strong>Bayes' theorem</strong> is the formal statement of how to update a probability correctly in light of new evidence. You met it in full in Unit 1.7. In the language of that unit: your posterior probability should equal your prior probability updated by the likelihood of the evidence. Base rate neglect is, precisely, the failure to use the prior. The mind performs the likelihood calculation — the witness is 80 percent reliable, so the likelihood of her saying blue given a blue cab is high — and stops there, never combining it with the prior probability of a blue cab in the first place. Bayes requires both. The prior is the base rate. Neglect the prior and you cannot do Bayes. You are left with a number that looks like an answer but has only half the information it needs.</p>
+<p>Two practical correctives follow from this analysis.</p>
+<p>The first is to <strong>identify the reference class before evaluating any case</strong>. Before considering what the witness said, or what the test result showed, ask: what is the background frequency of this outcome in the relevant population? This forces the slow system to engage before the fast one has already reached a conclusion. In the cab case: what fraction of cabs in this city are blue? In the disease case: how prevalent is this condition in the population being screened? In a legal case: how common is this type of crime in this context? The reference class is the population from which the case was drawn, and you need its frequency before the specific evidence means anything.</p>
+<p>The second is to <strong>use natural frequencies rather than probabilities</strong>. Working in whole numbers, as we did above with the 1,000-accident example, makes the base rate visible in a way that conditional probabilities do not. "The witness is 80 percent reliable and the cab is 15 percent likely to be blue" requires mental arithmetic that most people cannot perform accurately under time pressure. "Out of 1,000 accidents, 150 involve blue cabs, and the witness correctly identifies 120 of them while also misidentifying 170 green cabs as blue" gives you a concrete picture that arrives at the same arithmetic through counting. Gerd Gigerenzer's research at the Max Planck Institute has shown repeatedly that training people to use natural frequencies dramatically improves their accuracy on these problems compared to training them to use conditional probabilities. The format of the information changes how well the brain handles it.</p>
+<hr>
+<h2>Why It Matters</h2>
+<p>The places where base rate neglect does the most damage are wherever high-stakes decisions are made about individuals on the basis of statistical signals: security, medicine, law.</p>
+<p><strong>Terrorism profiling</strong> is the clearest example. In any Western country, the proportion of the travelling population who are active terrorists is vanishingly small, probably under 1 in a million on any given day at a major airport. Any profiling algorithm, however clever, must produce vastly more false positives than true ones when the base rate is that low. Suppose a profiling system is 99 percent accurate: it correctly identifies 99 percent of terrorists and incorrectly flags 1 percent of innocent travellers. At a rate of 1 terrorist per million passengers, that system would generate approximately 10,000 false positive alerts for every 1 accurate detection. The people investigating those alerts are not making statistical errors if they treat each flagged person as probably innocent. That is what the arithmetic requires. The political argument for such programmes almost always proceeds as if the only relevant number is the accuracy of the test. The base rate, which changes the conclusion completely, is never mentioned. That silence is the tell.</p>
+<p><strong>Legal reasoning</strong> is where base rate neglect has the most documented costs. You will meet the full mechanics in Unit 3.9 on the prosecutor's fallacy. The short version is this: when forensic evidence is offered to a jury — a DNA match, a fibre comparison, a blood type — the jurors are being invited to reason from the probability of the evidence if the defendant is innocent to the probability that the defendant is innocent given the evidence. These are not the same thing, and the difference is the base rate of guilt. How likely was this defendant to be guilty before the forensic evidence was introduced? That question has a real answer, and it is not 50 percent. In cold case investigations that rely on database DNA searches, the base rate of guilt for any single individual in a large database is very low, and a match probability of 1 in a billion still does not make conviction a safe conclusion without independent corroborating evidence. Courts that admit probability figures without requiring them to be set against a prior probability of guilt are performing half a Bayesian calculation, and it is the less important half.</p>
+<p><strong>Mass screening programmes</strong> for medical conditions compound both problems above. When screening is extended to a general population for a rare condition, the false positive burden falls on the people screened, in the form of recalls, further tests, anxiety, and sometimes unnecessary procedures. The base rate of the condition in the screened population determines whether the programme produces more good than harm. A programme with 95 percent sensitivity and 95 percent specificity, applied to a condition with a prevalence of 1 in 10,000, will produce approximately 499 false positives for every true positive found. Whether that is an acceptable trade-off depends entirely on what happens to those 499 people — and on whether anyone in the programme's design did the Bayesian calculation before rolling it out.</p>
+<hr>
+<h2>How to Spot It</h2>
+<p>In 2002 the United States Transportation Security Administration introduced the Computer Assisted Passenger Prescreening System II (CAPPS II), a programme designed to automatically identify high-risk passengers for additional screening. The programme was cancelled in 2004 after sustained criticism, including from the Government Accountability Office, partly on civil liberties grounds but also on effectiveness grounds.</p>
+<p>The core problem, articulated by statisticians and civil liberties researchers at the time, was the base rate problem. The number of genuine terrorists attempting to board commercial aircraft in the United States in any given year is extremely small relative to the number of passengers screened, which was approximately 700 million annual boardings at that time. Any system with even a 1-in-1,000 false positive rate would generate hundreds of thousands of false alerts per year. The system's designers and political advocates focused on sensitivity — the ability to detect a true terrorist — and gave almost no public attention to the base rate consequence of applying that sensitivity to a population where the event is extremely rare. The word "accuracy" appeared frequently in programme descriptions. The phrase "positive predictive value" did not.</p>
+<p>The tell is always the same: a number that describes how well the signal detects the target, presented without any reference to the frequency of the target in the population. When you see "95 percent accurate," ask: 95 percent accurate applied to a population where the condition is how common? The accuracy figure alone is not enough information to evaluate the claim. If the background frequency is not given, it is almost always because the person presenting the number either does not know it or knows that including it would weaken the case they are making.</p>
+<hr>
+<h2>Your Challenge</h2>
+<p>A new national screening programme begins testing the general population for a rare disease that affects 1 person in every 10,000. The test being used has a sensitivity of 95 percent (if you have the disease, the test correctly identifies you as positive 95 percent of the time) and a specificity of 95 percent (if you do not have the disease, the test correctly gives you a negative result 95 percent of the time).</p>
+<p>You take the test as part of the programme. The result comes back positive.</p>
+<p>Using the natural frequency method — imagine a population of 100,000 people and work through the numbers as whole counts — calculate the probability that you actually have the disease.</p>
+<p>There is no answer on this page.</p>
+<hr>
+<h2>References</h2>
+<p>Kahneman, D. and Tversky, A., "On the psychology of prediction," Psychological Review, 80(4), 237–251 (1973). The original formulation and empirical testing of representativeness and base rate neglect across a range of probability estimation tasks.</p>
+<p>Tversky, A. and Kahneman, D., "Judgment under uncertainty: heuristics and biases," Science, 185(4157), 1124–1131 (1974). The foundational paper cataloguing systematic errors in probabilistic reasoning, including the neglect of prior probabilities. URL: https://www.science.org/doi/10.1126/science.185.4157.1124</p>
+<p>The cab problem specifically: Kahneman, D., and Tversky, A., "Evidential impact of base rates," in Kahneman, D., Slovic, P., and Tversky, A. (eds), Judgment Under Uncertainty: Heuristics and Biases, Cambridge University Press (1982), pp. 153–160. The two-cab-company scenario is one of the most widely cited demonstrations of base rate neglect in the experimental literature.</p>
+<p>Kahneman, D., Thinking, Fast and Slow, Farrar, Straus and Giroux (2011), Chapters 14–16. Extended treatment of base rate neglect, the two-system model of cognition, and the cab problem, written for a general audience.</p>
+<p>Gigerenzer, G. and Hoffrage, U., "How to improve Bayesian reasoning without instruction: frequency formats," Psychological Review, 102(4), 684–704 (1995). The demonstration that natural frequency formats dramatically improve accuracy on Bayesian reasoning tasks compared to probability formats.</p>
+<p>Gigerenzer, G., Reckoning with Risk: Learning to Live with Uncertainty, Penguin (2002). Chapter 4 covers base rate neglect in medical and legal contexts; the case for natural frequencies as the corrective is made in full.</p>
+<p>CAPPS II programme: United States Government Accountability Office, "Aviation Security: Computer-Assisted Passenger Prescreening System Faces Significant Implementation Challenges," GAO-04-385, February 2004. URL: https://www.gao.gov/assets/gao-04-385.pdf. The GAO report documenting implementation difficulties including false positive concerns.</p>
+<p>Schneier, B., "The Security of CAPPS II," Crypto-Gram Newsletter, April 15, 2004. URL: https://www.schneier.com/crypto-gram/archives/2004/0415.html. Accessible analysis of the base rate problem in automated passenger screening, including false positive rate estimation.</p>
+<p>Eddy, D.M., "Probabilistic reasoning in clinical medicine: problems and opportunities," in Kahneman, D., Slovic, P., and Tversky, A. (eds), Judgment Under Uncertainty: Heuristics and Biases, Cambridge University Press (1982), pp. 249–267. Documents the failure of clinicians to correctly account for disease prevalence when interpreting diagnostic test results; a companion to the Kahneman and Tversky work applied to medical practice.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/4-2">https://everydaystatistics.com/unit/4-2</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

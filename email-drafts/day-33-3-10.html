@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P-Hacking and Data Dredging — Everyday Statistics Day 33</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 33 of 44 &nbsp;·&nbsp; Unit 3.10 &nbsp;·&nbsp; 75% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:75%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Statistical significance can be produced without fraud, simply by making enough analysis choices until the right number appears. Run the analysis twenty different ways, report the one that hits p < 0.05, and you have published a false positive without technically cheating. Today you learn to recognise p-hacking in published research — and in your own intuitions.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>A researcher runs an experiment on 200 people and records 50 different variables: age, weight, how much sleep they got, whether they ate breakfast, their stress levels, their income, their mood, and 43 other things. She tests each variable for a relationship with the health outcome she is studying. After running all 50 tests, one comes back with p = 0.04. She writes it up as a finding: "Low sleep duration associated with increased risk of outcome X." The paper gets published.</p>
+<p>Nothing in this story involves fraud. No data was invented. No results were hidden. The researcher did not set out to deceive anyone. She may have genuinely believed she had discovered something real.</p>
+<p>She had not. She had done something that produces findings indistinguishable from fraud, using entirely legitimate statistical tools, in a process that is standard practice in dozens of scientific fields. The finding will probably not replicate if anyone tries. The published literature is full of findings like it.</p>
+<h2>The Concept</h2>
+<p><strong>P-hacking</strong> is the practice of adjusting, selecting, or re-running analyses until a p-value below 0.05 is achieved. The term covers a range of behaviours, from the obviously suspect to the entirely unconscious, but the effect is the same: the p-value loses its meaning.</p>
+<p>To see why, recall what a p-value of 0.05 actually means. It means: if there were truly no effect, you would observe data this extreme by chance 5 percent of the time. That 5 percent figure is the false positive rate for a single test on a single dataset. Run twenty tests, and the probability that at least one of them produces a false positive by chance alone is not 5 percent. It is much closer to 64 percent. Run fifty tests and you will almost certainly get at least one false positive, even if none of the underlying relationships are real. The p-value was calibrated for one test. It is being used for fifty. The maths no longer holds.</p>
+<p>This is the <strong>false discovery rate</strong> problem. When you test many hypotheses simultaneously, the proportion of your "significant" findings that are actually noise can be very high, even when every individual test is conducted correctly. If you test 50 variables, each with a true null effect, and use a 0.05 threshold, you expect roughly 2 to 3 false positives just by chance. Find any one of them, write it up as a discovery, and you have published a false finding without doing anything technically wrong.</p>
+<p>The statistical term for the choices a researcher makes in designing and running an analysis is <strong>researcher degrees of freedom</strong>: which participants to include or exclude, which outcome variable to prioritise, which covariates to adjust for, when to stop collecting data, how to handle missing values. Each of these choices is a fork in the road. Any single choice is defensible. But the accumulation of choices, especially when made after the data has been seen, inflates the false positive rate in ways that are invisible in the final published paper.</p>
+<p>Andrew Gelman and Eric Loken gave this problem a name that has stuck: the <strong>garden of forking paths</strong>. Their 2013 paper argued that the problem does not require deliberate fishing. A researcher can reach a false positive through a sequence of perfectly reasonable, locally-justified decisions, each of which seemed sensible given what the data looked like at the time. The path to significance is paved with good intentions.</p>
+<p>The result is that the 0.05 threshold, which appears to mean "a 5 percent chance of a false positive," can in practice mean a 50 percent or higher chance, depending on how many paths were available and how many were tried. The published paper shows only the path that worked. The reader has no way to know how many paths were attempted.</p>
+<p><strong>Data dredging</strong> is the more aggressive version of the same thing: systematically testing every available variable, every available subgroup, every available time period, until something significant emerges. Sometimes called "fishing" or "mining," it is especially common in fields where large datasets exist and the theoretical basis for choosing which variables to test is weak. Nutritional epidemiology, psychology, and certain areas of genomics have been particularly affected.</p>
+<h2>Why It Matters</h2>
+<p>The practical consequence is a published scientific literature that contains a large proportion of false positive findings. John Ioannidis's 2005 paper, "Why Most Published Research Findings Are False," made this argument rigorously. His point was not that scientists are dishonest. His point was that the incentive structure of academic publishing, combined with small samples, flexible analysis, and the 0.05 threshold, produces a literature where the majority of reported findings in many fields will not hold up.</p>
+<p>Dietary supplement research is one of the clearest examples. Studies regularly find associations between specific nutrients and health outcomes. Many of these are published, picked up by the press, and influence public behaviour and purchasing. When pre-registered trials are run to test the same hypotheses under controlled conditions, the effects largely disappear. The published literature on omega-3 fatty acids, vitamin E, beta-carotene, and many other supplements showed strong protective effects in observational studies. Large pre-registered trials found either no effect or, in some cases, harm. The observational findings were not fabricated. They were almost certainly the product of a literature generated by flexible analysis applied to observational data with many variables in play.</p>
+<p>Underpowered studies make things worse. A study with a small sample has low statistical power, meaning it will often fail to detect real effects. But when a small study does produce a significant result, that result is disproportionately likely to be a false positive or an extreme overestimate of the true effect. Small underpowered studies that have been mined for positive results are where much of the junk in the scientific literature originates.</p>
+<h2>How to Spot It</h2>
+<p>The most thoroughly documented case of p-hacking in recent academic history is the Cornell Food and Brand Lab, run by Brian Wansink until his resignation in 2019.</p>
+<p>Wansink was a prolific and widely cited food marketing researcher who published dozens of studies on how portion size, plate size, packaging, and environmental cues influence eating behaviour. His findings were cheerful and intuitive: people eat more from bigger bowls; children eat more vegetables when they are given funny names; diners underestimate how much they eat at all-you-can-eat buffets. His work was extensively covered in the press and influenced public health policy and school nutrition programmes.</p>
+<p>In 2016, Wansink published a blog post describing how he had assigned a visiting graduate student to re-analyse data from a failed experiment. The experiment, conducted at an Italian restaurant, had not produced the results he was looking for. He instructed the student to break the diners into every possible subgroup: males, females, lunch diners, dinner diners, people eating alone, people eating in groups, people who ordered alcohol, people who ordered soft drinks, people sitting close to the buffet, people sitting far away, and so on. Then to test everything against everything else and find something that "went virally big time." The blog post was presented as an inspirational story about persistence and scientific creativity.</p>
+<p>Statisticians reading it recognised it as a description of systematic data dredging. A subsequent investigation by journalists at BuzzFeed News obtained emails between Wansink and his co-authors that showed the pattern in detail: datasets mined repeatedly for publishable results, analyses adjusted until significant findings appeared, papers written around whatever the data happened to produce.</p>
+<p>Cornell's formal investigation found that Wansink had committed academic misconduct, including "misreporting of research data, problematic statistical techniques, failure to properly document and preserve research results, and inappropriate authorship." Thirteen of his papers were retracted, one of them twice. At least fifteen more were corrected. The research base for several public health recommendations was invalidated.</p>
+<p><strong>The tell</strong> is the absence of a pre-registered analysis plan. In any study where the hypotheses and analysis methods were not locked down before data collection, you have no way of knowing how many analytical paths were tried before the published result was selected. When a paper reports a surprising or counterintuitive finding from an observational dataset with many variables, and does not cite a pre-registered protocol, apply significant scepticism. The finding may be real. But you have no mechanism for knowing whether it is.</p>
+<p>A secondary tell is an unusually large number of findings from a single dataset. If a research group regularly publishes three or four separate papers from one study, with each paper reporting a different significant result, this is consistent with data dredging: the same dataset was tested until multiple publishable thresholds were crossed. Each paper will look like independent evidence. It is not.</p>
+<h2>Your Challenge</h2>
+<p>A nutrition researcher collects data on 1,000 adults, measuring 30 different dietary and lifestyle variables: consumption of red meat, processed food, vegetables, alcohol, coffee, sleep duration, exercise frequency, and so on. She tests each variable for association with a cardiovascular health outcome using a standard statistical test, with a 0.05 significance threshold.</p>
+<p>One variable, daily coffee consumption, comes back at p = 0.038. She writes a paper concluding that coffee consumption is significantly associated with better cardiovascular health.</p>
+<p>Before accepting this finding, consider: how many false positives would you expect from 30 independent tests at a 0.05 threshold, even if none of the variables had any real effect? If coffee is the one that cleared the threshold, what does the p-value of 0.038 actually tell you now? What would you need to see before treating this finding as meaningful evidence that coffee is genuinely protective?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>Wansink, B. (2016). "The grad student who never said no." <em>Healthier & Happier</em> (Cornell Food and Brand Lab blog). The original blog post that prompted wider scrutiny. Archived copies are available via the Wayback Machine.</p>
+<p>Lee, S.M. (2018). "Here's how Cornell scientist Brian Wansink turned shoddy data into viral studies about how we eat." <em>BuzzFeed News</em>. URL: https://www.buzzfeednews.com/article/stephaniemlee/brian-wansink-cornell-p-hacking The primary journalistic investigation, drawing on email correspondence between Wansink and collaborators.</p>
+<p>Cornell University (2018). Statement on the investigation of Brian Wansink. Reported by <em>Retraction Watch</em>, 20 September 2018. URL: https://retractionwatch.com/2018/09/20/beleaguered-food-marketing-researcher-brian-wansink-announces-his-retirement-from-cornell/ Full text of Cornell's misconduct finding and summary of the investigation outcome.</p>
+<p>Gelman, A. and Loken, E. (2013). "The garden of forking paths: Why multiple comparisons can be a problem, even when there is no 'fishing expedition' or 'p-hacking' and the research hypothesis was posited ahead of time." Unpublished manuscript. URL: https://sites.stat.columbia.edu/gelman/research/unpublished/p_hacking.pdf Introduced the garden of forking paths framing and distinguished it from deliberate data fishing.</p>
+<p>Simmons, J.P., Nelson, L.D. and Simonsohn, U. (2011). False-positive psychology: undisclosed flexibility in data collection and analysis allows presenting anything as significant. <em>Psychological Science</em>, 22(11), 1359–1366. Introduced the term "researcher degrees of freedom" and demonstrated through simulation that flexible analysis produces false positive rates far above the nominal 5 percent. URL: https://pubmed.ncbi.nlm.nih.gov/22006061/</p>
+<p>Ioannidis, J.P.A. (2005). Why most published research findings are false. <em>PLoS Medicine</em>, 2(8), e124. The paper that formally modelled the conditions under which a majority of published positive findings are false positives. URL: https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124</p>
+<p>Nosek, B.A. et al. (2015). Estimating the reproducibility of psychological science. <em>Science</em>, 349(6251), aac4716. The large-scale replication project that found fewer than half of published psychological findings replicated. URL: https://www.science.org/doi/10.1126/science.aac4716</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/3-10">https://everydaystatistics.com/unit/3-10</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

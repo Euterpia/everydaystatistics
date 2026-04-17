@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hot Hand Fallacy: And Why It Is Different — Everyday Statistics Day 40</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 40 of 44 &nbsp;·&nbsp; Unit 4.5 &nbsp;·&nbsp; 91% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:91%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>The hot hand — the belief that a player on a scoring run is more likely to score again — was declared a fallacy in 1985. In 2015, a reanalysis showed the original study had a statistical flaw, and the hot hand may be partially real. Today's unit is about both the substantive question and what the controversy reveals about how statistical claims get made and overturned.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>In 1985, Thomas Gilovich, Robert Vallone, and Amos Tversky published one of the most celebrated findings in the psychology of judgment. They had analysed shooting records from the Philadelphia 76ers, surveyed basketball fans, and run controlled shooting experiments with Cornell varsity players. Their conclusion was unambiguous: the hot hand is an illusion.</p>
+<p>Players who had just made several shots in a row were no more likely to make the next one. The streak you were watching was a pattern your brain had invented, the same clustering illusion that makes random sequences look meaningful. Belief in the hot hand was a cognitive bias, full stop. The paper was widely cited, widely taught, and widely treated as settled.</p>
+<p>For thirty years, that was the story.</p>
+<p>Then in 2018, Joshua Miller and Adam Sanjurjo published a paper in <em>Econometrica</em>, one of the most rigorous journals in economics, with an uncomfortable finding. The original analysis had a flaw. A subtle but real statistical bias had caused Gilovich and colleagues to systematically underestimate streakiness in their data. When that bias was corrected, the conclusion flipped. The hot hand showed up. There was, and perhaps always had been, significant evidence of streak shooting.</p>
+<p>The original debunking had itself been partially debunked.</p>
+<p>This is not a story about sloppy science. The bias Miller and Sanjurjo identified is genuinely non-obvious. The original researchers were careful and serious. What the episode illustrates is something more useful: that even well-designed analyses can contain subtle structural errors that only emerge later, and that the confidence we place in any single finding should always be provisional. The conclusion is not "believe in the hot hand." It is "believe in findings held lightly, and understand what the argument actually rests on."</p>
+<h2>The Concept</h2>
+<p>The <strong>hot hand effect</strong> is the claim that a person who has recently been performing well is more likely than usual to continue performing well on the next attempt. In basketball, the idea is that after three made shots in a row, a player's probability of making the fourth is genuinely elevated. The word "hot" describes a temporary state of heightened performance. The claim is that this state is real and predictable.</p>
+<p>Gilovich, Vallone, and Tversky (1985) set out to test this claim rigorously. They looked at the Philadelphia 76ers' home games from the 1980--81 season and computed the probability that each player would hit a shot given that his previous one, two, or three shots were hits, and compared that to his hit rate after misses. If the hot hand were real, you would expect to see elevated success rates following streaks of hits. They found no such pattern. The probabilities were essentially the same regardless of recent history. They also found that 91 per cent of basketball fans believed the hot hand was real, and that the fans' intuitions about how much a hot streak would boost performance were wildly inflated.</p>
+<p>For three decades, this finding stood. The hot hand was taught in psychology and behavioural economics courses as a textbook example of the clustering illusion: the human tendency to see meaningful patterns in genuinely random sequences.</p>
+<p>The problem Miller and Sanjurjo identified is called <strong>streak selection bias</strong>, and it is subtle enough to deserve a careful explanation.</p>
+<p>Suppose you flip a fair coin 100 times and record the results as a sequence. Now you want to measure whether heads is more likely after a streak of three previous heads. To do this, you find every position in the sequence that was preceded by three heads, and you record what happened at that position. Then you calculate what fraction of those positions were also heads.</p>
+<p>Here is the problem. In a finite sequence, there is a systematic mathematical reason why this fraction will, on average, come out lower than 50 per cent, even for a genuinely fair coin with no memory. The act of identifying "the flip after a streak of heads" creates a selection effect that biases the sample. The streak of heads that precedes your measurement point has, by its own existence, made it slightly more likely that a tail will immediately follow, simply because of how the positions overlap and interact within the finite sequence. The bias is not large in any individual sequence, but it is consistent, and in the kind of sample sizes used in the original basketball study, it is large enough to matter.</p>
+<p>When Miller and Sanjurjo applied the correct adjusted analysis to the Gilovich data, they found that players were actually hitting at meaningfully higher rates after streaks of makes than after streaks of misses. The bias in the original methodology had been masking that signal. Their reanalysis also found evidence of streak shooting in further basketball data sets.</p>
+<p>The current state of the evidence is: the hot hand is probably real, at least in some domains, and probably smaller in magnitude than fans believe. But the question of exactly how large and how consistent it is remains genuinely open.</p>
+<p>Now for the distinction that gives this unit its title.</p>
+<p>In Unit 4.4, you learned about the gambler's fallacy: the erroneous belief that after a run of one outcome, the opposite outcome is "due." The gambler's fallacy treats independent events as if they are connected. A roulette wheel has no memory. A fair coin has no memory. Applying the logic of "due" to truly independent processes is always wrong.</p>
+<p>The hot hand is a different structure entirely. A basketball player is not a roulette wheel. A shooter's probability of making a basket depends on physical and mental states that do persist over short time windows: muscle memory, confidence, rhythm, fatigue, focus. These are not independent across attempts. The question "is the hot hand real?" is a question about whether those states produce <strong>autocorrelation</strong> in performance, meaning whether consecutive outcomes influence each other.</p>
+<p><strong>Autocorrelation</strong> means that observations close together in a sequence are correlated with each other. Daily temperatures are autocorrelated: if it was warm today, it is probably warm tomorrow, not because yesterday's temperature caused tomorrow's but because both are expressions of the same underlying weather system. A player's shots within a single game may be autocorrelated because both draws on the same underlying physiological and psychological state.</p>
+<p>The gambler's fallacy is an error because it applies dependent-process logic to independent processes. The hot hand question is empirically legitimate because it asks whether a specific human performance process is actually dependent or not. These are different questions. Whether the hot hand turns out to be large, small, or absent in any particular domain, the question is a proper one, unlike the gambler's question, which is based on a category error from the start.</p>
+<p>The lesson is not "streaks are always meaningful." It is "the meaningfulness of a streak depends entirely on whether the underlying process is independent or not, and that is always a question that needs to be investigated, not assumed."</p>
+<h2>Why It Matters</h2>
+<p>The most consequential application of hot hand thinking outside sport is fund manager performance.</p>
+<p>When an investment fund outperforms the market for several years running, the marketing materials write themselves. The manager has a gift. She sees what others miss. Past performance, the small print hurriedly notes, is not necessarily indicative of future results. But that is not quite how it is presented.</p>
+<p>The structure of the claim is identical to the hot hand argument. Past success predicts future success. The question is whether fund management is more like basketball or more like a roulette wheel.</p>
+<p>The evidence is sobering. Large-scale studies of fund performance, including work by SPIVA and the research behind the S&P Indices vs. Active (SPIVA) reports, consistently show that the majority of actively managed funds underperform their benchmark index over periods of ten years or more after fees, and that past outperformance does not reliably predict future outperformance. The manager who beat the market for five years is not much more likely to beat it for the next five years than a manager chosen at random. Fund management, at the aggregate level, looks much more like an independent process than a dependent one. Short-run outperformance is largely consistent with random variation.</p>
+<p>This does not mean no skilled fund managers exist. It means that identifying them in advance, from a track record alone, is harder than it appears, because genuine skill and good luck produce indistinguishable short-run results. The difficulty is distinguishing signal from noise in a short time series.</p>
+<p>In sport, coaches who pull players from a "cold" shooter or give the ball to a "hot" one are making decisions based on the hot hand belief. If the effect is real but small, the strategy may sometimes be right but frequently wastes the resources of context and attention. In any domain where "on a roll" narratives drive decisions, the question worth asking is: is this process actually autocorrelated, and do I have enough data to tell?</p>
+<h2>How to Spot It</h2>
+<p>The hot hand belief and the gambler's fallacy can both be wrong, and they pull in opposite directions. The hot hand says: keep going, it will continue. The gambler's fallacy says: stop, it must reverse. Neither is always right. Both are responses to streaks that ignore the fundamental question: what kind of process is this?</p>
+<p>The tell for illegitimate hot hand reasoning is post-hoc selection. You have been watching a game, a portfolio, or a track record, and you noticed that things have gone well recently. The streak is visible in hindsight. The question is whether that visible streak tells you anything predictive.</p>
+<p>For the hot hand belief to be valid, you need two things. First, an underlying mechanism: a reason to believe that the process is actually dependent, that early success genuinely raises the probability of subsequent success through some causal pathway. Second, enough data in the right form to detect that dependence statistically.</p>
+<p>When those two conditions are absent, the "on a roll" narrative is almost always a post-hoc story imposed on noise. The streak that prompted the narrative was real. The causal structure you are inferring from it was not.</p>
+<p>In fund management, the mechanism is weak. Capital allocation skill, even if real, operates in a market where everyone else is also trying to be clever, and where edge degrades rapidly as it becomes known. The short-run outperformance of a good manager is statistically hard to separate from the short-run outperformance of a lucky one. Five years of above-average returns, in a universe of thousands of funds, will reliably produce several funds with that track record even if no one has any skill at all. That is what random variation looks like.</p>
+<p>The right response to a claimed hot hand is always to ask: what mechanism would produce dependence here, and how long a sequence would I need to confidently detect it?</p>
+<h2>Your Challenge</h2>
+<p>A fund manager has outperformed a broad market index in each of the past five consecutive years. The fund is now being actively marketed to retail investors on the basis of this track record.</p>
+<p>Assuming that fund management over a five-year window is a roughly independent process, estimate the probability of five consecutive years of outperformance occurring by chance alone. Use the simplest possible assumption: each year has a 50 per cent chance of outperformance regardless of prior years.</p>
+<p>Then consider: if there are five thousand actively managed funds available to UK retail investors, how many would you expect to have a five-year outperformance streak by chance alone, even if no fund has any skill? What does this tell you about the evidential value of the track record being presented to you?</p>
+<p>Finally: what mechanism would you need to identify, and what additional data would you want, before the five-year record became meaningful evidence of skill rather than luck?</p>
+<p>There is no answer on this page.</p>
+<h2>References</h2>
+<p>Original study: Gilovich, T., Vallone, R., and Tversky, A., "The hot hand in basketball: On the misperception of random sequences," <em>Cognitive Psychology</em>, 17(3), 295--314 (1985). Full text available at: https://home.cs.colorado.edu/~mozer/Teaching/syllabi/7782/readings/gilovich%20vallone%20tversky.pdf</p>
+<p>Reanalysis: Miller, J.B. and Sanjurjo, A., "Surprised by the Hot Hand Fallacy? A Truth in the Law of Small Numbers," <em>Econometrica</em>, 86(6), 2019--2047 (2018). Published version: https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA14943. Working paper (open access): https://arxiv.org/abs/1902.01265</p>
+<p>Accessible explanation of the streak selection bias: Data Colada post 88, "The Hot-Hand Artifact for Dummies and Behavioral Scientists," https://datacolada.org/88</p>
+<p>Overview of the debate with further citations: Wikipedia, "Hot hand," https://en.wikipedia.org/wiki/Hot_hand</p>
+<p>Fund performance persistence evidence: S&P Dow Jones Indices, SPIVA US Scorecard (published semi-annually). Summary findings available at: https://www.spglobal.com/spdji/en/research-insights/spiva/</p>
+<p>Kahneman, D., <em>Thinking, Fast and Slow</em>, Farrar, Straus and Giroux (2011), Chapter 10. Covers the hot hand, the clustering illusion, and the original Gilovich et al. findings. Note that the book predates the Miller and Sanjurjo reanalysis and reflects the pre-2018 consensus.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/4-5">https://everydaystatistics.com/unit/4-5</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correlation Is Not Causation — Everyday Statistics Day 30</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 30 of 44 &nbsp;·&nbsp; Unit 3.7 &nbsp;·&nbsp; 68% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:68%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>'Eating chocolate linked to lower heart disease risk.' 'Countries with more TVs have better health outcomes.' Correlation is not causation — you've heard this. Today you get the full picture: what confounding variables are, what reverse causation looks like, and the specific causal inference tools that let researchers move beyond correlation to something more defensible.</p>
+  </div>
+
+  <div class="content">
+<h2>The most obvious joke that keeps fooling everyone</h2>
+<p>Between 2000 and 2009, per capita cheese consumption in the United States correlated with deaths caused by people becoming tangled in their bedsheets. The correlation coefficient was 0.947, which means the two variables moved almost perfectly in lockstep. If you plotted the lines, you would struggle to get a sheet of paper between them.</p>
+<p>This is from Tyler Vigen's Spurious Correlations database, which contains hundreds of examples assembled by a program that simply trawls publicly available datasets and pairs anything that moves together. Nicolas Cage film releases correlate with swimming pool drownings. The divorce rate in Maine correlates with per capita consumption of margarine. US spending on science, space, and technology correlates with suicides by hanging, strangulation, and suffocation.</p>
+<p>You are reading these and thinking: obviously not. Nobody believes cheese causes bedsheet deaths. The correlations are absurdly funny precisely because the causal connection is invisible. There is no plausible mechanism. The variables cannot have anything to do with each other.</p>
+<p>But here is the uncomfortable part. The same logical structure that produces the cheese-and-bedsheets correlation produces the ones that made it into newspaper headlines and government policy. The variables are less obviously unrelated. The mechanism sounds plausible. The sample is real. The correlation is strong. And the same mistake gets made.</p>
+<p>That is what this unit is about.</p>
+<h2>The concept</h2>
+<p><strong>Correlation</strong> is a statistical relationship between two variables. When one goes up, the other tends to go up (positive correlation) or down (negative correlation). The correlation coefficient, usually written as <em>r</em>, runs from -1 (perfect inverse relationship) to +1 (perfect direct relationship). Zero means no linear relationship at all. The cheese-bedsheet correlation of 0.947 is extraordinarily high. Most real-world correlations worth paying attention to sit somewhere between 0.2 and 0.6.</p>
+<p><strong>Causation</strong> is something different. A causes B means that if you intervene on A and change it, B will change as a result. Not just that they happen to move together, but that one produces the other.</p>
+<p>Correlation is a description of a pattern in data. Causation is a claim about what happens in the world. They are not the same thing, and observing the first gives you only weak evidence about the second. There are three structural reasons why.</p>
+<p><strong>Confounding.</strong> A third variable causes both A and B, producing a correlation between them that has nothing to do with any direct relationship. Ice cream sales correlate strongly with drowning rates. Does eating ice cream make you drown? No. The confounder is summer. Hot weather drives both ice cream consumption and the number of people swimming, and drownings follow swimmers. If you hold temperature constant, the ice cream correlation disappears. The confounder was doing all the work.</p>
+<p><strong>Reverse causation.</strong> A correlates with B, but you have the direction backwards. You find that people who are admitted to hospital are more likely to die than people who stay home. Does hospital admission cause death? Clearly not in the direction that reading would imply. Sick people go to hospital; their sickness, not the hospital, is what threatens their life. The causal arrow runs from illness to both hospitalisation and death. Confusing the direction of causation is not limited to obvious examples. In economics, in psychology, in nutrition science, direction is regularly assumed and rarely tested.</p>
+<p><strong>Chance.</strong> With enough variables and enough time, some correlations will appear by pure random coincidence. This is what Vigen's program exploits. It did not go looking for cheese and bedsheets; it tested thousands of pairs until it found ones that happened to align. If you test enough combinations, improbable patterns will emerge by luck. The more variables in a dataset and the longer the time series, the more opportunities for chance correlations to appear.</p>
+<p>These three mechanisms exhaust the structural explanations. If A and B are correlated, either A causes B, B causes A, a third variable causes both, or it is a coincidence. Those are the options. Asserting causation from correlation alone means you have eliminated the other three possibilities, and that requires evidence the correlation itself cannot supply.</p>
+<p><strong>The Bradford Hill criteria</strong> are one framework for gathering that evidence. In 1965, the epidemiologist Austin Bradford Hill described nine aspects of an association worth examining before concluding causation: strength, consistency, specificity, temporality, biological gradient, plausibility, coherence, experimental evidence, and analogy. He was careful to note that none of these can provide indisputable proof and none is required alone, but together they make a causal claim more or less persuasive. Temporality is the most fundamental: the cause must precede the effect. A correlation observed only after an intervention cannot establish that the intervention caused anything.</p>
+<p><strong>The counterfactual</strong> is the gold standard. To establish that A causes B, you need to know what would have happened to B if A had not occurred. This is why randomised controlled trials are the most powerful causal tool available: by randomly assigning some people to a treatment and others to a placebo, you create two groups that differ only in whether they received the treatment. The counterfactual is approximated. Observational data, however detailed and carefully collected, cannot recreate this approximation without assumptions.</p>
+<p>The examples below share one thing: high statistical correlation, zero causal relationship. Looking at them should make you feel something specific: a mild discomfort at how convincing the line graphs look, even when you know the variables cannot be connected. That feeling is important. Carry it into the next health headline you read.</p>
+<h2>Why it matters</h2>
+<p>In October 2012, the New England Journal of Medicine published a paper by the cardiologist Franz Messerli correlating per capita chocolate consumption with the number of Nobel Prize laureates per ten million people across twenty-three countries. The correlation coefficient was 0.791. Messerli wrote that increasing a country's chocolate consumption by 0.4 kg per person per year should produce one additional Nobel laureate. The paper was tongue-in-cheek, published in the journal's occasional notes section. Few readers got the joke. The finding ricocheted around the internet and the press as evidence that chocolate improves cognitive function. The mechanism sounds plausible; cocoa contains flavanoids, which have been studied for various effects on cognition and cardiovascular health. The causal step was simply assumed.</p>
+<p>The actual explanation is a confound. Countries with higher chocolate consumption are, on average, wealthier and more likely to fund the kind of long-term basic research that produces Nobel laureates. It is wealth and institutional investment in science that causes both, not chocolate. The ecological fallacy (using country-level data to make claims about individuals) compounds the error, but the correlation-causation confusion is the first mistake.</p>
+<p>This example is relatively harmless. The medical case is not.</p>
+<p>For decades, observational studies showed consistently that women who took hormone replacement therapy after menopause had thirty to fifty percent lower rates of coronary heart disease than women who did not. The effect was large and consistent across more than forty studies, including the Nurses' Health Study, which followed over 120,000 women and found significant cardiovascular benefit. On the strength of this correlation, HRT was prescribed to millions of women for cardiovascular protection.</p>
+<p>Then the Women's Health Initiative trial, a randomised controlled study that started in 1991, reported its results in 2002. It found no cardiovascular protection and, for the combined oestrogen-progestogen preparation, an increased risk of coronary heart disease, stroke, and blood clots. The observational studies had been wrong. The most likely explanation is a confound: women who chose to take HRT were, on average, healthier, wealthier, and more health-conscious than those who did not. Their lower rates of heart disease reflected their baseline health, not the effect of the therapy. The correlation was real. The causal inference was wrong. And the prescription practice based on that causal inference exposed millions of women to risk without the protection they had been promised.</p>
+<p>This is the category of error that matters. Not cheese and bedsheets, but policies, treatments, and public health recommendations built on correlations that were reported as causes.</p>
+<h2>How to spot it</h2>
+<p>In November 1995, the Committee on Safety of Medicines in the United Kingdom issued an emergency warning that third-generation oral contraceptive pills were associated with twice the risk of venous thromboembolism (blood clots) compared to second-generation pills. The warning was based on three observational studies that had not yet been published. The press release landed during a news cycle and received extensive coverage. Approximately one million women stopped taking the pill immediately. The consequences were predictable: unwanted pregnancies increased, and the number of abortions in England and Wales rose by approximately thirteen thousand in the year following the warning.</p>
+<p>Subsequent analysis suggested the studies had been confounded. Women prescribed third-generation pills were more likely to have risk factors that contra-indicated the second-generation options. The apparent doubling of risk may have reflected who was prescribed which pill rather than a property of the pills themselves. A later independent review found the risk increase was smaller than reported and that the benefits of third-generation pills for some women outweighed the risks.</p>
+<p>The real-world consequence of reporting a correlation as a causation was thirteen thousand additional abortions in a single year.</p>
+<p>The tell in every case is the same: look for the phrase "associated with" in the headline or abstract. In scientific writing, "associated with" always means correlated, never necessarily caused. When you see it, ask three questions:</p>
+<p>First, what is the confounder? Who or what else might cause both variables to move together? In the HRT case: health consciousness and wealth. In the pill case: pre-existing clotting risk factors.</p>
+<p>Second, what is the direction? Is it possible the apparent effect runs the other way? Could the outcome be driving the exposure rather than the exposure driving the outcome?</p>
+<p>Third, how many variables were tested? The more variables examined before landing on this correlation, the higher the probability it is a chance finding, regardless of the p-value. (Unit 3.10 on p-hacking goes deeper on this.)</p>
+<p>The three-question test will not resolve every case, but it will stop you from swallowing the causal inference before it has been earned.</p>
+<h2>Your challenge</h2>
+<p>A large study of schoolchildren finds that children who eat breakfast perform better on academic tests than children who skip it. The effect is statistically significant and consistent across multiple years of data. The study authors write that "breakfast consumption was significantly associated with improved academic performance."</p>
+<p>Before you conclude that skipping breakfast causes worse academic outcomes, sketch out at least three distinct causal structures that could produce this finding. For each one, describe what would need to be true about the data, and whether the observational study as described could distinguish between your explanations.</p>
+<p>No answer is given here. The skill being practised is the act of generating competing explanations, not selecting among them. A mind that automatically reaches for one explanation on seeing a correlation is the mind that prescribed HRT to millions of women.</p>
+<h2>References</h2>
+<p>Vigen, T. (2015). <em>Spurious Correlations</em>. Hachette Books. Spurious Correlations database: <a href="https://www.tylervigen.com/spurious-correlations">spuriouscorrelations.com</a></p>
+<p>Messerli, F.H. (2012). Chocolate consumption, cognitive function, and Nobel laureates. <em>New England Journal of Medicine</em>, 367(16), 1562–1564. <a href="https://www.nejm.org/doi/full/10.1056/NEJMon1211064">DOI: 10.1056/NEJMon1211064</a></p>
+<p>Grodstein, F. et al. (1997). Postmenopausal hormone therapy and mortality. <em>New England Journal of Medicine</em>, 336(25), 1769–1775. <a href="https://pubmed.ncbi.nlm.nih.gov/9187065/">PubMed</a></p>
+<p>Writing Group for the Women's Health Initiative Investigators (2002). Risks and benefits of estrogen plus progestin in healthy postmenopausal women. <em>JAMA</em>, 288(3), 321–333. <a href="https://jamanetwork.com/journals/jama/fullarticle/195120">DOI: 10.1001/jama.288.3.321</a></p>
+<p>Furedi, A. (1999). The public health implications of the 1995 "pill scare." <em>Human Reproduction Update</em>, 5(6), 621–626. <a href="https://pubmed.ncbi.nlm.nih.gov/10652953/">PubMed</a></p>
+<p>Hill, A.B. (1965). The environment and disease: association or causation? <em>Proceedings of the Royal Society of Medicine</em>, 58(5), 295–300. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1898525/">PMC</a></p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/3-7">https://everydaystatistics.com/unit/3-7</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gambler's Fallacy — Everyday Statistics Day 39</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 39 of 44 &nbsp;·&nbsp; Unit 4.4 &nbsp;·&nbsp; 89% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:89%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>A coin has come up heads five times in a row. The next flip 'must' be tails. This is the gambler's fallacy, and it is deeply intuitive and completely incorrect. Independent events have no memory. Today you learn the cognitive mechanism, the correct understanding of randomness, and the precise conditions under which the fallacy does and does not apply.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>On the evening of 18 August 1913, the roulette wheel at the Monte Carlo Casino in Monaco began doing something extraordinary. Black came up. Then black again. Then black a third time. Then a fourth. The players at the table shifted in their seats.</p>
+<p>By the tenth consecutive black, word had spread through the casino. People crowded around. By the fifteenth, the betting was becoming serious. Surely red was due. Surely the wheel was going to correct itself. Surely the laws of probability demanded it.</p>
+<p>Black came up again.</p>
+<p>By the time the streak ended at twenty-six consecutive blacks, players had lost millions of francs betting against it. Every single spin, they had piled more money onto red, convinced that the longer the streak ran, the more certain its reversal became. The wheel kept spinning. The wheel did not know about the streak.</p>
+<p>The event became so infamous that the fallacy it illustrates is sometimes called the Monte Carlo fallacy. It is the purest demonstration in the historical record of a mistake so deeply embedded in human cognition that even watching it destroy people in real time does not make it stop.</p>
+<p>The probability of any single spin landing on black at a standard European roulette table with a single zero is 18 out of 37, roughly 48.6 percent. That was true on spin one. It was true on spin twenty-six. It was true on spin twenty-seven. The wheel had no memory. The players very much did.</p>
+<h2>The Concept</h2>
+<p>The gambler's fallacy is the belief that a run of one outcome in a random sequence makes the opposite outcome more likely to follow. After ten heads, tails is "due." After fifteen reds, black must be coming. After a lottery number fails to appear for twenty draws, it is "overdue."</p>
+<p>This is wrong. It is wrong in a way that follows directly from the concept of independence, which you covered in Unit 1.3.</p>
+<p>Two events are independent when the outcome of one has no effect on the probability of the other. A fair coin toss is independent from the previous coin toss because the coin has no memory, no mechanism for tracking history, no way for past outcomes to influence the physics of the next flip. The coin is just a coin. It does not know what happened before. Its probability of landing heads is 0.5 on flip one, and it is 0.5 on flip one hundred, regardless of what came before.</p>
+<p>A roulette wheel is the same. Each spin is a fresh, independent event. The ball drops into a slot because of the speed of the wheel, the speed of the ball, the angle of deflection, and a dozen other physical variables that reset completely with every spin. Nothing about where the ball landed last time enters into those variables.</p>
+<p>The fallacy is the attribution of memory to a memoryless process.</p>
+<p>This connects directly to something covered in Unit 1.2: what randomness actually looks like. Random sequences contain runs and clusters. If you flip a fair coin a hundred times, you should expect to see sequences of six or seven heads in a row. That is not evidence that the coin is biased; it is what genuinely random data looks like. The human brain, wired to find patterns, sees a run and interprets it as a signal. It is not a signal. It is noise behaving exactly as noise behaves.</p>
+<p>The law of large numbers gets misapplied here. The law of large numbers is a real statistical principle: over a very large number of trials, the observed frequency of an outcome will converge toward its true probability. In a million coin flips, you will get very close to 500,000 heads. But the law operates at the level of the whole sequence, not event by event. It does not say that after a run of heads, tails must catch up in the short run. There is no catching-up mechanism. The coin does not owe you tails.</p>
+<p>Think of it this way. A casino records fifty consecutive spins and they are all red. On spin fifty-one, what is the probability of black? Still 48.6 percent. The fifty previous reds do not contribute to that number, do not raise it, do not lower it. The universe does not maintain a ledger of outcomes and adjust future probabilities to balance the books.</p>
+<p>The gambler's fallacy and the clustering illusion from Unit 1.2 are two sides of the same error. The clustering illusion leads people to see meaningful patterns in random data, to conclude that a cluster of cancer cases must have an environmental cause or that a basketball player shooting well must have the "hot hand." The gambler's fallacy leads people to expect that the pattern will break, that the streak will end, that the sequence will correct itself. Both errors stem from a wrong model of randomness: the belief that short random sequences should look smooth and balanced. They should not. They almost never do.</p>
+<h2>Why It Matters</h2>
+<p>The obvious application is casino gambling. The entire category of streak-reversal betting systems rests on the gambler's fallacy. The Martingale system, in which you double your bet after every loss on the assumption that a win must eventually arrive, is its most dangerous expression. The logic sounds almost reasonable: if you keep doubling, you will eventually win back your losses plus a small profit. The flaw is that "eventually" requires infinite capital and infinite time, and casino table limits exist precisely to cap how long a losing streak you can survive. Streak-reversal systems do not alter the underlying probabilities. They reshape the distribution of outcomes so that you lose rarely but catastrophically rather than frequently and modestly. The casino's edge is unchanged.</p>
+<p>Lottery gambling is equally saturated with the fallacy. The appeal of "cold numbers" — numbers that have not appeared recently and are therefore supposedly due — is direct gambler's fallacy thinking. The lottery machine has no memory of previous draws. A number that has not appeared for thirty draws is not one draw closer to appearing than a number drawn last week. The balls do not know.</p>
+<p>The fallacy shows up outside casinos too. An investor who sees a stock fall for three consecutive days and assumes a rebound is coming is applying the same logic. The stock price may or may not recover, but the three-day fall is not itself evidence for a rebound — unless you have a specific causal argument about why prices should mean-revert, which is a separate claim about the specific process, not a general law of probability.</p>
+<h2>How to Spot It</h2>
+<p>The most direct case of a service built on the gambler's fallacy is the category of lottery number frequency analysis tools. These services track which numbers have appeared recently (the "hot numbers") and which have not appeared in a while (the "cold numbers"), then sell subscribers guidance on which to pick.</p>
+<p>A study by Clotfelter and Cook, published in Management Science in 1993, documented the fallacy operating in a state lottery directly. Using data from the Maryland daily numbers game, they found that the amount of money bet on a winning number dropped sharply in the days immediately after it was drawn, then gradually recovered over the following months. On 11 April 1988, 41 players selected the winning combination 244. Three days later, only 24 players selected it. The number had not changed in any relevant way. The ball had not changed. The machine had not changed. The players had simply filed the number away as "recently used" and turned their attention to numbers they felt were more due.</p>
+<p>The tell for the gambler's fallacy is simple: any claim that one outcome is more probable because a different outcome has been occurring recently, applied to a process with no mechanism for memory. The questions to ask are: does this process have any physical way of tracking its history? Is there any causal channel through which past outcomes can influence future probabilities? If the answer to both is no, the streak is irrelevant.</p>
+<p>The streak does give you one piece of genuine information: it is evidence about whether the process is fair. Twenty-six consecutive blacks on a roulette wheel is wildly improbable if the wheel is fair, with a probability of roughly one in 68 million. If you observed it, it would be quite rational to consider the possibility that the wheel is rigged. But that is a different inference. If you conclude that the wheel might be biased toward black, you should bet black, not red. The gambler's fallacy runs in the opposite direction: it takes the streak as evidence for the opposing outcome. The rational response to suspecting bias is to bet with the apparent bias, not against it.</p>
+<h2>Your Challenge</h2>
+<p>You are watching a friend flip a fair coin. She has now flipped nine heads in a row.</p>
+<p>She offers you a bet: she will flip the coin one more time. You can bet on heads or tails at even odds.</p>
+<p>What is the probability of heads on the tenth flip? What is the probability of tails? Does your answer change if she tells you she is planning to flip the coin a thousand more times after this one? What is the only circumstance in which the sequence of previous flips would legitimately affect your probability estimate for the next one?</p>
+<p>There is no answer on this page.</p>
+<h2>References</h2>
+<p>The Monte Carlo Casino incident: The event is documented in detail in Lehrer, J., <em>How We Decide</em>, Houghton Mifflin Harcourt (2009), and discussed extensively in the academic literature on the gambler's fallacy. The probability calculation for 26 consecutive blacks on a single-zero roulette wheel (approximately 1 in 68.4 million) is derived from (18/37)^26. Wikipedia's article on the gambler's fallacy, which cites the original case, is at: https://en.wikipedia.org/wiki/Gambler%27s_fallacy</p>
+<p>Maryland lottery study: Clotfelter, C.T., and Cook, P.J., "The 'Gambler's Fallacy' in Lottery Play," <em>Management Science</em>, 39(12), 1521–1525 (1993). Available via: https://pubsonline.informs.org/doi/10.1287/mnsc.39.12.1521</p>
+<p>Academic treatment of the gambler's fallacy and its relationship to the law of large numbers: Tversky, A., and Kahneman, D., "Belief in the Law of Small Numbers," <em>Psychological Bulletin</em>, 76(2), 105–110 (1971). Digitised at: https://stat.duke.edu/sites/stat.duke.edu/files/Law-Small-Numbers.pdf</p>
+<p>Gambler's fallacy applied to lottery hot and cold numbers: Lotteryvalley overview of why hot and cold number theory does not hold: https://www.lotteryvalley.com/lottery-strategies/hot-and-cold-numbers</p>
+<p>Wikipedia overview of the gambler's fallacy with further academic citations: https://en.wikipedia.org/wiki/Gambler%27s_fallacy</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/4-4">https://everydaystatistics.com/unit/4-4</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confidence Intervals — What the Uncertainty Band Actually Says — Everyday Statistics Day 18</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 18 of 44 &nbsp;·&nbsp; Unit 2.6 &nbsp;·&nbsp; 41% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:41%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Confidence intervals appear everywhere in reported research, and almost everyone who reads them misreads them — including many of the scientists who publish them. Today you get the correct interpretation, and learn why the misreading is not a minor technicality but the difference between knowing something is uncertain and believing it isn't.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>In the run-up to any general election, the polling headlines follow a predictable script. "Party A leads Party B by 4 points," says one. "Party A 43%, Party B 39%," says another, in smaller print underneath. Smaller still, at the bottom of the article, a line reads: "Margin of error: ±3 percentage points."</p>
+<p>Most readers see those last words, nod vaguely, and proceed to treat the headline as a reliable statement of fact. Party A is ahead. The race is Party A's to lose.</p>
+<p>Here is what those words actually mean. If the true level of support for Party A is anywhere between 40% and 46%, and for Party B anywhere between 36% and 42%, then the results of this poll are exactly what you would expect to see. At the extremes, Party B could be ahead. The "4-point lead" is entirely consistent with Party B winning.</p>
+<p>That is not a footnote. That is the story.</p>
+<h2>The Concept</h2>
+<p>A confidence interval is the honest acknowledgement that a sample is not a population. You have already met this idea in Units 2.4 and 2.5: any sample produces an estimate that will differ, by chance, from the true value in the population it was drawn from. The confidence interval quantifies how much it might differ.</p>
+<p>Here is the formal version. A 95% confidence interval is a range computed by a procedure that, if repeated on a large number of different samples, would contain the true population value in approximately 95 of every 100 cases.</p>
+<p>Read that sentence again, because this is where the widespread misunderstanding lives.</p>
+<p>The interval is not telling you that there is a 95% probability the true value lies within this specific range. Once a study is done and a specific interval is in front of you, the true value either is or is not within that range. It is a fixed but unknown fact, not a probability. What the 95% refers to is the procedure that generated the interval, not the interval itself. If researchers ran the same study many times and constructed a 95% CI each time, about 95% of those intervals would capture the true value.</p>
+<p>This distinction sounds like philosophical hair-splitting. It is not. The wrong reading, which is almost universal, leads people to treat the interval as a statement of personal probability about a single result. Researchers endorse this misreading. A 2014 study by Hoekstra and colleagues surveyed 120 academic researchers and 442 students in psychology, presenting them with six specific statements about what a confidence interval means. All six statements were false. On average, both groups endorsed more than three of them. Experience with statistics made essentially no difference to performance.</p>
+<p>The concept is best understood through the procedure that creates it.</p>
+<p>Start with what you know from Unit 2.5: when you take a random sample and compute the mean, you get an estimate that will be close to, but not exactly at, the true population mean. The standard error tells you how much sample means vary from one sample to another. It depends on two things: the variability in the data, and the size of the sample. Larger samples give smaller standard errors, which give narrower confidence intervals.</p>
+<p>The width of the interval is therefore a direct measure of how precisely your study has estimated the true value. A wide interval means considerable uncertainty. A narrow interval means the estimate is fairly tight. A study that reports an effect of 2.3 (95% CI: 0.1 to 4.5) has told you something real: the effect is probably positive, but it could be anywhere in a substantial range. A study that reports an effect of 2.3 (95% CI: 2.1 to 2.5) is much more precise.</p>
+<p>The relationship between sample size and interval width follows the square root law introduced in Unit 2.5. To halve the width of your confidence interval, you need to quadruple the sample size. Precision is expensive.</p>
+<p>Effect size matters too. A confidence interval is always an interval around a specific estimate, and whether that estimate is practically meaningful depends on what you are measuring. If a medical treatment produces a confidence interval from 0.2 to 0.8 units of improvement on a scale where 10 units constitutes a meaningful change, the precision is irrelevant. The entire interval covers a range that does not matter clinically. The interval has to be interpreted in context, not just compared to zero.</p>
+<p>Now for one of the most common errors in scientific reporting: the overlapping interval problem. Suppose Study A reports an effect of 3.0 (95% CI: 1.5 to 4.5) and Study B reports an effect of 1.5 (95% CI: 0.2 to 2.8). The intervals overlap. Many researchers conclude from this that the two studies are not significantly different from each other. This conclusion is wrong. The formal test for whether two estimates differ significantly is not whether their confidence intervals overlap; it is a separate calculation entirely. Overlapping intervals do not mean the estimates are the same, and non-overlapping intervals do not always mean the estimates are significantly different. The overlap intuition, though widespread, produces errors in both directions.</p>
+<h2>Why It Matters</h2>
+<p>The systematic suppression of uncertainty is one of the defining features of how statistics are used in public life. Confidence intervals are the formal instrument for expressing uncertainty, and they are routinely ignored, hidden, or stripped out.</p>
+<p>In polling, the margin of error is present in the small print but almost never treated as meaningful in the headline. The 2015 UK general election is a case in point: poll after poll showed a near-dead-heat between the Conservatives and Labour, with leads well within the stated margin of error. Most reporting treated those fractional leads as real. The actual result was a clear Conservative majority, well outside the range the polls had consistently implied. The lesson was available in the uncertainty bands that everyone was treating as a formality.</p>
+<p>In clinical medicine, confidence intervals appear in research papers but rarely make it to the press release. A drug company announces that its treatment "significantly reduces" a particular marker. The paper shows a confidence interval that runs from a trivially small improvement to a moderately useful one. The word "significantly" does its work in the headline; the width of the interval, which tells you how uncertain the estimate is, disappears.</p>
+<p>Economic forecasts present a particular case of suppressed uncertainty. Central bank and government forecasts are routinely presented as point estimates: GDP will grow by 1.8%, inflation will be 2.3%. These forecasts carry substantial uncertainty, often acknowledged in technical documents that accompany the headline figure, but the headline figure is what people read and what politicians are held to. The Bank of England, to its credit, publishes fan charts showing the range of likely outcomes for inflation and growth. Most outlets, when reporting those forecasts, collapse the fan chart to a single line.</p>
+<p>The cost of this suppression is systematic overconfidence in predictions that do not deserve it.</p>
+<h2>How to Spot It</h2>
+<p>The clearest documented case of confidence intervals being systematically ignored in journalism involves the monthly US jobs report published by the Bureau of Labor Statistics. Every month, the BLS publishes an estimate of how many jobs the American economy added in the previous month. Every month, financial journalists describe this number as if it were precise.</p>
+<p>The 90% confidence interval on the monthly jobs growth figure is plus or minus approximately 105,000 jobs. In September 2015, the reported number was 142,000. The New York Times described the report as "grim" and "disappointing." The following month, the reported number was 271,000. The Times described it as "strong" and "stellar." Both descriptions are consistent with an underlying true monthly jobs growth of 200,000, which would be perfectly acceptable by any historical standard. Both numbers sit well within the confidence interval around a constant underlying trend.</p>
+<p>The tell in this case is consistent with a general pattern: when a point estimate is presented without the interval, or when the interval is mentioned as a disclaimer rather than treated as substantive information, the uncertainty has been suppressed. Ask yourself whether the headline claim would survive being shifted to either end of its confidence interval. If the answer is "no," the interval is the story, not the point estimate.</p>
+<p>A related tell appears in graphs. A study presenting only point estimates as a line, without error bars or shaded regions showing the confidence interval, has made a visual choice to suppress uncertainty. A line looks precise. A fan of possible values looks uncertain. Researchers and communicators often choose the line.</p>
+<h2>Your Challenge</h2>
+<p>A study is published in a medical journal and receives wide press coverage. The headline is: "New therapy cuts symptoms by a quarter."</p>
+<p>The paper reports the following result: mean symptom reduction of 24% in the treatment group compared to controls, 95% CI: minus 2% to plus 50%.</p>
+<p>What should the headline say instead? What does the confidence interval tell you about whether the study has established that the therapy works? And if you saw a follow-up study with the same point estimate but a 95% CI of 18% to 30%, how would your interpretation change?</p>
+<p>There is no answer on this page. Work through it before moving on.</p>
+<h2>References</h2>
+<p>Hoekstra, R., Morey, R. D., Rouder, J. N., and Wagenmakers, E.-J. (2014). Robust misinterpretation of confidence intervals. <em>Psychonomic Bulletin and Review</em>, 21(5), 1157–1164. URL: https://link.springer.com/article/10.3758/s13423-013-0572-3. The study found that 120 academic researchers and 442 students endorsed on average more than three out of six false statements about what a confidence interval means.</p>
+<p>Belia, S., Fidler, F., Williams, J., and Cumming, G. (2005). Researchers misunderstand confidence intervals and standard error bars. <em>Psychological Methods</em>, 10(4), 389–396. URL: https://pubmed.ncbi.nlm.nih.gov/16392994/. A survey of 473 researchers, authors of published journal articles, found severe misconceptions about how error bars and confidence intervals relate to statistical significance.</p>
+<p>US Bureau of Labor Statistics monthly employment situation: technical notes on confidence intervals and standard errors. URL: https://www.bls.gov/news.release/empsit.tn.htm. The 90% confidence interval on the monthly payroll employment change estimate is approximately plus or minus 105,000 jobs at the time of initial release.</p>
+<p>New York Times (2015). September and October 2015 jobs report coverage. The September 2015 figure of 142,000 was reported as "grim"; the October 2015 figure of 271,000 was reported as "strong." DataJournalism.com documented this contrast in the context of the BLS confidence interval: https://datajournalism.com/read/longreads/why-understanding-margins-of-error-matters-in-journalism.</p>
+<p>American Association for Public Opinion Research (AAPOR). Margin of Sampling Error. URL: https://www.aapor.org/Education-Resources/Election-Polling-Resources/Margin-of-Sampling-Error-Credibility-Interval.aspx. Authoritative guidance on what polling margins of error do and do not represent.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/2-6">https://everydaystatistics.com/unit/2-6</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

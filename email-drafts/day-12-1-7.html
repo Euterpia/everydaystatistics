@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Encounter with Bayes' Theorem — Everyday Statistics Day 12</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 12 of 44 &nbsp;·&nbsp; Unit 1.7 &nbsp;·&nbsp; 27% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:27%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>This is the unit at the centre of the curriculum. A positive test result for a rare disease is probably a false positive, even when the test is 99% accurate. The reason is prior probability — and once you understand it, you will read medical screening news, drug trial results, and security threat assessments in a fundamentally different way.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>Here is a question that has been asked of doctors, statisticians, and ordinary members of the public for decades. Almost everyone gets it wrong the first time.</p>
+<p>A disease affects 1 in every 10,000 people in the general population. There is a test for this disease. The test is 99 percent accurate: if you have the disease, it will correctly say so 99 percent of the time, and if you do not have the disease, it will correctly say so 99 percent of the time. You take the test. It comes back positive.</p>
+<p>What is the probability that you actually have the disease?</p>
+<p>Most people say: very high. Ninety-nine percent accurate, positive result, so roughly 99 percent likely I am ill.</p>
+<p>They are not close to right.</p>
+<p>The actual probability is just under 1 percent. If you test positive for this disease, the odds are roughly 99 to 1 that you do not have it.</p>
+<p>This is not a trick or a paradox. It is what the arithmetic says. And the gap between the intuitive answer and the correct one is wide enough to swallow entire public health policies, criminal convictions, and medical consultations whole. By the end of this unit, you will understand exactly why the gap exists, and you will have a tool for closing it.</p>
+<h2>The Concept</h2>
+<p>The calculation that reveals the answer is, at its heart, about counting. Let us work through it.</p>
+<p>Imagine not one person taking this test, but 1,000,000 people. This is a large population, which is useful because it lets us think in whole numbers rather than tiny fractions.</p>
+<p>Of those 1,000,000 people, how many actually have the disease? The disease affects 1 in 10,000 people, so 100 people in our population are genuinely ill.</p>
+<p>Now apply the test to everyone.</p>
+<p>For the 100 people who are ill: the test correctly identifies 99 of them as positive (that is the 99 percent accuracy). One ill person slips through as a false negative.</p>
+<p>For the 999,900 people who are not ill: the test correctly identifies 98.9 percent of them as negative. But 1 percent of them get an incorrect positive result. One percent of 999,900 is 9,999 people who are healthy but told they are not.</p>
+<p>So across the entire population, how many people have received a positive test result? We have 99 true positives and 9,999 false positives. That is 10,098 positive results in total.</p>
+<p>Of those 10,098 positive results, how many are genuine? Just 99.</p>
+<p>That is 99 out of 10,098, which is 0.98 percent. Less than 1 percent.</p>
+<p>The test is 99 percent accurate. Yet if you test positive, the chance you are genuinely ill is less than 1 percent.</p>
+<p>This is not a failure of mathematics. It is what happens when you apply a test with a small error rate to a population where the condition being tested for is itself rare. The rare errors swamp the rare true cases.</p>
+<hr>
+<p>The three concepts you need to hold in your head are these.</p>
+<p>The <strong>prior probability</strong> (statisticians also call it the <strong>base rate</strong>) is what you knew before the test result arrived. In our case, it is 1 in 10,000: the probability that any randomly selected person in this population has the disease. It is the starting point of your reasoning, the ground you stand on before any new evidence appears.</p>
+<p>The <strong>likelihood</strong> is how strongly the new evidence points toward one conclusion rather than another. A 99 percent accurate test is telling you something. It has shifted the probability. Without the test result, your chance of being ill was 1 in 10,000. After a positive result, it has risen to roughly 1 in 100. That is a real, significant shift. But the prior was so small that even multiplying it by a factor of 100 still leaves you below certainty. The likelihood is the update; the prior is what gets updated.</p>
+<p>The <strong>posterior probability</strong> is what you should believe after incorporating the evidence. It is the result of combining the prior and the likelihood. Posterior is a Latin word meaning "coming after" — it is your updated belief after the evidence has arrived.</p>
+<p>Bayes' theorem is the formula that connects these three things. In its full form it requires a calculation, and you will meet that calculation later in this curriculum. For now, the key insight can be stated in a sentence:</p>
+<p><strong>Your posterior belief equals your prior belief, updated by the likelihood of the evidence.</strong></p>
+<p>As a rough statement of proportionality: posterior is proportional to prior multiplied by likelihood. If your prior is tiny, your posterior can still be small even after a positive test, because the small prior is pulling the result back toward zero. This is exactly what happened in our disease example. The likelihood of a positive test if you are genuinely ill is very high (99 percent). But the prior probability of being ill in the first place was so small (0.01 percent) that the posterior, the probability of actually being ill given a positive test, still ended up tiny.</p>
+<p>The reason most people get this wrong has a name. It is called <strong>base rate neglect</strong>: the tendency to focus on the specific evidence (the positive test) and ignore the background frequency (how rare the disease is). We will return to this cognitive failure in Unit 4.2. For now it is enough to know that it is systematic, it affects trained professionals as well as laypeople, and Bayes' theorem is the antidote.</p>
+<h2>The Visualisation</h2>
+<p>Adjust the sliders below to see how the answer changes as prevalence, sensitivity, and specificity vary.</p>
+<p>Two things are worth observing as you move the sliders. First, watch what happens to the positive predictive value when you decrease the prevalence even slightly, while holding sensitivity and specificity fixed. A small disease is a big problem for any test. Second, notice how dramatically you can change the output by nudging sensitivity and specificity: a test that goes from 99 percent to 99.9 percent specific is ten times better at avoiding false positives, not just 0.9 percent better. The differences are nonlinear. Intuition does badly here, and the sliders show you exactly why.</p>
+<h2>Why It Matters</h2>
+<p>The disease test example is a teaching device, but it is not a constructed one. The underlying problem arises repeatedly in real-world settings with serious consequences.</p>
+<p><strong>Medical screening programmes</strong> are the most direct application. In the United Kingdom's NHS breast cancer screening programme, the prevalence of undetected breast cancer in the population of women called for screening is roughly 0.3 to 0.5 percent. Mammography sensitivity is approximately 80 percent and specificity roughly 90 percent. Running those figures through the same logic as our disease example produces a positive predictive value of around 4 to 8 percent: for every woman recalled after a screening mammogram, somewhere between 4 and 8 in 100 will have cancer and the remainder will not. Across a 10-year period of annual screening, approximately 50 to 60 percent of women screened will receive at least one false positive recall. This is not a criticism of mammography. It is an inherent consequence of applying any imperfect test to a population where the condition is uncommon. The women experiencing false positives are not statistical errors to be dismissed — they undergo callbacks, further imaging, and sometimes biopsies, with real psychological and physical costs. The Bayesian arithmetic tells you that these costs are not a failure of the programme; they are a predictable and quantifiable feature of it.</p>
+<p>In 2007, Gerd Gigerenzer and colleagues at the Max Planck Institute for Human Development tested 160 German gynaecologists on a version of the mammography problem. They were given the prevalence, sensitivity, and false positive rate, and asked to calculate the positive predictive value of a positive screening mammogram. Roughly 80 percent of them could not do it. Most overestimated the probability of cancer dramatically, giving answers like 90 percent when the correct answer was closer to 9 percent. These were not students: they were practising physicians.</p>
+<p><strong>Contraceptive failure rates</strong> present the same structure. A contraceptive quoted as "99 percent effective" is typically citing its failure rate over one year of use for couples using it correctly and consistently. This does not mean 1 in 100 sexual acts results in pregnancy. Across a population of couples using the method for a year, 1 in 100 will become pregnant despite using it correctly. Among typical users, including those who use it inconsistently, the figure is higher. Over ten years of use, the cumulative probability of pregnancy given method-perfect use approaches 10 percent for some contraceptives. The base rate of individual sexual acts resulting in pregnancy is very low; the base rate of unintended pregnancies across a decade of exposure is not. The "99 percent effective" figure, cited without these denominators, does real work in shaping decisions it should not be trusted to shape.</p>
+<p><strong>Lie detector tests</strong> expose the problem most starkly. A polygraph instrument is sometimes quoted as 80 to 90 percent accurate. Applied to a population where the base rate of actual lying is low — say, a workforce screening programme applied to thousands of employees on the assumption that a small number may be security risks — the false positive rate dominates. Most people flagged by such a test will be innocent. The more accurate the test is claimed to be, the more compelling the positive result feels, and the more invisible the base rate problem becomes.</p>
+<h2>How to Spot It</h2>
+<p>The documented case study comes from a courtroom, which is where base rate neglect has done some of its most consequential work.</p>
+<p>In November 1999, Sally Clark, a British solicitor, was convicted of murdering her two infant sons, who had each died in their first months of life. The prosecution's expert witness, paediatrician Sir Roy Meadow, testified that the probability of two infant deaths from sudden infant death syndrome (SIDS) in the same family was 1 in 73 million, a figure derived by squaring the estimated 1-in-8,543 probability of a single SIDS death in an affluent, non-smoking family. He did this by treating the two deaths as statistically independent, which they are not: a family that has one SIDS death may share genetic, environmental, or other risk factors that make a second more probable, not less.</p>
+<p>But the deeper error was Bayesian. Even if the 1-in-73-million figure were correct, it would answer the wrong question. The relevant comparison is not "how unlikely is double SIDS?" in isolation. It is: "how likely is double SIDS compared to double murder?" If double SIDS is rare, double infant murder is also rare, and the posterior probability of guilt depends on the ratio between these two probabilities, not on the absolute rarity of one. The statistician Ray Hill, in a 2004 paper published in the journal Mathematics Today, estimated that double SIDS was more likely than double infant murder by a factor of somewhere between 4.5 to 1 and 9 to 1. Sally Clark spent more than three years in prison before her conviction was overturned in 2003. She died in 2007.</p>
+<p>The tell for base rate neglect is a number offered as if it were self-evidently damning, without reference to the frequency of the competing explanation. When someone presents you with a probability and asks you to draw a conclusion, ask: "What is the alternative, and how common is that?" The low probability of the evidence given innocence is not the same as the high probability of guilt. Those are different quantities, and the one you actually need requires the base rate of the other hypothesis.</p>
+<p>This confusion between P(evidence | innocent) and P(innocent | evidence) is common enough to have its own name: the prosecutor's fallacy. You will meet it again in Unit 3.9.</p>
+<h2>Your Challenge</h2>
+<p>A company introduces a mandatory drug screening programme for all 10,000 of its employees. The test they use is 95 percent sensitive (it correctly identifies 95 percent of people who are using drugs) and 95 percent specific (it correctly gives a negative result for 95 percent of people who are not using drugs). The company estimates that roughly 1 percent of its employees use the prohibited substances.</p>
+<p>An employee tests positive. She denies any drug use.</p>
+<p>What is the probability she is telling the truth? Show your reasoning using the natural frequency method: work through the population of 10,000 as whole numbers, just as we did with the disease example.</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>Disease testing worked example and natural frequencies: Gigerenzer, G. and Hoffrage, U., "How to improve Bayesian reasoning without instruction: frequency formats," Psychological Review, 102(4), 684–704 (1995). The natural frequency method — working in whole-population counts rather than conditional probabilities — is Gigerenzer's key pedagogical contribution to making Bayesian reasoning accessible.</p>
+<p>German gynaecologists study: Gigerenzer, G., Gaissmaier, W., Kurz-Milcke, E., Schwartz, L.M. and Woloshin, S., "Helping doctors and patients make sense of health statistics," Psychological Science in the Public Interest, 8(2), 53–96 (2007). URL: https://pure.mpg.de/rest/items/item<em>2099208</em>9/component/file_3562683/content. The finding that approximately 80 percent of 160 German gynaecologists could not correctly estimate the positive predictive value of a screening mammogram.</p>
+<p>Mammography false positive rates over ten years: Elmore, J.G. et al., "Ten-year risk of false positive screening mammograms and clinical breast examinations," New England Journal of Medicine, 338(16), 1089–1096 (1998). URL: https://www.nejm.org/doi/full/10.1056/NEJM199804163381601. Estimated that over a 10-year period of annual screening, approximately 49 to 56 percent of women will receive at least one false positive recall.</p>
+<p>Sally Clark case — statistical analysis: Hill, R., "Multiple sudden infant deaths — coincidence or beyond coincidence?" Pediatric and Perinatal Epidemiology, 18(5), 320–326 (2004). Calculation placing the odds of double SIDS versus double murder at between 4.5:1 and 9:1 in favour of natural causes. Also: Royal Statistical Society statement on the Sally Clark case (October 2001), URL: https://rss.org.uk/news-publication/news-publications/2001/general-news/rss-statement-regarding-statistical-issues-in-the-. And: Wikipedia, "Sally Clark," URL: https://en.wikipedia.org/wiki/Sally_Clark, which draws on: Nobles, R. and Schiff, D., "Misleading statistics within criminal trials: The Sally Clark case," Significance, 2(1), 6–10 (2005). URL: https://rss.onlinelibrary.wiley.com/doi/full/10.1111/j.1740-9713.2005.00078.x.</p>
+<p>Prosecutor's fallacy: Thompson, W.C. and Schumann, E.L., "Interpretation of statistical evidence in criminal trials: The prosecutor's fallacy and the defense attorney's fallacy," Law and Human Behavior, 11(3), 167–187 (1987). The naming of the prosecutor's fallacy.</p>
+<p>Base rate neglect — general: Kahneman, D., Thinking, Fast and Slow, Farrar, Straus and Giroux (2011), Chapter 16. The systematic tendency to ignore base rates in favour of specific case information, documented across populations.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/1-7">https://everydaystatistics.com/unit/1-7</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

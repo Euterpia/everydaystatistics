@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prosecutor's Fallacy — Everyday Statistics Day 32</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 32 of 44 &nbsp;·&nbsp; Unit 3.9 &nbsp;·&nbsp; 73% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:73%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>P(A|B) ≠ P(B|A). We covered this in Unit 1.4. Today we see it in its most consequential form: the prosecutor's fallacy, where the probability of the evidence given innocence is presented as if it were the probability of innocence given the evidence. This error has contributed to criminal convictions in multiple jurisdictions.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>On 9 November 1999, Sally Clark, an English solicitor, was convicted at Chester Crown Court of murdering her two infant sons. The jury had deliberated for about nine hours. Clark received two life sentences.</p>
+<p>She had not killed them. She was released in January 2003 after serving three years and three months. In March 2007, she died at home. She was 42. The cause was thought to be acute alcohol poisoning. Her family said she had never recovered from her ordeal.</p>
+<p>At her trial, the jury heard expert testimony from Roy Meadow, a distinguished paediatrician who had appeared in hundreds of similar cases. Meadow testified that the probability of two infants from an affluent, non-smoking family dying from sudden infant death syndrome, SIDS, was approximately 1 in 73 million. He had calculated this by taking the estimated probability of a single SIDS death in a family with no significant risk factors, which he put at 1 in 8,543, and squaring it. One in 8,543 multiplied by 1 in 8,543 gives roughly 1 in 73 million. He described the resulting figure, before the jury, as something that would occur "once in a hundred years."</p>
+<p>There were two things seriously wrong with this calculation. The first was mathematical: SIDS deaths within a family are not independent events. Families share genetic and environmental factors that are not yet fully understood, which means a second SIDS death in a family where one has already occurred is substantially more likely than the calculation assumed. Meadow's squaring operation was only valid if the two events were statistically independent, like two separate coin flips. They are not.</p>
+<p>The second problem was more fundamental. Even if the 1-in-73-million figure had been correct, using it as if it were the probability of Clark's innocence was a logical error with a name: the prosecutor's fallacy.</p>
+<p>This is the unit that explains what that name means, and why it matters to anyone who will ever hear probabilistic evidence presented in a courtroom, or read about such evidence in a newspaper.</p>
+<h2>The Concept</h2>
+<p>In Unit 1.4 you met conditional probability. You learned that P(A|B), read as "the probability of A given B," is not the same as P(B|A). The order of conditioning is everything. Confusing the two is called the confusion of the conditional, or the inverse fallacy.</p>
+<p>The prosecutor's fallacy is a specific application of that confusion in a legal setting.</p>
+<p>The question a jury must answer is not "what is the probability that the evidence would exist if the defendant were innocent?" The question is "what is the probability that the defendant is innocent given that the evidence exists?"</p>
+<p>These are not the same question, and they do not have the same answer.</p>
+<p>In formal notation, P(evidence | innocent) is not the same as P(innocent | evidence). The prosecutor typically presents the first number. The jury needs the second.</p>
+<p>To get from one to the other, you need Bayes' theorem, which you first encountered in Unit 1.7. The theorem can be stated as follows: the probability of innocence given the evidence equals the probability of the evidence given innocence, multiplied by the prior probability of innocence, divided by the overall probability of the evidence.</p>
+<p>What this means in plain language is that you cannot evaluate the significance of a piece of evidence without knowing the prior probability. In a legal context, the prior probability is the probability of guilt before the specific forensic evidence is considered. That probability depends on how many people could plausibly have committed the crime, what other evidence exists, and what the background rate of such crimes is.</p>
+<p>Return to Meadow's calculation. Suppose the 1-in-73-million figure for double SIDS were valid, which it was not. To interpret this as the probability of Sally Clark's innocence, you would have to assume that the prior probability of her guilt was overwhelming, that before the statistical evidence was presented, she was already almost certainly guilty. But that is precisely what was in dispute. What the jury actually needed to weigh was whether Clark, a specific person with no history of violence, was more likely to have killed her children than for two rare but not impossible medical events to have occurred.</p>
+<p>The correct question is not "how unlikely is double SIDS?" but "which is more unlikely: that a mother killed two of her children, or that two children in the same family died of SIDS?" Both are rare. In a Bayesian analysis, what matters is the ratio of the two probabilities, not the absolute value of either one. Deliberate double infant homicide is, if anything, rarer than double SIDS. That consideration was absent from the trial.</p>
+<p>The Royal Statistical Society wrote to the Lord Chancellor in January 2002, before the second appeal was decided, stating plainly that there was no statistical basis for Meadow's figure and that the confusion of P(evidence | innocent) with P(innocent | evidence) had occurred. The letter was a formal statement from the national body for statistics, addressed to the government, about a criminal conviction. That is how serious the error was considered.</p>
+<h2>Why It Matters</h2>
+<p>The same structure of error recurs wherever probabilistic evidence is presented without reference to the prior.</p>
+<p>DNA evidence is the most common modern application. When a forensic expert testifies that the probability of a DNA match occurring by chance, if the defendant were not the source, is one in a billion, that number sounds decisive. It is not, by itself, decisive. It is P(match | not the source). To determine P(not the source | match), which is closer to what the jury needs, you have to know the prior probability.</p>
+<p>In a case where the suspect was identified because police had a specific tip, a witness named them, and they had motive and opportunity, the prior probability of guilt may already be reasonably high, and the DNA match genuinely is strong evidence. But in a case where the match was found by running a DNA sample through a large national database, the calculation is entirely different.</p>
+<p>A national DNA database in the UK contains several million profiles. If a crime scene DNA profile is loaded into that database and a match is returned, the probability that the match is a coincidental false positive depends on the database size and the match probability. With a database of six million profiles and a one-in-a-million random match probability, you would expect on average six coincidental matches. The person flagged may be one of those six, or may be the true source. The match probability alone tells you almost nothing about which is more likely. The relevant prior here is very different from the prior in a targeted investigation.</p>
+<p>This is why the context of how a suspect was identified matters. "We searched a database and your profile came up" is very different, probabilistically, from "your profile matched evidence from a crime scene where you had already been placed by three witnesses."</p>
+<h2>How to Spot It</h2>
+<p>The Andrew Deen case, decided by the UK Court of Appeal in December 1993, was one of the first to name the error explicitly. Deen had been convicted of three rapes on DNA evidence. The prosecution's expert had stated that the probability of the DNA profile occurring in someone other than the defendant was one in three million, and the jury received this as if it meant there was only a one-in-three-million chance that Deen was innocent. The conviction was quashed. The Court of Appeal found that the expert's evidence had confused P(evidence | innocent) with P(innocent | evidence). It was a landmark ruling precisely because it forced the legal system to confront the distinction.</p>
+<p>The tell, across all cases, is this: probabilistic evidence is presented with no reference to any prior probability. The number simply appears, enormous and apparently conclusive, and the audience is left to do the fatal translation themselves, a translation they will almost certainly make incorrectly.</p>
+<p>The human mind, as you know from Units 1.7 and the Bayes thread throughout this curriculum, is not naturally equipped to hold prior probabilities in mind. When we hear that something happens only once in 73 million times, we feel that we are hearing about an impossibility. We are not. We are hearing about P(evidence | hypothesis A). The question of how P(hypothesis A) compares to P(hypothesis B) has not been addressed at all. That gap is exactly where the fallacy operates.</p>
+<p>If you are ever in a courtroom, on a jury, or reading coverage of a trial involving forensic statistics, ask one question: what is the prior? If the probabilistic evidence is being presented as if the prior does not exist, the prosecutor's fallacy may be in operation.</p>
+<h2>Your Challenge</h2>
+<p>A man is on trial for a serious crime. A forensic expert testifies that a partial DNA profile found at the scene matches the defendant. The expert states that the probability of this match occurring at random in someone unconnected to the crime is one in 400,000.</p>
+<p>The defendant was identified as a suspect by running the crime scene profile through a national database containing 5.2 million profiles. There is no other physical evidence connecting him to the crime. He has no prior convictions and has provided an alibi that witnesses have partially corroborated.</p>
+<p>What is wrong with using the one-in-400,000 figure as if it were the probability that the defendant is innocent? What additional information would a proper Bayesian analysis require? How might the expected number of coincidental database matches affect your assessment of the evidence?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p><strong>Sally Clark case:</strong> Wikipedia, "Sally Clark." https://en.wikipedia.org/wiki/Sally_Clark. Confirmed: conviction November 1999, released January 2003, died March 2007.</p>
+<p><strong>Roy Meadow's statistical evidence:</strong> Forensic Statistics and Applications in Forensic Evidence, "Misuse of Statistics in the Courtroom: The Sally Clark Case" (2018). https://forensicstats.org/blog/2018/02/16/misuse-statistics-courtroom-sally-clark-case/. The 1-in-8,543 figure for single SIDS in an affluent non-smoking family, and the squaring operation yielding approximately 1 in 73 million, are confirmed by multiple sources including the British Medical Journal and the understanding-uncertainty.org analysis by Cambridge statistician David Spiegelhalter.</p>
+<p><strong>Independence assumption failure:</strong> Royal Statistical Society letter to Lord Chancellor, January 2002. Reprinted and discussed in Spiegelhalter, D., "Convicted on Statistics?" Understanding Uncertainty, University of Cambridge. https://understandinguncertainty.org/node/545. Ray Hill's 2004 analysis of SIDS dependency published in Paediatric and Perinatal Epidemiology found a dependency factor of between 5 and 10, meaning a second SIDS death in a family where one has already occurred is substantially more probable than Meadow's calculation assumed.</p>
+<p><strong>Roy Meadow struck off:</strong> The General Medical Council struck Meadow off the medical register in July 2005 for serious professional misconduct. That decision was later partially overturned on appeal on the narrower question of whether an expert witness could be struck off for evidence given in good faith, but his statistical evidence in the Clark case remained condemned as wrong.</p>
+<p><strong>Donna Anthony and Angela Cannings:</strong> Both women had convictions for infant murder overturned following Clark's release. The Attorney General Lord Goldsmith ordered a review of hundreds of similar cases in January 2003.</p>
+<p><strong>R v Deen (1993):</strong> Court of Appeal Criminal Division, judgment 21 December 1993. Documented in multiple legal sources including swarb.co.uk and discussed in Donnelly, P., "Appealing statistics," Significance, Vol. 2, Issue 1 (2005). https://rss.onlinelibrary.wiley.com/doi/full/10.1111/j.1740-9713.2005.00089.x. The case is cited as the first explicit UK judicial identification and condemnation of the prosecutor's fallacy.</p>
+<p><strong>DNA database trawl statistics:</strong> The statistical problem of database trawls and inflated prior probabilities is discussed in National Research Council, "The Evaluation of Forensic DNA Evidence" (1996), Chapter 4. https://www.ncbi.nlm.nih.gov/books/NBK232615/</p>
+<p><strong>Prosecutor's fallacy, general:</strong> Thompson, W.C. and Schumann, E.L., "Interpretation of Statistical Evidence in Criminal Trials: The Prosecutor's Fallacy and the Defense Attorney's Fallacy," Law and Human Behavior, Vol. 11, No. 3 (1987). The paper that named and formally characterised the fallacy. Also: Balding, D.J. and Donnelly, P., "The prosecutor's fallacy and DNA evidence," Criminal Law Review (1994).</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/3-9">https://everydaystatistics.com/unit/3-9</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

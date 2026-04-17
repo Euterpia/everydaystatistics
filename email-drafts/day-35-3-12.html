@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk Communication: The Full Toolkit — Everyday Statistics Day 35</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 35 of 44 &nbsp;·&nbsp; Unit 3.12 &nbsp;·&nbsp; 80% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:80%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>We've covered relative risk, absolute risk, NNT, confidence intervals, p-values, and the full range of biases. Today's unit assembles them into a working framework: a practical checklist for reading any risk claim, from a drug trial to a news headline to a government policy announcement. This is Area 3's closing summary.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>Your doctor leans forward and says: "We should do a screening test. It's 99 percent accurate."</p>
+<p>What should you do with that number?</p>
+<p>Most people hear "99 percent accurate" and think: if this comes back positive, I almost certainly have the condition. If it comes back negative, I almost certainly don't. The test sounds about as reliable as a measurement tool can be. You agree, the test is done, and a week later you get a phone call.</p>
+<p>The result is positive.</p>
+<p>Here is what "99 percent accurate" cannot tell you, and what you would actually need to know to make sense of that phone call. How common is the condition in people like you? How many people who test positive actually have it? How many don't? What would you face if you acted on a false positive? And if there's a treatment on the table, is the benefit expressed as a number you can actually use?</p>
+<p>By the time you finish this unit, you will be able to answer every one of those questions. Better still, you will be able to ask them.</p>
+<hr>
+<h2>The Concept</h2>
+<h3>The honest measures of medical benefit</h3>
+<p>You met the Number Needed to Treat in Unit 3.1. It is worth revisiting here in the context of a fuller toolkit, because it is the denominator that makes everything else honest.</p>
+<p>The <strong>Number Needed to Treat (NNT)</strong> is the number of patients who must receive a treatment, over the period studied, for one person to benefit who would not otherwise have benefited. It is calculated by taking 1 and dividing it by the absolute risk reduction. An NNT of 20 means treat 20 patients, one benefits. An NNT of 200 means treat 200, one benefits. The other 199 receive no benefit and are exposed to the drug's side effects.</p>
+<p>The <strong>Number Needed to Harm (NNH)</strong> applies the same logic to side effects: how many patients need to receive the treatment for one additional person to suffer a specified harm? If a drug has an NNT of 50 for preventing strokes and an NNH of 25 for causing serious muscle damage, the arithmetic of that trade-off is laid bare in a way that no percentage figure can match.</p>
+<p>To calculate either, you need to be working with absolute risk rather than relative risk.</p>
+<p>The <strong>absolute risk reduction (ARR)</strong> is the straightforward subtraction: the event rate in the untreated group minus the event rate in the treated group. If 4 out of 100 untreated patients have a heart attack and 2.6 out of 100 treated patients do, the ARR is 1.4 percentage points, and the NNT is 1 divided by 0.014, which is approximately 71.</p>
+<p>The <strong>relative risk reduction (RRR)</strong> takes that same result and expresses it as a proportion of the untreated risk. The treated group's rate (2.6%) is 65% of the untreated rate (4%), so the risk was reduced by 35% relatively. This is the number that appears in pharmaceutical advertising. It is not wrong. It is incomplete in a way that systematically overstates the benefit to any individual patient.</p>
+<p>The trap is visible once you know where to look. A drug that reduces risk from 40% to 26% has an ARR of 14 percentage points and an NNT of roughly 7. A different drug that reduces risk from 0.4% to 0.26% has an ARR of 0.14 percentage points and an NNT of roughly 714. Both produce a headline RRR of 35%. The second drug's actual effect on any individual person is one hundred times smaller.</p>
+<h3>Natural frequencies and icon arrays</h3>
+<p>Numbers communicate badly in percentage form and well in frequency form. This is not a stylistic preference; it is a measured empirical finding. Gerd Gigerenzer's work at the Max Planck Institute demonstrated that people reason far more accurately when risks are expressed as natural frequencies: not "a 0.8% absolute risk reduction" but "8 out of every 1,000 people who take this drug avoid a heart attack."</p>
+<p>An <strong>icon array</strong> takes this further. It represents a population as a grid of small person-icons, with coloured icons showing those who experience the outcome. The format is not decorative. It makes the denominator visible and the proportions human. "Reduces your risk by 35%" is a floating abstraction. A grid of 1,000 people, 14 of whom are coloured, tells a different kind of story.</p>
+<p>The grid below makes these numbers human. Each icon is a person. Adjust the sliders and watch what "reduces your risk by 35%" actually looks like.</p>
+<p>The reduction from 35% to 22.75% looks like going from 350 coloured icons to 228. Set the baseline to 1% and apply the same 35% relative reduction. Now the before picture has 10 coloured icons, and after the treatment it has 6.5. Six people in a thousand instead of ten. That is what the 35% means. The visualisation makes the denominator impossible to ignore.</p>
+<h3>Informed consent requires all four numbers</h3>
+<p><strong>Informed consent</strong> is the ethical and legal requirement that a patient understands the nature of a treatment and its risks before agreeing to it. In practice, informed consent forms rarely contain the information a patient would need to understand the trade-off they are making. What they would need is: the absolute risk of the outcome without treatment, the absolute risk reduction the treatment produces, the NNT, and the NNH for the most common significant side effects. With those four numbers, a patient can make a genuine decision. With a relative risk reduction and a list of possible side effects in fine print, they cannot.</p>
+<h3>Bayes applied to screening: sensitivity, specificity, and what a positive test actually means</h3>
+<p>Now the second half of this unit's toolkit, which connects to Unit 1.7's introduction to Bayes and Unit 2.10's formal treatment.</p>
+<p>When a test is described as "accurate," that word is compressing at least two distinct things. <strong>Sensitivity</strong> is the probability that the test returns a positive result when the condition is genuinely present. A test with 99% sensitivity will correctly identify 99 out of every 100 people who have the condition. <strong>Specificity</strong> is the probability that the test returns a negative result when the condition is genuinely absent. A test with 99% specificity will correctly clear 99 out of every 100 people who do not have the condition.</p>
+<p>These two numbers describe the test in isolation. They say nothing about what a positive result means for you.</p>
+<p>The number that matters is the <strong>positive predictive value (PPV)</strong>: the probability that you actually have the condition, given that you have tested positive. And the PPV depends not just on the test's sensitivity and specificity but on the <strong>prevalence</strong> of the condition in the population being tested. This is the fact that breaks most people's intuition.</p>
+<p>The <strong>negative predictive value (NPV)</strong> is the mirror: the probability that you do not have the condition, given that you have tested negative. For most screening contexts, the NPV is high even for imperfect tests, because the condition is rare. What varies dramatically with prevalence is the PPV.</p>
+<h3>The HIV test worked through in full</h3>
+<p>Modern HIV antibody tests are extremely good. Fourth-generation combination tests used in the UK and Europe have sensitivity above 99.7% and specificity above 99.7%. For a test used in everyday statistics teaching, we will work with round numbers: sensitivity 99.9%, specificity 99.9%. These are figures in the realistic range for current laboratory ELISA tests.</p>
+<p>Now consider two populations in which we run this test.</p>
+<p><strong>Population A</strong> is an HIV clinic serving people who have sought testing because of known recent exposure. In this population, HIV prevalence is 10%: 1 in 10 people tested is genuinely infected.</p>
+<p>Work through it as a natural frequency. Take 10,000 people. Of these, 1,000 are HIV-positive. The test with 99.9% sensitivity correctly identifies 999 of them as positive. It misses 1. Of the remaining 9,000 who are HIV-negative, the test with 99.9% specificity correctly clears 8,991. It flags 9 of them as false positives.</p>
+<p>Total positive tests: 999 true positives plus 9 false positives = 1,008. Of those, 999 are genuine. The PPV is 999 divided by 1,008: approximately 99.1%. In this population, a positive test is almost certainly correct.</p>
+<p><strong>Population B</strong> is a routine low-risk screening programme. The prevalence of HIV in this population is 0.1%: 1 in 1,000 people tested is genuinely infected.</p>
+<p>Take the same 10,000 people. Of these, 10 are HIV-positive. The test correctly identifies 9.999 of them as positive, which rounds to 10. Of the 9,990 who are HIV-negative, the test correctly clears 9,980. It produces 10 false positives.</p>
+<p>Total positive tests: 10 true positives plus 10 false positives = 20. Of those, 10 are genuine. The PPV is 10 divided by 20: exactly 50%.</p>
+<p>The test has not changed. The test's sensitivity and specificity have not changed. The only thing that changed was the prevalence of the condition in the group being tested. In the high-prevalence clinic, a positive result is almost certain to be correct. In the low-prevalence screening programme, a positive result is a coin flip. This is why HIV testing guidelines in low-prevalence settings recommend confirmatory testing on all positives: not because the first test is unreliable, but because the mathematics of rare conditions in large populations demands it.</p>
+<p>This is Bayes' theorem in action. The posterior probability of having HIV given a positive test is determined by the prior probability (the prevalence), the likelihood (the sensitivity), and the probability of a false positive (1 minus the specificity). When the prior is small, the posterior can remain small even after a positive test, exactly as we saw in Unit 1.7.</p>
+<p>The principle generalises to any screening scenario. Cancer screening in a young, low-risk population will produce more false positives per true positive than the same screen applied to an older, high-risk population. This is arithmetic, not a flaw. But it is arithmetic that most patients, and a disturbing number of clinicians, do not apply.</p>
+<hr>
+<h2>Why It Matters</h2>
+<p>Pharmaceutical advertising is constructed to exploit the gap between relative and absolute risk. This is not a conspiracy; it is a rational response to a regulatory environment that permits relative risk claims in headlines while requiring absolute data only in small print, if at all. Every major drug advertisement for the past forty years has led with the relative risk reduction and buried or omitted the absolute risk reduction and NNT.</p>
+<p>The consequences accumulate. When patients overestimate the benefit of a treatment, they are less likely to weigh it properly against side effects. When they overestimate the accuracy of a screening test, they treat a positive result as a verdict rather than a probability. When they receive a positive result in a low-prevalence screening context and are not told about PPV, they may experience months of anxiety, further invasive testing, and sometimes unnecessary treatment, for a condition they do not have.</p>
+<p>Cancer screening programmes have been argued about for decades partly because the debate has been conducted in the wrong units. Relative risk reductions make screening look more beneficial than absolute figures reveal. Absolute figures tell a more complex story. For breast cancer mammography screening, the headline figure of a 15% relative risk reduction in breast cancer mortality translates, in the Cochrane analysis, to approximately 1 woman in 2,000 having her life prolonged through a decade of annual screening. The same analysis estimated that 200 of those 2,000 women would experience a false positive requiring further investigation, and 10 would be diagnosed with and treated for a cancer that would never have harmed them in their lifetime. None of that trade-off is visible in "reduces breast cancer mortality by 15%."</p>
+<p>Informed consent in this context means something specific: a patient who understands the NNT, the false positive rate, and the overdiagnosis rate alongside the benefit. That patient can make a real decision. A patient who has been told only the relative risk reduction cannot.</p>
+<hr>
+<h2>How to Spot It</h2>
+<p>The tell is consistent across pharmaceutical advertising, health journalism, and cancer screening communications: a large percentage with no denominator, no baseline risk, and no absolute equivalent.</p>
+<h3>The mammography debate as a case study</h3>
+<p>In 2001, the Nordic Cochrane Centre, led by Peter Gøtzsche, published a systematic review of mammography screening trials that prompted one of the most contentious public health debates of the following two decades. The review found that the most methodologically rigorous trials showed weaker benefits than had been claimed, and that the leaflets given to women in UK and European screening programmes were misleading.</p>
+<p>The UK breast screening invitation letter at the time described the programme as offering "early detection" and suggested that "most cancers detected are at an early, treatable stage." What it did not mention: the estimate that for every 2,000 women screened over ten years, one death from breast cancer would be prevented, while 200 would be recalled for further tests that turned out to be unnecessary, and 10 would be treated for a cancer that would not have affected their health. The benefit was expressed in terms that maximised its apparent significance. The harms were not expressed at all.</p>
+<p>Gøtzsche published a patient leaflet in 2012 that presented both sides in natural frequencies. It was initially rejected by health authorities in several countries on the grounds that it would discourage women from attending screening. The substance of the objection was that honest risk communication might produce a different decision than the one the programme wanted women to make. That is not informed consent. That is managed consent.</p>
+<p>The argument was not about whether mammography works. It was about whether the numbers being given to women were complete. The women who chose not to screen after reading the honest leaflet were making a defensible decision with accurate information. The women who chose to screen were also making a defensible decision. The point is that both decisions require the same information: absolute benefit, false positive rate, overdiagnosis estimate. The numbers that had been in circulation for years provided only one side of the ledger.</p>
+<p>The tell in this case was the omission. No absolute risk figures in the invitation letter. No mention of false positives. No mention of overdiagnosis. A relative risk reduction headlined without its complement. When risk communication presents only the favourable half of the arithmetic, the incompleteness is the deception.</p>
+<hr>
+<h2>Your Challenge</h2>
+<p>A patient with a history of high blood pressure is told by their doctor: "The evidence shows this new medication reduces your risk of stroke by 35%."</p>
+<p>The patient wants to think about it properly. They ask what their baseline risk is. The doctor checks the patient's profile and says: "For someone your age and risk factors, the five-year risk of stroke without treatment is around 6%."</p>
+<p>From this information, calculate:</p>
+<ol>
+<li>The absolute risk reduction</li>
+<li>The Number Needed to Treat (over five years)</li>
+</ol>
+<p>Then consider: what would the patient need to know about the medication's side effects before the NNT becomes a useful basis for a decision? What further question should they ask about what population was studied in the trial that produced the 35% figure?</p>
+<p>There is no answer on this page. That is the point.</p>
+<hr>
+<h2>References</h2>
+<ol>
+<li>Gøtzsche PC, Jørgensen KJ. Screening for breast cancer with mammography. <em>Cochrane Database of Systematic Reviews.</em> 2013;(6):CD001877. The source for the NNT of 2,000 over ten years, the estimate of 200 false positives, and 10 cases of overdiagnosis per 2,000 women screened. URL: https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD001877.pub5/full</li>
+</ol>
+<ol>
+<li>Gøtzsche PC, Hartling OJ, Nielsen M, Brodersen J, Jørgensen KJ. Breast screening: the facts — or maybe not. <em>BMJ.</em> 2009;338:b86. The published patient leaflet presenting breast screening benefits and harms in natural frequencies, and the response from health authorities.</li>
+</ol>
+<ol>
+<li>Gigerenzer G, Gaissmaier W, Kurz-Milcke E, Schwartz LM, Woloshin S. Helping doctors and patients make sense of health statistics. <em>Psychological Science in the Public Interest.</em> 2007;8(2):53–96. The foundational study demonstrating that natural frequency formats dramatically improve Bayesian reasoning in both medical professionals and laypeople. URL: https://pure.mpg.de/rest/items/item<em>2099208</em>9/component/file_3562683/content</li>
+</ol>
+<ol>
+<li>Gigerenzer G, Hoffrage U. How to improve Bayesian reasoning without instruction: frequency formats. <em>Psychological Review.</em> 1995;102(4):684–704. The original paper establishing that natural frequencies, rather than conditional probabilities, produce correct Bayesian reasoning in untrained people.</li>
+</ol>
+<ol>
+<li>Woloshin S, Schwartz LM, Welch HG. Know Your Chances: Understanding Health Statistics. University of California Press, 2008. The primary source for the argument that NNT and NNH presented together constitute the minimum honest description of a medical intervention.</li>
+</ol>
+<ol>
+<li>Barratt A, Wyer PC, Hatala R, et al. Tips for learners of evidence-based medicine: 1. Relative risk reduction, absolute risk reduction and number needed to treat. <em>CMAJ.</em> 2004;171(4):353–358. A clinician-facing tutorial on ARR, RRR, and NNT as decision tools, and the distortion caused by presenting relative risk alone.</li>
+</ol>
+<ol>
+<li>HIV test sensitivity and specificity: Aidsmap. "Sensitivity and specificity of HIV tests." URL: https://www.aidsmap.com/about-hiv/sensitivity-and-specificity-hiv-tests. The source for the characterisation of fourth-generation HIV tests as having sensitivity and specificity above 99.7%. The worked example in this unit uses 99.9% as a teaching figure in the realistic range.</li>
+</ol>
+<ol>
+<li>Gerd Gigerenzer. <em>Reckoning with Risk: Learning to Live with Uncertainty.</em> Allen Lane, 2002. The book-length treatment of natural frequencies, icon arrays, and Gigerenzer's campaign for transparent medical risk communication. The source for the observation that most clinicians cannot calculate positive predictive value from sensitivity, specificity, and prevalence data.</li>
+</ol>
+<ol>
+<li>Spiegelhalter D. <em>The Art of Statistics: Learning from Data.</em> Pelican, 2019. Chapter 9 covers risk communication, icon arrays, and the ethics of presenting screening statistics honestly. The primary academic reference for the informed consent argument in this unit.</li>
+</ol>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/3-12">https://everydaystatistics.com/unit/3-12</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Probability? — Everyday Statistics Day 6</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 6 of 44 &nbsp;·&nbsp; Unit 1.1 &nbsp;·&nbsp; 14% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:14%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Most people think probability is a single, agreed concept. It isn't. There are two legitimate interpretations — frequentist and Bayesian — and they give different answers to many real questions. Today you meet both, and learn why the distinction matters every time you read a poll, a forecast, or a risk figure.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>On the morning of 8 November 2016, the HuffPost election forecast model gave Hillary Clinton a 98 percent chance of winning the presidency. The Princeton Election Consortium had her at 93 percent. FiveThirtyEight, considered the cautious outlier, had her at 71 percent. By the following morning, Donald Trump had won.</p>
+<p>The forecasters were not, for the most part, wrong. At least, not in the way the headlines suggested. A 70 percent chance of something happening is also a 30 percent chance of it not happening. A one-in-three chance of rain is not a forecast of sunshine. But millions of people who read those probabilities on election morning genuinely believed they were being told the result in advance. When the result arrived, the reaction was not "well, the 30 percent scenario came in." The reaction was "the forecasters were lying to us."</p>
+<p>This is what happens when probability is used in public discourse without any shared understanding of what it means. And it happens constantly: in weather forecasts, in medical risk statistics, in criminal trials, in financial marketing. You are handed numbers expressed as chances or likelihoods or probabilities, and you are expected to make decisions with them, without anyone explaining what they are actually measuring.</p>
+<p>This unit explains that.</p>
+<h2>The Concept</h2>
+<p>Probability, at its most basic, is a number between 0 and 1 (or equivalently, between 0 percent and 100 percent) that represents how likely something is to occur. Zero means it cannot happen. One means it is certain. Everything in between is uncertain, to some degree.</p>
+<p>So far, so simple. The problem begins when you ask what "likely" actually means. Mathematicians and statisticians have argued about this for roughly three centuries, and the argument has not fully resolved. But there are two main answers, and both of them are useful in the right context.</p>
+<p><strong>The frequentist interpretation</strong> says that probability is the long-run frequency of an event across many repeated trials. If you flip a fair coin a thousand times, you will get heads roughly 500 times, give or take. The probability of heads is 0.5 because, in the long run, across many tosses, heads comes up about half the time. This is probability as something you can measure by counting.</p>
+<p>The engine that makes this work is the law of large numbers. In a small number of trials, the actual results can deviate significantly from the theoretical probability: you might flip ten heads in a row. But as the number of trials increases, the observed frequency converges toward the theoretical probability. With a thousand coin flips, you are very likely to be close to 50 percent heads. With a million, you are virtually certain to be close. The frequentist definition is reliable precisely because of this convergence.</p>
+<p>Notice what the frequentist interpretation requires: repetition. The event has to be the kind of thing that can happen over and over again, under roughly the same conditions, so that you can observe its long-run frequency. A coin toss qualifies. Rolling a die qualifies. The failure rate of a particular type of engine, measured over thousands of hours of operation, qualifies.</p>
+<p><strong>The Bayesian interpretation</strong> takes a completely different view. It says that probability is a degree of belief, a measure of how confident you are that something is true, given everything you currently know. Under this interpretation, probability is not a property of a repeatable process. It is a property of a mind's relationship to a claim.</p>
+<p>The Bayesian approach is named after Thomas Bayes, an eighteenth-century English minister and mathematician whose work on updating beliefs in light of evidence was published posthumously in 1763. The core idea is that you start with some prior belief about the probability of an event, then update it as new evidence arrives. The updated belief is called the posterior probability. (We will encounter Bayes' theorem properly in Unit 1.7; for now, the name and the general shape of the idea is enough.)</p>
+<p>Under the Bayesian interpretation, saying there is a 30 percent chance of rain tomorrow is not a claim about how often it rains on days with this kind of atmospheric reading. It is a claim about the forecaster's current state of knowledge, their degree of confidence, after incorporating all available information: satellite images, pressure readings, historical patterns, model outputs. Tomorrow only happens once. There is no long-run repetition. The Bayesian interpretation allows probability to be applied to single events, which is exactly what makes it useful for forecasting.</p>
+<p>Both interpretations are valid. Neither is wrong. They are answering slightly different questions. The frequentist is asking: in the long run, across many similar situations, how often does this kind of event occur? The Bayesian is asking: given everything I currently know, how confident should I be that this will happen?</p>
+<p>The trouble arises when the two are confused, or when a number is presented as if it belongs to one framework when it actually belongs to the other.</p>
+<h2>Why It Matters</h2>
+<p>Weather forecasts are, in practice, a blend of both. When the Met Office says there is a 70 percent chance of rain tomorrow, they mean that in roughly 70 out of every 100 occasions when the atmospheric conditions resemble today's, it rains. That has a frequentist flavour: it is derived from historical frequencies. But it is being applied to a single event, tomorrow's weather, which gives it a Bayesian flavour. BBC Weather had to clarify this directly on social media in 2022, explaining that a 70 percent rain symbol does not mean it will rain for 70 percent of the day, nor that 70 percent of the area will see rain. Most readers had inferred one of those meanings.</p>
+<p>The confusion matters because the two interpretations lead to different behaviours. If you think 70 percent means it will rain for most of the day, you stay home. If you understand it as a 70-in-100 chance of any rain, you might take an umbrella and go about your plans. The number is the same. The action it implies is not.</p>
+<p>Election forecasting puts the confusion under an especially harsh light. The 98 percent Clinton probability that HuffPost published on election day was a model output: given all available polling data and historical patterns, their model found that in 98 of 100 simulated elections, Clinton won. This is a frequentist statement about a simulation, applied to a one-time real-world event, which requires you to accept some Bayesian reasoning about the model's assumptions. Many readers received it as a certainty bordering on a guarantee. A 30-in-100 chance of the Trump outcome is not a small chance. It is roughly the same as the probability that a randomly selected person has blood type O positive.</p>
+<p>The phrase "probability of X" appears constantly in public life. Medical trial results, crime statistics, financial projections, scientific findings. Each time, the number was produced by a method that assumes either a frequentist or a Bayesian framework, or some mixture of both. Almost never is that method disclosed, and almost never is the distinction explained. You are handed a number and expected to know what to do with it.</p>
+<h2>How to Spot It</h2>
+<p>The 2016 election forecasts are the clearest documented case of the confusion causing real harm, because the aftermath was so public and so widely documented.</p>
+<p>Multiple models produced probabilities in the 70 to 98 percent range for a Clinton victory. Nate Silver, whose FiveThirtyEight model was at the cautious end with 71 percent, wrote after the election that the public had systematically misread what probability forecasts mean. He described conversations in which people told him the models had "said Clinton was a sure thing." A 71 percent probability is not a sure thing. It means Trump wins roughly once in every three such elections. Silver had explicitly built that uncertainty into his model; most readers filtered it out.</p>
+<p>The tell in cases like this is a probability without a stated method. When HuffPost said "98 percent," that number came from running their simulation 10 million times and counting how often Clinton won. The number was a frequentist output from a simulation, being applied to a one-off event as if it were a Bayesian degree of belief. The two are not the same, and the gap between them is exactly where public confusion lives.</p>
+<p>The question to ask when anyone quotes a probability is: what is the reference class? A frequentist probability requires a comparison set: 98 out of 100 what, exactly? 98 out of 100 simulations of a model that may have flaws? 98 out of 100 elections with similar polling margins? Those are very different claims. A Bayesian probability requires transparency about the prior: what did this person believe before they gathered the evidence, and how much did the evidence move them? Neither question is usually answered in a headline.</p>
+<h2>Your Challenge</h2>
+<p>In March 2023, a UK government minister was asked about the probability of a new form of taxation being introduced before the next general election. The minister replied: "I would say the probability of that is very low. We have no plans to introduce such a tax."</p>
+<p>Take that claim apart. What interpretation of probability is the minister using? Is this a frequentist or a Bayesian claim? What would each interpretation require to make it well-founded? What information is the minister relying on, and what information is being left out? Is "very low" a probability claim at all, or is it something else entirely?</p>
+<p>There is no answer on this page.</p>
+<h2>References</h2>
+<p>HuffPost 2016 presidential forecast (98 percent probability for Clinton): "HuffPost Forecasts Hillary Clinton Will Win With 323 Electoral Votes," HuffPost, 7 November 2016. URL: https://www.huffpost.com/entry/polls-hillary-clinton-win<em>n</em>5821074ce4b0e80b02cc2a94 — Model methodology: simulated the election 10 million times using state-by-state polling averages; Clinton won 9.8 million simulations.</p>
+<p>FiveThirtyEight 2016 presidential forecast (71 percent probability for Clinton at close of polls): Nate Silver and the FiveThirtyEight team, post-election analysis summarised in: "Nate Silver says conventional wisdom, not data, killed 2016 election forecasts," Harvard Gazette, March 2017. URL: https://news.harvard.edu/gazette/story/2017/03/nate-silver-says-conventional-wisdom-not-data-killed-2016-election-forecasts/</p>
+<p>Princeton Election Consortium 2016 final projection (93 percent probability for Clinton): Sam Wang, "Final Projections 2016," Princeton Election Consortium. URL: https://election.princeton.edu/articles/final-projections-2016/</p>
+<p>BBC Weather clarification on the meaning of percentage rain probability: @bbcweather on X (Twitter), 1 July 2022. URL: https://x.com/bbcweather/status/1542456396230410240 — Thread clarifies that a 70 percent rain symbol does not mean rain for 70 percent of the time or across 70 percent of the area; it represents the probability that measurable rainfall will occur at a given location during the forecast period.</p>
+<p>Frequentist vs. Bayesian interpretations of weather probability: Andrew Gelman, "What does it mean when they say there's a 30% chance of rain?", Statistical Modeling, Causal Inference, and Social Science blog, 14 December 2019. URL: https://statmodeling.stat.columbia.edu/2019/12/14/what-does-it-mean-when-they-say-theres-a-30-chance-of-rain/</p>
+<p>Public misunderstanding of election probability forecasts: "Did Trump win in 2016 because people are bad at probability?", Washington Post, 28 February 2020. URL: https://www.washingtonpost.com/politics/2020/02/28/did-trump-win-2016-because-people-are-bad-probability/</p>
+<p>Law of large numbers: Wikipedia, "Law of large numbers." URL: https://en.wikipedia.org/wiki/Law<em>of</em>large_numbers</p>
+<p>Thomas Bayes and the origins of Bayesian probability: Sharon Bertsch McGrayne, The Theory That Would Not Die (Yale University Press, 2011). Bayes' original paper: "An Essay towards solving a Problem in the Doctrine of Chances," Philosophical Transactions of the Royal Society, 1763.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/1-1">https://everydaystatistics.com/unit/1-1</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

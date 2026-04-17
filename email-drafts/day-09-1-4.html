@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conditional Probability — Everyday Statistics Day 9</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 9 of 44 &nbsp;·&nbsp; Unit 1.4 &nbsp;·&nbsp; 20% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:20%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>The probability of A given B is not the same as the probability of B given A. This seems obvious when stated plainly. It is not obvious in the wild, and confusing the two — the prosecutor's fallacy — has contributed to multiple wrongful convictions. Today you get the tool that sits at the heart of Bayes' theorem.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>A woman is told her mammogram has come back positive. The radiologist explains that the test correctly identifies cancer 90 percent of the time. She absorbs this, does the arithmetic in the way most people do, and concludes that she probably has cancer.</p>
+<p>She is almost certainly wrong to think that.</p>
+<p>What the radiologist told her was the probability of a positive test result given that cancer is present. What she wants to know is something different: the probability that cancer is present given that the test came back positive. These two things sound similar. They are not. Depending on how common the cancer is in the population being screened, the gap between them can be enormous.</p>
+<p>In a population where 1 in 100 women being screened actually has the condition, a test with 90 percent accuracy and a 9 percent false positive rate will, out of every 1,000 women tested, flag roughly 90 healthy women and 9 women who are genuinely ill. The woman who tests positive is looking at a field of roughly 99 positive results, of which only 9 reflect actual cancer. Her probability of actually having the disease, despite the positive test, is closer to 1 in 11 than to 9 in 10.</p>
+<p>The radiologist gave her the right number. She drew the wrong conclusion from it, because she swapped the condition and the result. This is one of the most consequential errors in probabilistic reasoning, and it has a name: the confusion of the conditional, or the inverse fallacy. Understanding why it happens requires understanding conditional probability.</p>
+<h2>The Concept</h2>
+<p>In the previous unit you learned the laws of probability: how to combine probabilities using the addition and multiplication rules, and what it means for two events to be independent. Conditional probability is what happens when you stop asking "what is the probability of A?" and start asking "what is the probability of A, given that B has already happened?"</p>
+<p>The notation for this is P(A|B). The vertical bar is read as "given." So P(cancer|positive test) means the probability that the patient has cancer, given that the test was positive. P(positive test|cancer) means the probability that the test will be positive, given that the patient has cancer.</p>
+<p>These two expressions use exactly the same words, rearranged. They describe completely different quantities.</p>
+<p>To see why, think about it in terms of restricted populations. When you ask P(A|B), you are not asking about everyone. You are asking about the subset of the population for whom B is true, and then asking what fraction of that subset also has A. You have narrowed the sample space down to the people for whom B applies, and you are asking what proportion of them have A.</p>
+<p>Here is a clean example. Suppose you draw a single card from a standard deck. The probability of drawing a king is 4 in 52, or about 1 in 13. Now suppose you are told the card is a face card. That changes things. You are now restricted to the 12 face cards, and 4 of them are kings. So P(king|face card) = 4/12 = 1/3. The condition "it is a face card" has changed the probability dramatically. The information narrowed the population you are reasoning about.</p>
+<p>Now ask the reverse. P(face card|king) = the probability that a card is a face card, given that it is a king. All kings are face cards, so this probability is 1. A certainty. P(king|face card) is 1/3. P(face card|king) is 1. The same two events, in reversed order, give completely different probabilities.</p>
+<p>This is the core of conditional probability, and it is also the core of the inverse fallacy: the confusion between P(A|B) and P(B|A).</p>
+<p>There is a formal rule that makes the relationship precise. The probability of A given B equals the probability of A and B occurring together, divided by the probability of B. Written out: P(A|B) = P(A and B) / P(B). What this says, intuitively, is: take the fraction of all outcomes where both A and B are true, and divide it by the fraction where B is true. The result is how common A is within the world where B is known to hold.</p>
+<p>This rule also gives us a way to revisit independence, which was introduced in Unit 1.3. Two events A and B are independent if knowing that B has occurred tells you nothing about the probability of A. Formally, A and B are independent if and only if P(A|B) = P(A). The information that B happened does not change the probability of A at all. If knowing that one person carries an umbrella tells you nothing about whether a stranger across town carries one, the two events are independent. If knowing that it is raining changes the probability that any given person carries an umbrella, they are not independent.</p>
+<p>Most real-world events are not independent. And that is where conditional probability becomes both interesting and dangerous.</p>
+<h2>Why It Matters</h2>
+<p>The inverse fallacy appears in two domains with particular regularity: medical diagnosis and legal reasoning.</p>
+<p>In medicine, the test you administer is calibrated around P(positive result|disease). The sensitivity of a test, meaning how good it is at detecting the disease when it is present, is precisely this quantity: how often does the test come back positive when the patient actually has the condition? A test with 95 percent sensitivity will correctly detect the disease 95 percent of the time.</p>
+<p>What the patient and often the clinician want to know is something else entirely: P(disease|positive result). Given that the test fired, what are the odds the patient is actually ill? This is called the positive predictive value of the test, and it depends not just on the sensitivity but on how common the disease is in the first place. The base rate, meaning the background prevalence of the condition, is a third number that changes everything.</p>
+<p>When a disease is rare, say 1 in 1,000 people, even a test with 99 percent sensitivity and 99 percent specificity will generate more false positives than true positives in a mass screening programme. The reason is simple arithmetic: the pool of healthy people is so large that even a 1 percent false positive rate sends many more healthy people to a positive result than the small pool of genuinely sick people can supply. The test is excellent. The positive predictive value is low. These two facts are not in contradiction. They follow directly from the mathematics of conditioning on a rare event.</p>
+<p>In legal reasoning, the version of the inverse fallacy that does most damage goes like this. A forensic expert calculates the probability that a piece of evidence, a DNA match, a blood type, a bite mark, would be observed if the defendant were innocent. That probability may be very small. The expert states it in court. The jury hears it as the probability that the defendant is innocent. They have confused P(evidence|innocent) with P(innocent|evidence). These are not the same. They can be orders of magnitude apart.</p>
+<p>The correction is Bayes' theorem, which you will encounter in full in Unit 1.7. The intuition is this: to find out how likely innocence is given the evidence, you need to combine the probability of the evidence under innocence with the prior probability of innocence before any evidence was considered. That prior probability is not set by the prosecutor. In most criminal cases, the overwhelming majority of people who share a DNA profile with the perpetrator did not commit the crime.</p>
+<h2>How to Spot It</h2>
+<p>The confusion of the conditional is the tell. Someone has performed the inverse fallacy when they give you P(A|B) and act as if they have told you P(B|A).</p>
+<p>The most documented courtroom example is the trial of Sally Clark, a British solicitor convicted in 1998 of murdering her two infant sons. The prosecution's expert witness, Sir Roy Meadow, told the jury that the probability of two children from the same family dying of sudden infant death syndrome (SIDS) was approximately 1 in 73 million. Leaving aside a separate statistical error (the independence assumption used to generate that number), what Meadow presented was something close to P(two SIDS deaths|family of this profile). What the jury needed to evaluate was P(innocence|two deaths). These are not the same. Double infant murder is also rare. To reason about which was more likely given the evidence required weighing both possibilities, not simply stating that one was unlikely and acting as though the other was therefore certain.</p>
+<p>Clark was convicted in 1999. Her first appeal failed. Her conviction was overturned in 2003, partly on statistical grounds and partly after suppressed medical evidence came to light. She died in 2007. The Royal Statistical Society had written to the Lord Chancellor during her appeal, specifically to draw attention to the misuse of conditional probability in the case.</p>
+<p>The tell in any domain is a number presented as a probability of guilt, or a probability of innocence, that is actually a probability of evidence. The question to ask is always: given what, exactly? P(evidence|guilt) and P(guilt|evidence) are two different questions. Only one of them is what you actually want to know.</p>
+<h2>Your Challenge</h2>
+<p>A study reports that 80 percent of people who developed a particular disease had regularly eaten a specific food in the months before diagnosis.</p>
+<p>A journalist writes the headline: "People who eat this food have an 80 percent chance of developing the disease."</p>
+<p>What conditional probability has the study actually measured? What conditional probability is the headline implying? What additional information would you need before the headline's claim could be evaluated? Think through the gap between the two probabilities before reading Unit 1.7.</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>Sally Clark case and statistical evidence: Royal Statistical Society, "Royal Statistical Society concerned by issues raised in Sally Clark case" (October 2001). URL: https://rss.org.uk/news-publication/news-publications/2001/general-news/royal-statistical-society-concerned-by-issues-rai/. Wikipedia, "Sally Clark": https://en.wikipedia.org/wiki/Sally_Clark. Forensic Stats, "Misuse of Statistics in the Courtroom: The Sally Clark Case" (February 2018): https://forensicstats.org/blog/2018/02/16/misuse-statistics-courtroom-sally-clark-case/.</p>
+<p>Confusion of the inverse (inverse fallacy): Wikipedia, "Confusion of the inverse": https://en.wikipedia.org/wiki/Confusion<em>of</em>the_inverse.</p>
+<p>Physician study on positive predictive value: Casscells, W., Schoenberger, A., and Graboys, T.B., "Interpretation by physicians of clinical laboratory results," New England Journal of Medicine, 299 (1978), 999–1001. Referenced and discussed in Gigerenzer, G. and Hoffrage, U., "How to improve Bayesian reasoning without instruction: frequency formats," Psychological Review, 102 (1995), 684–704.</p>
+<p>Prosecutor's fallacy and conditional probability in law: Thompson, W.C. and Schumann, E.L., "Interpretation of statistical evidence in criminal trials: the prosecutor's fallacy and the defense attorney's fallacy," Law and Human Behavior, 11 (1987), 167–187. Thompson, W.C. "Are juries competent to evaluate statistical evidence?" Law and Contemporary Problems, 52 (1989), 9–41.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/1-4">https://everydaystatistics.com/unit/1-4</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

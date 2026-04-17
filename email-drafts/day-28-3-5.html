@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regression to the Mean — Everyday Statistics Day 28</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 28 of 44 &nbsp;·&nbsp; Unit 3.5 &nbsp;·&nbsp; 64% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:64%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Extreme measurements are followed by less extreme ones — not because anything changed, but because that is how randomness works. This is regression to the mean, and misattributing it to an intervention is one of the most common errors in medicine, management, and sport. It is also why feedback and coaching are systematically undervalued.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>Every few years, someone at Sports Illustrated notices the same uncomfortable pattern: an athlete appears on the cover during a career-defining run, and within weeks or months their performance drops. Injuries follow. Slumps arrive. The team that was unstoppable last season stumbles at the playoff stage. The magazine that featured them sits at the scene, looking guilty.</p>
+<p>The Sports Illustrated cover jinx has been discussed, lamented, and blamed for enough suffering that it has acquired the weight of folk wisdom in American sports. Coaches have reportedly told players to avoid the cover. Athletes have turned down the feature request. The jinx, in other words, feels real.</p>
+<p>It is not. But understanding why it is not real will teach you something that most people in management, medicine, and finance will never learn — and which they regularly make expensive mistakes because of.</p>
+<p>Around the same time the jinx was accumulating its reputation, a psychologist named Daniel Kahneman was lecturing Israeli Air Force flight instructors on the psychology of training. He told them, correctly, that research showed rewards worked better than punishment for building skill. An instructor objected. "Every time I praise a cadet for a clean manoeuvre," the instructor said, "his next attempt is worse. Every time I shout at a cadet for a bad one, he improves. I have seen this hundreds of times. What does your research say to that?"</p>
+<p>The instructor was telling the truth about what he had observed. His conclusion from that truth was completely wrong. And Kahneman, in that moment, recognised something he later described as one of the most important statistical insights of his career.</p>
+<p>Both stories have the same explanation. Knowing that explanation is how you protect yourself from one of the most ubiquitous misreadings of evidence in everyday life.</p>
+<h2>The Concept</h2>
+<p>Regression to the mean is the statistical phenomenon where extreme measurements are followed, on average, by less extreme ones. A student who scores exceptionally high on one test will, on average, score lower on the next one. A patient with unusually elevated blood pressure will, on average, show a lower reading at the next appointment. A basketball player who has just had the best three weeks of his career will, on average, return toward his normal level of play.</p>
+<p>This is not a force that drags things back to average. It is a consequence of how randomness works.</p>
+<p>Here is the mechanism. Any measurement of a real-world performance or state contains two components: signal and noise. The signal is the genuine underlying level, the athlete's actual skill, the patient's true resting blood pressure, the student's actual knowledge. The noise is the random component, the lucky bounce, the white-coat anxiety that inflated the reading, the questions that happened to align perfectly with what the student had revised.</p>
+<p>When a result is extreme, it is almost always extreme partly because the random component happened to push in the same direction as the signal. An athlete on the cover of Sports Illustrated is there because they had a genuinely remarkable run of skill, but also because during that run the ball bounced their way, the opponents were having an off week, and no injury intervened. That lucky alignment of randomness is not permanent. It regresses. The signal, the genuine skill, continues, but the noise returns to neutral, and the total result falls back toward the underlying level.</p>
+<p>The misattribution problem is what makes this dangerous. When something happens after a peak, we attribute the fall to whatever came after the peak. The magazine cover, the praise, the new coaching appointment, the change in diet. When something happens after a trough, we attribute the rise to whatever followed the trough. The harsh words from the instructor, the new training programme, the medication we started taking.</p>
+<p>Kahneman's instructors were screaming at cadets after bad landings. The bad landings were partly a product of the random component going wrong. The random component then, by definition, returned toward neutral on the next attempt. The cadet improved. The instructor experienced this improvement as a consequence of the screaming. In statistical terms, the cadet would have improved anyway. The screaming was noise in the causal story, not signal. The instructors had built an entire theory of pedagogy on a statistical artefact.</p>
+<p>The Sports Illustrated analysis published in 2002, covering all 2,456 covers from 1954 to 2001, found a "jinx" rate of roughly 37 percent, where performance following the cover was below prior expectations. But the analysis also concluded the entire effect was attributable to regression to the mean, not superstition. Athletes appear on covers precisely when they have been extraordinary, and the extraordinary, by the mathematical structure of the phenomenon, cannot be sustained at the same rate forever.</p>
+<p>There is one reliable tell for regression to the mean: look for extreme selection criteria at the starting point. If the people or things in your study were selected because they were at the top or bottom of a distribution, they will move toward the middle on subsequent measurement. Not because you did anything. Because that is what noise does.</p>
+<p>The formal definition, for completeness: a variable regresses to the mean when there is imperfect correlation between two measurements of the same underlying quantity. Perfect correlation would mean that the highest scores on one test produce exactly the highest scores on the next. In the real world, the correlation is almost never perfect, because noise is never zero. The lower the correlation between the two measurements, the more pronounced the regression to the mean.</p>
+<h2>Why It Matters</h2>
+<p>The domains where this matters most are medicine, management, sport, and financial performance. In each of them, people are regularly selected for intervention precisely because they are at an extreme, and the intervention is then credited with the subsequent return toward normal.</p>
+<p>In medicine, patients typically seek help when their condition is at its worst. Back pain is most unbearable in the acute phase; that is when the patient books the appointment, tries the acupuncture, takes the new supplement, starts the prescribed exercises. The acute phase passes, as it very often does, independently of treatment. The treatment receives the credit. Research published in the British Medical Journal and elsewhere has shown that for conditions with high natural variability, such as acute low back pain, migraine frequency, and elevated blood pressure, a substantial portion of the improvement seen after starting treatment would have occurred without any treatment at all. This is not the same as saying treatments do not work; many do. It is saying that without a proper control group, you cannot tell how much of the improvement is treatment and how much is the regression of an extreme measurement back toward baseline.</p>
+<p>A 1983 study by Shephard, Ford and Pekkhanen, published in the American Journal of Epidemiology, found that in a community blood pressure screening programme, patients with the highest baseline readings showed a mean diastolic blood pressure decline of 7 mm Hg between screenings. After adjusting for regression to the mean, the real estimated decline was closer to 2 mm Hg. More than two-thirds of the apparent improvement was a statistical artefact, not a genuine reduction in blood pressure.</p>
+<p>In management, the same error recurs with striking regularity. Performance improvement programmes are disproportionately targeted at the lowest performers. The lowest performers, selected specifically because they are at the bottom, will tend to improve on subsequent measurement regardless of the programme. The programme is then assessed as successful. Its designers are lauded. Budgets are renewed. The evidence that drove the whole exercise was not evidence of the programme's effect; it was evidence that regression to the mean exists.</p>
+<p>In sport, coaches and analysts who understand regression to the mean know not to over-react to a player's exceptional week or catastrophic month. The slumping player who gets benched, or the streaking player who gets a headline contract extension in a single hot spell, are both victims of decisions made without accounting for the noise component of recent performance.</p>
+<p>In financial markets, fund managers who outperform the market in a given year attract new investment capital. The following year, performance typically reverts toward the average. This is partly skill, partly regression to the mean, and the two are genuinely hard to separate in any short time series. The fund marketing does not acknowledge the distinction.</p>
+<h2>How to Spot It</h2>
+<p>The most systematically documented case of misattribution in an institutional setting is the Israeli Air Force story Kahneman recounted in his Nobel lecture, and later in his book "Thinking, Fast and Slow" (2011). The flight instructors had arrived at a causal theory, punishment improves performance, that was precisely backwards from what the evidence supported once the statistical structure was accounted for. Their theory was reinforced by every new observation, because the observations reliably showed improvement after screaming, just as regression to the mean predicts they would. The theory was also, simultaneously, entirely unfalsifiable to someone who did not know about the phenomenon. Every confirming instance confirmed the theory. The mechanism they had proposed was invisible.</p>
+<p>The tell in this story is the same as in every case of regression to the mean: extreme selection. The instructors screamed only when performance was extreme, in the downward direction. The cadets whose performance prompted a screaming response were, necessarily, drawn from the low tail of each individual's performance distribution. Their next flight, drawn from the same underlying skill distribution, was almost guaranteed to be less extreme. The improvement would have appeared regardless of whether the instructor screamed, praised, stayed silent, or read poetry aloud.</p>
+<p>The reliable diagnostic for regression to the mean is this: ask whether the subjects were selected because of an extreme value. If yes, expect subsequent measurements to be less extreme, and do not attribute that movement to any intervention unless you have a proper comparison group who received no intervention and were selected on the same criteria.</p>
+<p>The most common institutional defence against this error is the randomised controlled trial, in which subjects are allocated randomly to intervention and control groups, so that both groups contain people selected on the same criteria and subject to the same regression to the mean. Any additional improvement in the treatment group above the improvement in the control group is then, and only then, attributable to the treatment. The reason this is the gold standard in medical research is precisely because it solves the regression to the mean problem by making it symmetrical.</p>
+<h2>Your Challenge</h2>
+<p>A financial services company employs 200 client-facing advisers. At the end of each quarter, the ten lowest-performing advisers, measured by client satisfaction scores, are enrolled in a mandatory training programme run by an external consultancy at a cost of £40,000 per cohort. The following quarter, the ten advisers who went through the programme show an average improvement in their client satisfaction scores of 18 percentage points, which is larger than the average improvement of the 190 advisers who were not in the programme.</p>
+<p>The consultancy presents these figures as evidence of the programme's effectiveness and recommends renewing the contract for the next four quarters. The HR director is persuaded.</p>
+<p>Before that decision is made, what question about the design of this evaluation should be asked? What alternative explanation should have been ruled out before the 18-point improvement was attributed to the training? And what comparison would you need to see to have genuine confidence that the programme is worth £40,000 per cohort?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>Sports Illustrated cover jinx and regression to the mean: Sports Illustrated internal analysis of 2,456 covers (1954–2001), cited in multiple secondary sources including the Wikipedia entry for "Sports Illustrated cover jinx" and Psychology Today, "The Sports Illustrated Cover Jinx," Gary Smith, October 2016. URL: https://www.psychologytoday.com/us/blog/what-the-luck/201610/the-sports-illustrated-cover-jinx</p>
+<p>Kahneman's Israeli Air Force flight instructors: Daniel Kahneman, "Thinking, Fast and Slow" (Farrar, Straus and Giroux, 2011), Chapter 17: Regression to the Mean. Also recounted in Kahneman's Nobel Prize lecture (2002). Secondary summary at TradeSmith, "Cognitive Bias Series: What Israeli Air Force Pilots Can Teach Us About Investing." URL: https://tradesmith.com/cognitive-bias-series-3-what-israeli-air-force-pilots-can-teach-us-about-investing/</p>
+<p>Blood pressure screening and regression to the mean: Shephard DS, Ford CE, Pekkhanen L (1983). "Blood pressure reductions: correcting for regression to the mean." American Journal of Epidemiology. PubMed abstract: https://pubmed.ncbi.nlm.nih.gov/6878192/</p>
+<p>Regression to the mean in clinical practice: Barnett AG, van der Pols JC, Dobson AJ (2005). "Regression to the mean: what it is and how to deal with it." International Journal of Epidemiology 34(1):215–220. PubMed: https://pubmed.ncbi.nlm.nih.gov/15333621/</p>
+<p>Regression to the mean and placebo effects: Colquhoun, D. "Placebo effects are weak: regression to the mean is the main reason ineffective treatments appear to work." DC's Improbable Science, December 2015. URL: https://www.dcscience.net/2015/12/11/placebo-effects-are-weak-regression-to-the-mean-is-the-main-reason-ineffective-treatments-appear-to-work/</p>
+<p>Effect of regression to the mean in health care decision making: Morton V, Torgerson DJ (2003). "Effect of regression to the mean on decision making in health care." BMJ 326:1083. PMC: https://pmc.ncbi.nlm.nih.gov/articles/PMC1125994/</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/3-5">https://everydaystatistics.com/unit/3-5</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

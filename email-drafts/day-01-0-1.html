@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Numbers at Scale — Everyday Statistics Day 1</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 1 of 44 &nbsp;·&nbsp; Unit 0.1 &nbsp;·&nbsp; 2% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:2%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Welcome. Over the next 44 days you'll read one short unit from Everyday Statistics — a free curriculum designed to make you harder to manipulate with numbers. Today's unit is where everyone starts: the gap between a million and a billion, and why that gap is where most large-number manipulation lives.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>In October 2024, the UK Chancellor announced "£22.6 billion" for the NHS. The phrase went everywhere: headlines, speeches, opposition rebuttals. Government figures called it the biggest increase since 2010. Critics called it woefully inadequate. Both sides deployed the same number to opposite ends.</p>
+<p>Here is what neither side told you. The NHS budget for England alone is around £200 billion a year. The £22.6 billion was spread across two years. That makes it an increase of roughly 5-6 percent over the existing budget. Whether that is generous or stingy is a political question. But you cannot even begin to answer it if £22.6 billion just sounds like "a very large amount of money," which is how most people process any number with a B in it.</p>
+<p>That gap, between the number presented and your ability to feel what it means, is where manipulation lives.</p>
+<h2>The Concept</h2>
+<p>Numbers in public life cover an enormous range. A local council spends millions. A national government spends hundreds of billions. An economy produces trillions. These are not just bigger versions of each other. They are different creatures entirely, and your instinctive number sense, which works well for quantities you encounter in ordinary life, breaks down completely at this scale.</p>
+<p>To understand why, start with a thought experiment. Imagine counting out loud: one, two, three, at one number per second. How long before you reach a million? The answer is about eleven and a half days, if you counted without sleeping. A billion? Thirty-one years. Not thirty-one days. Thirty-one years.</p>
+<p>A million seconds ago was less than a fortnight ago. A billion seconds ago was 1994.</p>
+<p>That is the gap. A billion is not a big million. It is a thousand millions. And because the human brain evolved to handle quantities of food, people, and distances, not quantities of this order, the word "billion" does not automatically trigger anything useful in our nervous systems. It registers as "large." So does "million." So, for most people, does "trillion." The words have become synonymous with "a lot," which means they have become useless for the purpose of comparison.</p>
+<p><strong>Order of magnitude</strong> is the technical phrase for the scale at which a number sits. An order of magnitude is a factor of ten. A thousand is one order of magnitude larger than a hundred. A million is three orders of magnitude larger than a thousand. The concept is useful because it gives you a way to ask the right first question about any number: not "is this big?" but "big relative to what?"</p>
+<p>Here is the number line that matters for most public-life statistics. A thousand (1,000) is roughly the population of a small village, or the number of people in a large office building. A million (1,000,000) is roughly the population of a city like Birmingham or Munich. A billion (1,000,000,000) is roughly the population of India, or the number of pounds in a modest national government programme. A trillion (1,000,000,000,000) is larger than the entire annual economic output of most countries. The UK's GDP is around £2.5 trillion. The US national debt passed $35 trillion in 2024.</p>
+<p>These anchors are worth keeping. Whenever a large number appears in public discourse, you can run it against them.</p>
+<p><strong>Context determines everything.</strong> The same absolute number can be alarming or trivial depending on what it is being compared to. A hundred thousand pounds is a life-changing sum for an individual and a rounding error for a government department. A billion pounds sounds enormous in isolation. Measured against total UK government spending of around £1.2 trillion per year, it is less than 0.1 percent of the budget. This is not a trick question. Context genuinely changes meaning. The manipulation comes when numbers are presented without the context that would let you interpret them.</p>
+<p><strong>The framing effect</strong> is the psychological mechanism that makes scale manipulation work. The same quantity, expressed at different scales or in different contexts, produces different emotional responses. "We are investing £22 billion in the NHS" produces a different intuitive reaction than "we are increasing NHS spending by about 5 percent over two years." Both are descriptions of the same decision. One sounds like action. One sounds like a number you could argue about. Politicians, advertisers, and institutions choose the framing that serves their purpose.</p>
+<p>This is not always dishonest. Framing is unavoidable; every number has to be presented somehow. But recognising the framing is the first move in deciding whether the number means what it is being used to suggest.</p>
+<h2>Why It Matters</h2>
+<p>The inability to feel scale differences is exploited in two opposite directions, often by the same institutions depending on what they need at any given moment.</p>
+<p>When a government wants to appear to be spending generously, it presents absolute numbers at the largest available scale. "Twenty-two billion pounds" sounds transformative. When it wants to defend against the charge of waste or excess, it presents the same number as a small fraction of something larger. "That's less than half a percent of government expenditure." Both moves are numerically accurate. Neither tells you whether the spending is appropriate.</p>
+<p>The same logic runs in reverse for cuts. Cutting £1 billion from a budget sounds dramatic. Describing it as a 0.5 percent efficiency saving sounds reasonable. The political art is knowing which presentation to reach for, and when.</p>
+<p>Risk statistics are the other major arena. Absolute counts and rates tell completely different stories. If a disease kills 400 people in the UK in a year, that sounds serious. If 69 million people live in the UK, the rate is about 6 per million, or 0.0006 percent. Both are true. Public health communicators, drug companies, and campaign groups choose the presentation that serves their argument. Knowing how to move between them is basic self-defence.</p>
+<h2>How to Spot It</h2>
+<p>The clearest documented case of this manipulation in action is the argument over UK foreign aid spending. For years, politicians and commentators opposed to the foreign aid budget quoted it in absolute terms: "we are sending £15 billion overseas every year." The number is large in any ordinary frame of reference. It reliably generated public outrage.</p>
+<p>The tell: the same politicians never presented the number as a share of national income, because the UK's foreign aid commitment is 0.7 percent of gross national income, a threshold set by the United Nations. At that rate, against a UK GNI of roughly £2 trillion, £14 billion is precisely what the commitment requires. The absolute number was chosen specifically because it sounds alarming. The rate, which is the figure that enables comparison with other countries and with alternative uses of public money, was suppressed.</p>
+<p>The tell, in this case and in general, is the absence of a denominator. Any absolute number presented without a comparison base, without a rate, without a percentage of something, should immediately prompt the question: what is this a fraction of? When that question is not answered in the same sentence, you are probably looking at a presentation designed to produce a particular impression rather than to inform.</p>
+<h2>Your Challenge</h2>
+<p>Here is a claim, taken from a real genre of political argument: "The government has committed £1 billion to tackle knife crime over the next five years."</p>
+<p>Before you decide whether that is a lot or a little, write down the questions you would need to answer. How many people are affected by knife crime in the UK each year? What does the existing annual budget for policing and criminal justice look like? How does £1 billion over five years compare to spending in comparable countries? What would £200 million a year actually buy in terms of personnel, programmes, or infrastructure?</p>
+<p>There is no answer on this page. That is the point. The number on its own tells you almost nothing. The questions are the skill.</p>
+<h2>References</h2>
+<p>UK NHS total budget figures: The King's Fund, "The NHS budget and how it has changed" (updated 2025). URL: https://www.kingsfund.org.uk/insight-and-analysis/data-and-charts/nhs-budget-nutshell. Total DHSC budget for England 2024/25: £204.7 billion.</p>
+<p>Autumn Budget 2024 NHS spending announcement: HM Treasury, "Autumn Budget 2024" (October 2024), p. 35. URL: https://www.gov.uk/government/publications/autumn-budget-2024/autumn-budget-2024-html. The £22.6 billion figure represents the difference between DHSC RDEL in 2023/24 and the planned 2025/26 figure.</p>
+<p>Seconds comparison: 1,000,000 seconds = 11.57 days; 1,000,000,000 seconds = 31.69 years. Standard arithmetic from the SI definition of the second.</p>
+<p>UK population mid-2024: Office for National Statistics, "Population estimates for the UK, England, Wales, Scotland and Northern Ireland: mid-2024" (2025). URL: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/bulletins/annualmidyearpopulationestimates/mid2024. Estimate: 69.3 million.</p>
+<p>UK foreign aid and 0.7 percent GNI commitment: House of Commons Library, "UK aid: spending reductions since 2020 and outlook from 2024/25," Research Briefing CBP-9224 (updated 2024). URL: https://commonslibrary.parliament.uk/research-briefings/cbp-9224/</p>
+<p>US national debt: US Treasury Fiscal Data, "Understanding the National Debt." URL: https://fiscaldata.treasury.gov/americas-finance-guide/national-debt/. Gross national debt reached $35.5 trillion at end of fiscal year 2024.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/0-1">https://everydaystatistics.com/unit/0-1</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

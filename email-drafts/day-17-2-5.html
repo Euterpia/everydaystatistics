@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Size: How Many Is Enough? — Everyday Statistics Day 17</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 17 of 44 &nbsp;·&nbsp; Unit 2.5 &nbsp;·&nbsp; 39% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:39%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>A randomly chosen thousand can accurately represent sixty million. A million carefully selected people might tell you almost nothing. Today we look at why size alone is not the point — how the sample was gathered is what determines whether the number means anything.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>In 2011, a study published in a peer-reviewed psychology journal found that undergraduate students performed better on a memory test when they had first been shown words related to the concept of elderly people, things like "bingo," "wrinkles," and "retirement." The effect was called "Florida priming," and it built on earlier work by John Bargh at Yale that claimed simply thinking about old age caused people to walk more slowly. Both studies received enormous coverage. The "elderly priming" effect was cited in textbooks, business books, and TED talks. It became one of the most famous findings in social psychology.</p>
+<p>In 2012, a team at the University of Edinburgh tried to replicate the walking study. They ran the experiment with careful controls and measured actual walking speed with precise timers rather than human observers. They found nothing. Not a weaker effect, not a trend in the right direction. Nothing. Other replication attempts followed. The effect consistently failed to appear.</p>
+<p>Bargh's original study had 30 participants. The 2011 follow-up had fewer than 100. These sample sizes were typical for social psychology at the time, and they were genuinely too small to reliably detect the kind of effect being claimed. Small samples produce extreme results more often than large ones, which is why dramatic findings tend to come from small studies. The drama is partly a statistical artefact.</p>
+<h2>The Concept</h2>
+<p>You have already seen, in Unit 2.4, that the quality of a sample depends on how it was gathered. A random sample, where every member of the population has an equal chance of being selected, can represent the whole. A biased sample, regardless of how large it is, cannot. This unit adds the other half of the picture: how large does the sample need to be, and what happens when it is too small?</p>
+<p>Start with a simple thought experiment. Imagine a jar containing exactly 50 percent red marbles and 50 percent blue marbles. You want to estimate the proportion of red marbles by drawing a sample without looking into the jar. If you draw a sample of 4, you might easily get 3 red and 1 blue, or even 4 red and none blue, just by chance. Your estimate would be wildly off. If you draw a sample of 400, the laws of probability make it very unlikely that you will land far from the true 50:50 split. The sample of 400 gives you a much more reliable estimate, not because it is more representative in any complicated sense, but because larger samples are less susceptible to the random variation that makes small samples unreliable.</p>
+<p>The formal measure of this unreliability is called the <strong>standard error</strong>. The standard error tells you how much variation you would expect in your estimate if you drew many different samples of the same size from the same population. A large standard error means that your sample result could easily have come out very differently with different luck; a small standard error means your result is stable and reproducible. The standard error decreases as the sample size increases. Specifically, it decreases in proportion to the square root of the sample size.</p>
+<p>This leads to the <strong>square root law</strong>, one of the most practically useful facts in applied statistics. To halve your standard error, you need to quadruple your sample size. To reduce it by a factor of ten, you need a sample one hundred times larger. Precision is expensive. The relationship is not linear; it follows a curve that flattens quickly, which is why adding extra participants to an already large study yields diminishing returns.</p>
+<p>This is also why a sample of 1,000 can accurately represent a population of 60 million. The question that most people ask, instinctively, is: "But surely a sample of 1,000 is too small to represent that many people?" The answer is that the relevant comparison is not between the sample size and the population size. Once the sample is genuinely random and the population is much larger than the sample, the precision of the estimate depends almost entirely on the sample size, not on the ratio of sample to population. A random sample of 1,000 gives you an estimate with a standard error of roughly 1.6 percentage points for a proportion near 50 percent. This is true whether the population is 100,000 or 100 million.</p>
+<p>What you cannot do is substitute size for randomness. A biased sample of 1 million cannot tell you what a random sample of 1,000 can, because the million non-random responses are all providing systematically distorted information about the same subset of the population. The 1,000 random responses are providing actual information about the whole. This is the distinction the Literary Digest learned to its cost in 1936, as you saw in Unit 2.4: a survey of 2.4 million readers produced a catastrophically wrong election forecast, while a much smaller but properly sampled Gallup poll got it right.</p>
+<p>The third concept in this unit is <strong>statistical power</strong>. Power is the probability that a study will detect a real effect if one exists. A study with low power is like a metal detector with a weak battery: it might miss genuine signals, especially small ones. Power depends on three factors: the sample size, the size of the effect you are trying to detect, and the significance threshold you have set. A study designed to detect a large effect, like a treatment that doubles survival, can manage with a small sample. A study designed to detect a small effect, like a drug that reduces blood pressure by 2 millimetres of mercury in a population with normal baseline variation of 15 millimetres, needs a large sample or it will miss the effect even if it is real.</p>
+<p>The practical consequence is that underpowered studies produce two distinct types of problem. First, they fail to find real effects, which wastes resources and delays knowledge. Second, and less obviously, the effects they do find tend to be exaggerated. When a study is underpowered but does manage to cross the significance threshold, it is usually because the sample happened to overestimate the true effect size. The published results are thus biased upward. This is sometimes called the <strong>winner's curse</strong>: the studies that get published from small samples tend to be the lucky ones where the estimates came out bigger than the truth.</p>
+<h2>Why It Matters</h2>
+<p>The connection between small samples and overconfident claims is not hypothetical. It runs through a large part of what gets reported as established science.</p>
+<p>The problem has a name in the literature: Ioannidis's paper from 2005, "Why Most Published Research Findings Are False," made the argument that when studies are small, when effect sizes are small, and when many hypotheses are being tested, the majority of findings in the literature will be false positives regardless of whether any individual researcher behaved dishonestly. The mathematics of this are uncomfortable but sound. A field in which many small studies are run on speculative hypotheses will produce many false positives, and those false positives will be preferentially published because they crossed the significance threshold. The true nulls will sit in file drawers.</p>
+<p>This matters beyond academic journals. Press releases routinely cite single small studies. Science journalism routinely passes those citations into headlines. Policy is sometimes made on the basis of findings that a single adequately powered replication attempt would overturn. A drug that shows an effect in a study of 40 patients may behave very differently in a study of 4,000, because the larger study has the power to find the true effect size rather than the lucky overestimate that happened to appear in the small sample.</p>
+<p>The N=12 paper, where N is the number of participants, is not a caricature. Animal studies routinely use sample sizes of 8 to 12. Pilot studies are published as if they were definitive. Nutritional epidemiology is full of studies where the sample ran into the hundreds rather than the thousands needed to detect the modest effects of specific dietary components. The finding that chocolate prevents heart disease or that standing desks increase productivity may be based on a sample size so small that the result could easily have occurred by chance.</p>
+<h2>How to Spot It</h2>
+<p>In 1998, Andrew Wakefield published a paper in The Lancet claiming a link between the MMR vaccine and autism. The study, which eventually led to the removal of Wakefield's medical licence and the paper's retraction, had twelve participants. Twelve children. From this sample of twelve, Wakefield drew conclusions that shaped public health decisions globally for over a decade and contributed to a significant and measurable decline in vaccination rates in the UK, the US, and elsewhere.</p>
+<p>There were other problems with the Wakefield study beyond sample size: the data was manipulated, the sample was selectively recruited, and the research was funded by lawyers seeking to sue vaccine manufacturers. But the sample size alone should have been a signal. Twelve participants cannot establish a causal link between a medical intervention and a developmental condition. The variation within any twelve children is enormous. The chance of misleading results from such a sample is substantial even without any deliberate manipulation.</p>
+<p>The tell here is the same in most small-sample claims: a strong, clean finding from a small N. In a genuinely random world, strong, clean findings from large samples do occur and are meaningful. Strong, clean findings from small samples are suspicious precisely because small samples are more likely to produce extreme results by chance. If a study of 15 people finds that a supplement reduces anxiety by 40 percent with a p-value of 0.03, you should not be reassured by the p-value. You should ask whether a study of 150, or 1,500, would show the same effect. It often does not.</p>
+<p>The second tell is the absence of a power calculation. Well-designed studies, especially pre-registered ones, include an explicit calculation of the sample size required to detect the expected effect at adequate power. When a study reports no power calculation, or when the sample size appears to have been determined by convenience rather than design, the finding is less trustworthy. You cannot run a study, see what you find, and then claim that your sample was large enough to find it. That reasoning is circular.</p>
+<h2>Your Challenge</h2>
+<p>A nutritional researcher publishes a study in a specialist journal. The title reads: "High-flavanol cocoa consumption associated with significant improvement in working memory in adults aged 50 to 69." The study ran for eight weeks. Participants were randomly assigned to consume either a high-flavanol drink or a placebo drink daily. The results showed a statistically significant improvement in memory test scores in the treatment group. The sample size: 23 participants.</p>
+<p>Before you decide whether to change your diet, write down the questions you would ask. What effect size would you need to see for this to matter practically? How many participants would a well-powered study need to reliably detect an effect of that size? What is the probability that a study of 23 people, in which the researchers are looking for an effect, will cross the significance threshold even if the true effect is zero? What would you need to see in a replication before you believed this?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>Bargh, J.A., Chen, M., and Burrows, L., "Automaticity of social behavior: Direct effects of trait construct and stereotype activation on action," Journal of Personality and Social Psychology, 71(2), 230–244 (1996). The original elderly-priming study. URL: https://doi.org/10.1037/0022-3514.71.2.230</p>
+<p>Doyen, S., Klein, O., Pichon, C.L., and Cleeremans, A., "Behavioral Priming: It's All in the Mind, but Whose Mind?" PLOS ONE, 7(1), e29081 (2012). The Edinburgh replication failure. URL: https://doi.org/10.1371/journal.pone.0029081</p>
+<p>Ioannidis, J.P.A., "Why Most Published Research Findings Are False," PLOS Medicine, 2(8), e124 (2005). URL: https://doi.org/10.1371/journal.pmed.0020124</p>
+<p>Button, K.S., Ioannidis, J.P.A., Mokrysz, C., et al., "Power failure: why small sample size undermines the reliability of neuroscience," Nature Reviews Neuroscience, 14, 365–376 (2013). Provides the statistical framework for understanding how underpowered studies produce inflated and unreliable effect size estimates. URL: https://doi.org/10.1038/nrn3475</p>
+<p>Wakefield, A.J., et al., "Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children," The Lancet, 351(9103), 637–641 (1998). Retracted February 2010. The retraction notice: URL: https://doi.org/10.1016/S0140-6736(10)60175-4</p>
+<p>Deer, B., "How the case against the MMR vaccine was fixed," BMJ, 342, c5347 (2011). Investigative reporting establishing fabrication in the Wakefield dataset. URL: https://doi.org/10.1136/bmj.c5347</p>
+<p>Gallup, G.H. and Rae, S.F., The Pulse of Democracy (1940). Documents the 1936 Literary Digest failure alongside the Gallup success and explains the methodological difference. Reference cited for context from Unit 2.4.</p>
+<p>Gelman, A. and Loken, E., "The statistical crisis in science," American Scientist, 102(6), 460–465 (2014). Introduces the "garden of forking paths" concept and the winner's curse in small-sample research. URL: https://doi.org/10.1511/2014.111.460</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/2-5">https://everydaystatistics.com/unit/2-5</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overconfidence and Calibration — Everyday Statistics Day 42</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 42 of 44 &nbsp;·&nbsp; Unit 4.7 &nbsp;·&nbsp; 95% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:95%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Overconfidence is pervasive, consistent across domains, and worse in experts than in novices on questions outside their direct expertise. Calibration — having your stated confidence match your actual accuracy — is trainable. Today you see what good calibration looks like, why it matters, and the specific techniques that improve it.</p>
+  </div>
+
+  <div class="content">
+<h2>The Hook</h2>
+<p>In 1987, the Channel Tunnel between England and France was put to private tender. The winning consortium estimated the project would cost £2.6 billion and be complete by 1993. The tunnel opened in 1994. The final construction cost was approximately £4.65 billion in 1985 prices, roughly 80 per cent over the original estimate. Including financing costs, the overrun was closer to 140 per cent.</p>
+<p>The Channel Tunnel was not a particularly unusual project. Around the same time, the Scottish Parliament building was estimated at £40 million. It opened in 2004 at a final cost of approximately £414 million. The NHS National Programme for IT, launched in 2002 with an initial budget of around £6 billion, was dismantled in 2011 having spent somewhere between £10 billion and £20 billion depending on what you count, delivering only a fraction of what was promised. Closer to home, Edinburgh's tram line was budgeted at £545 million for a route from the airport to Newhaven. It opened in 2014 at a cost of around £776 million, three years late, with large sections of the original plan abandoned. A subsequent inquiry found that the cost had been underestimated by at least £231 million from the start.</p>
+<p>These are not stories of fraud, or incompetence, or unusual bad luck. They are what happens when organisations plan using the inside view: focusing on the specifics of the task in front of them, imagining the steps, picturing the best-case trajectory, and quietly suppressing the question of what projects like this one have actually cost in the past. The answer to that question, when you go and look for it, is almost always much worse than the estimate you just produced.</p>
+<hr>
+<h2>The Concept</h2>
+<p>Overconfidence, as psychologists use the term, is not arrogance. It is a systematic mismatch between how sure you are about something and how often you turn out to be right. The most precise way to measure it is through calibration testing.</p>
+<p>Calibration, in this context, means the correspondence between your stated confidence and your actual accuracy. A perfectly calibrated person who says "I am 90 per cent confident" about a set of predictions would be correct about 90 per cent of the time. When researchers actually run this test, the results are striking. People who claim to be 90 per cent confident are typically right somewhere between 70 and 75 per cent of the time. Their subjective sense of certainty consistently outstrips their actual hit rate. They are drawing their confidence intervals too narrowly. They think their knowledge is more precise than it is.</p>
+<p>The planning fallacy is one particular form overconfidence takes. It was named by Daniel Kahneman and Amos Tversky in 1979. The pattern is this: when asked to estimate how long a project will take, how much it will cost, or how difficult it will be, people routinely produce estimates that assume things go roughly to plan. They imagine the steps. They picture a plausible sequence of events. What they do not do is ask: what fraction of projects like this one have come in on time and on budget? The first approach is what Kahneman called the inside view. The second is the outside view.</p>
+<p>The inside view feels like the responsible approach. You know this particular project. You know the team, the plan, the specific challenges. Why would you rely on blunt historical statistics about vaguely similar projects when you have this detailed picture of your own?</p>
+<p>The answer is that the inside view is the thing that produces the systematic underestimate, every single time. The historical statistics about similar projects are more accurate precisely because they include the full range of things that go wrong: the supply chain disruptions, the planning disputes, the scope creep, the design changes, the industrial action, the things nobody imagined. The inside view excludes all of this because the things that will go wrong have not happened yet and so are not part of the picture.</p>
+<p>The corrective that Kahneman and Daniel Lovallo formalised is called reference class forecasting. Instead of starting with your own plan and adjusting for risk, you start by identifying a reference class: a set of projects that are genuinely comparable to yours in type, scale, and context. You then use the actual historical distribution of outcomes for that class as your baseline estimate, and adjust from there. It is a more uncomfortable procedure, because the historical data for almost any category of ambitious project is quite depressing. But it is substantially more accurate.</p>
+<p>Expert overconfidence is worth treating separately, because there is a tempting assumption that expertise corrects for it. It does not, or at least not reliably. Philip Tetlock, a psychologist at the University of Pennsylvania, spent two decades systematically studying the forecasting accuracy of political scientists, economists, journalists, and other experts who regularly make confident public predictions about events. The results of his Expert Political Judgment study, published in 2005, were not flattering. Expert forecasters performed modestly better than random chance on near-term predictions, but their accuracy collapsed on anything more than a year or two out, approaching what Tetlock described as the level you would expect from a dart-throwing chimpanzee. More troublingly, the experts who were most confident, most articulate, and most prominent in their public commentary were among the least accurate. They had a coherent, forceful worldview, which made them compelling to listen to and systematically overcommitted to a particular way of seeing events.</p>
+<p>Tetlock's later work, through the Good Judgment Project in collaboration with IARPA, identified a small group of people, around 2 per cent of the volunteers in the study, who consistently outperformed trained intelligence analysts by about 30 per cent. He called them superforecasters. What distinguished them was not domain expertise. It was a set of epistemic habits: holding beliefs as probability estimates rather than as facts, updating those estimates readily when new evidence arrived, actively seeking out information that might disconfirm what they already thought, and thinking in reference classes rather than in unique cases. They were, in short, people who had independently converged on the outside view as their default mode of reasoning.</p>
+<hr>
+<h2>Why It Matters</h2>
+<p>The cost in money from the planning fallacy alone is staggering. Bent Flyvbjerg, an Oxford economist who has spent decades studying large infrastructure projects, found that cost overruns of 50 per cent or more are the norm rather than the exception across bridges, tunnels, railways, IT systems, and public buildings. He estimated that roughly nine out of ten large infrastructure projects come in over budget. The world builds approximately 200 large infrastructure projects per year. The aggregate cost of systematic underestimation across all of them, year after year, is in the hundreds of billions of dollars.</p>
+<p>In project management, the consequences are both financial and structural. A project that was sold on a £10 million budget and delivers at £25 million does not just cost £15 million more. It often crowds out other projects that were never funded because the money was spoken for, generates pressure to cut scope or quality as the overrun mounts, and erodes trust in the organisation that commissioned it.</p>
+<p>Political forecasting matters because a culture in which confident experts make confident wrong predictions with no accountability corrodes the public's ability to reason from evidence at all. If no one is keeping score, then confidence becomes indistinguishable from accuracy, and the loudest voice wins.</p>
+<p>In medicine, overconfidence among clinicians has direct consequences for patients. Studies of diagnostic accuracy have found that clinicians' stated confidence in their diagnoses exceeds their actual accuracy in predictable ways. This matters most in novel or ambiguous presentations, which are precisely the cases where confident delivery of a wrong diagnosis does the most harm.</p>
+<hr>
+<h2>How to Spot It</h2>
+<p>The tell for the planning fallacy is the baseline question that was never asked. When an organisation presents a project budget, ask: what is the historical track record of projects of this type, at this scale, in this sector? If the answer is not in the proposal, that is informative. Most project proposals are not designed to include this information, because this information is not flattering.</p>
+<p>The Scottish Parliament building is one of the most thoroughly documented examples. The building was approved in June 1999. The initial estimate of £40 million had already crept to £109 million by the time the bill was passed. By 2000, the estimate was revised to £195 million. By 2001, £241 million. By 2002, £294 million. By 2003, £375 million. The final cost when the building opened in 2004 was £414 million. The Holyrood inquiry, chaired by Lord Fraser of Carmyllie, documented the upward revisions and described the cost management as having been handled with "no proper control." But the core problem was not inadequate project management. The original £40 million figure was a guess untethered from any historical reference class of comparable projects. It was, from the start, an inside view estimate. The tell was there in 1999, if anyone had gone looking for the comparison class and found the answer.</p>
+<hr>
+<h2>Your Challenge</h2>
+<p>Before you read the next unit in this curriculum, estimate how long it will take you.</p>
+<p>Do not look at it first. Based on your experience of the units so far, write down a number in minutes. Then sit with that number for a moment and ask yourself: am I estimating this based on how I imagine it going, or based on how the previous units have actually gone? If you have kept any informal track of how long units have actually taken, use that. If you have not, notice that you are working entirely from the inside view.</p>
+<p>Once you have read the next unit, check your estimate against reality. Note the gap and its direction.</p>
+<p>Then add 50 per cent to your original estimate, and ask whether the result feels uncomfortably long, implausibly long, or about right. The discomfort, if it is there, is worth examining.</p>
+<hr>
+<h2>References</h2>
+<ol>
+<li>Flyvbjerg B, Holm MS, Buhl S. Underestimating costs in public works projects: Error or lie? <em>Journal of the American Planning Association.</em> 2002;68(3):279–295. The foundational paper documenting systematic cost overruns in large infrastructure projects across 20 nations.</li>
+</ol>
+<ol>
+<li>Kahneman D, Tversky A. Intuitive prediction: Biases and corrective procedures. <em>TIMS Studies in Management Science.</em> 1979;12:313–327. The paper naming and defining the planning fallacy.</li>
+</ol>
+<ol>
+<li>Lovallo D, Kahneman D. Delusions of success: How optimism undermines executives' decisions. <em>Harvard Business Review.</em> July 2003. The management-focused exposition of inside view vs outside view and reference class forecasting.</li>
+</ol>
+<ol>
+<li>Kahneman D. <em>Thinking, Fast and Slow.</em> New York: Farrar, Straus and Giroux; 2011. Chapters 22–24 cover the planning fallacy, inside vs outside view, and reference class forecasting in full depth.</li>
+</ol>
+<ol>
+<li>Tetlock PE. <em>Expert Political Judgment: How Good Is It? How Can We Know?</em> Princeton: Princeton University Press; 2005. The twenty-year study tracking expert political forecasters, documenting the systematic overconfidence of specialists and the near-random accuracy of long-range predictions.</li>
+</ol>
+<ol>
+<li>Tetlock PE, Gardner D. <em>Superforecasting: The Art and Science of Prediction.</em> New York: Crown; 2015. The follow-up study documenting the Good Judgment Project and the characteristics of the 2 per cent who consistently outperform trained intelligence analysts.</li>
+</ol>
+<ol>
+<li>Lord Fraser of Carmyllie. <em>The Holyrood Inquiry.</em> Edinburgh: Scottish Parliament; 2004. The official inquiry into the Scottish Parliament building project, documenting the cost escalation from £40 million to £414 million and the management failures that accompanied it.</li>
+</ol>
+<ol>
+<li>National Audit Office. <em>The National Programme for IT in the NHS: An Update on the Delivery of Detailed Care Records Systems.</em> London: TSO; 2011. HC 888. One of the key parliamentary audit documents tracking the NPfIT's costs and contracted deliverables.</li>
+</ol>
+<ol>
+<li>Edinburgh Tram Inquiry. <em>Edinburgh Tram Inquiry Report.</em> Lord Hardie, chair; 2023. The public inquiry documenting the cost underestimation of the Edinburgh trams project and the management failures leading to a £231 million-plus overrun.</li>
+</ol>
+<ol>
+<li>Flyvbjerg B. <em>How Big Things Get Done.</em> London: Macmillan; 2023. A broader synthesis of the infrastructure cost overrun literature, with practical guidance on the outside view and reference class forecasting.</li>
+</ol>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/4-7">https://everydaystatistics.com/unit/4-7</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

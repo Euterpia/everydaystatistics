@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cherry-Picking — Time Periods, Subgroups, and Studies — Everyday Statistics Day 25</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 25 of 44 &nbsp;·&nbsp; Unit 3.2 &nbsp;·&nbsp; 57% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:57%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Cherry-picking doesn't require lying. You can get almost any result you want by choosing which time period to examine, which subgroup to report on, and which of the existing studies to cite. Today's unit makes the mechanics of this visible — so you can spot the invisible denominator every time.</p>
+  </div>
+
+  <div class="content">
+<p>A finance minister stands at a podium and shows a graph. GDP has been rising steadily, he says, and the line on the screen confirms it. What he does not mention is where the graph begins: not at the start of his government's term, not at the last election, but at the precise trough of the recession that preceded him. The recovery that his predecessors were already engineering when they lost office does not appear. The entire upward slope belongs, visually and apparently, to him.</p>
+<p>No number in that graph is invented. The line is accurate. The manipulation is entirely in the choice of where to start.</p>
+<hr>
+<h2>The concept</h2>
+<p>Cherry-picking is the selection of evidence to present a misleading picture. It does not require fabrication. It requires only that someone with access to a large body of data chooses which piece to show you.</p>
+<p>It operates in three main forms, and you should be able to name all three.</p>
+<p><strong>Time period selection</strong> is the most common. Any trend looks different depending on where you start the clock. A company's share price that has fallen 40% over five years might still show a 15% gain over the last six months. A government's job creation record might look strong from the month they took office or weak from the month of the previous peak. There is almost always a start date that flatters the presenter and a start date that does not, and the one you get shown is rarely chosen at random. As the Unit 0.4 graph section established, the visual impression of a chart is set before the reader has processed a single number. A shrewdly chosen start date exploits exactly that.</p>
+<p><strong>Subgroup analysis</strong> is the pharmaceutical industry's preferred version. A clinical trial typically tests whether a treatment works on a defined population. But the raw data contains many subgroups: men and women, different age bands, people with and without complicating conditions, different ethnic groups, patients from different centres. After the trial is done, a researcher or a sponsor with a commercial interest can divide the data however they like and look at each slice separately. If you test enough slices, one of them will show a positive result by chance alone, even if the treatment does nothing overall. This is not a theoretical risk; it is a statistical certainty. If you run twenty subgroup analyses, roughly one will appear significant at the conventional threshold even if the drug is inert.</p>
+<p>The term for the broader problem is the <strong>garden of forking paths</strong>, coined by the statistician Andrew Gelman. The garden refers to all the choices an analyst makes before arriving at a result: which subjects to include, which outcome to measure, which time point to report, which covariates to control for. Each choice is a fork. By the time a result emerges, an enormous number of path combinations have been implicitly tried, even if the analyst was not consciously trying to manufacture a result. The final path presented to you looks like a single, clean analysis. The garden behind it is invisible.</p>
+<p><strong>Study selection</strong> is the same logic applied across an entire body of literature. A pharmaceutical company funding ten trials of a new drug and publishing only the seven that show positive results is not fabricating data. The seven published papers are internally valid. But the picture they create for doctors, regulators, and patients is systematically wrong. This is closely related to publication bias, which gets its full treatment in Unit 3.11. The relevant point here is that cherry-picking studies to cite in a report or presentation is the same manoeuvre as cherry-picking a start date, just with papers instead of months.</p>
+<p>The structural solution to all three forms is <strong>pre-registration</strong>: committing to the analysis plan before seeing the data. A pre-registered trial specifies in advance which subgroups will be analysed, which outcome measure is primary, and how long the follow-up period will be. A pre-registered study cannot be accused of cherry-picking its subgroup after the fact, because the subgroups were declared before data collection began. Pre-registration does not prevent subgroup analyses entirely; it forces researchers to distinguish between analyses they planned and analyses they invented after looking at the data. The planned ones carry evidential weight. The post-hoc ones are, at best, hypotheses worth testing in a fresh study.</p>
+<hr>
+<h2>Why it matters</h2>
+<p>Political performance claims run almost entirely on cherry-picked time periods. The same underlying economic data supports whatever conclusion you set out to reach. Growth since the last recession trough looks like success; growth since the previous peak looks like failure. Unemployment since the government took office can look dramatically different from unemployment since the onset of the global downturn that preceded them. This is not a feature of dishonest governments; it is a feature of all political communication, because the incentive to choose favourable data is structural. No communications team presents the start date that makes their leader look worst.</p>
+<p>In medicine, the costs are literal. The ENHANCE trial, completed in 2006, tested whether ezetimibe added to a statin reduced arterial plaque in patients with familial hypercholesterolaemia. The drug failed its primary endpoint: after two years, the combination did not reduce intima-media thickness of the carotid artery wall compared to the statin alone. Merck and Schering-Plough, the companies behind the drug, delayed releasing these results for approximately eighteen months. During that delay, the drug continued to be prescribed and reimbursed by government health programmes. The delay was not random.</p>
+<p>In both cases, the mechanism is the same. The data exists. The evidence is real. The selection of what to show you is not.</p>
+<hr>
+<h2>How to spot it</h2>
+<p>The best-documented illustration of subgroup cherry-picking in medical history was performed by scientists who were trying to demonstrate the absurdity of the practice.</p>
+<p>In 1988, the ISIS-2 trial published results showing that aspirin given after a heart attack dramatically reduced the risk of dying within the next month, with a p-value so extreme it was effectively indisputable. During peer review, <em>The Lancet</em> asked the authors to break down the results by patient subgroup. The Oxford team considered the request scientifically unsound but decided to comply in an unusual way. They divided the patients by birth sign, using the categories from a newspaper horoscope column.</p>
+<p>The result was exactly what statistics predicts when you run enough subgroup tests. Aspirin appeared not to work for patients born under Libra or Gemini. The overall result, showing massive benefit with p < 0.00001, was meaningless when you looked at those two birth signs specifically. The authors published the zodiac analysis alongside the main result to demonstrate, with conspicuous clarity, what subgroup data-dredging looks like.</p>
+<p>The tell is consistent across all three forms of cherry-picking. Ask one question: <strong>what were the other options?</strong></p>
+<p>For a time period graph, the question is: where else could this graph have started? If you extend the x-axis backwards by two years, does the story change? If the presenter cannot explain why this particular start point was chosen, the choice is not innocent.</p>
+<p>For a subgroup analysis, the question is: was this subgroup specified before the trial ran? If a drug trial reports a benefit in women aged 45 to 55 and you search the original trial registration, that subgroup should appear in the protocol filed before data collection began. If it does not appear there, it was found after the fact, and finding it after the fact means nothing: the data contained many slices and this was the one that worked.</p>
+<p>For study citations, the question is: how many studies exist on this topic, and have the negative ones been cited? A review that cites eight positive studies without mentioning the twelve null results is not a review. It is a selection.</p>
+<p>The pre-registration status of a clinical trial is public information. Trials registered at ClinicalTrials.gov in the US or the ISRCTN registry in the UK show the protocol before data collection. The primary endpoint, the planned subgroups, and the follow-up period are all there. When a paper reports a result that differs from the registered protocol, that divergence is the evidence of a forked path.</p>
+<hr>
+<h2>Your challenge</h2>
+<p>A pharmaceutical company publishes a press release announcing positive results for their new arthritis drug. The headline says the drug "significantly reduced joint inflammation in the most affected patients." Reading further, you find that the overall trial population showed no statistically significant improvement compared to placebo. The company notes that the subgroup of patients with "severe baseline inflammation" did show a significant effect, with p = 0.03.</p>
+<p>The trial enrolled 800 patients. You look up the trial registration and find that the primary endpoint was improvement across the full trial population. The severe baseline inflammation subgroup is not mentioned in the protocol.</p>
+<p>What is the evidential value of the p = 0.03 result? What should you look for before accepting it as evidence that the drug works? And how many patients would you estimate might fall into the "severe baseline inflammation" subgroup, given that describing a subgroup this way tends to work statistically?</p>
+<hr>
+<h2>References</h2>
+<p><strong>ISIS-2 zodiac subgroup analysis:</strong> ISIS-2 Collaborative Group. "Randomised trial of intravenous streptokinase, oral aspirin, both, or neither among 17,187 cases of suspected acute myocardial infarction." <em>The Lancet</em>, 1988. The zodiac subgroup analysis is discussed in: Sleight P. "Debate: Subgroup analyses in clinical trials: fun to look at, but don't believe them." <em>Current Controlled Trials in Cardiovascular Medicine</em>, 2000; 1(1): 25–27. See also: PMC59592.</p>
+<p><strong>Garden of forking paths:</strong> Gelman A and Loken E. "The garden of forking paths: Why multiple comparisons can be a problem, even when there is no 'fishing expedition' or 'p-hacking' and the research hypothesis was posited ahead of time." Columbia University Statistics Department working paper, 2013. Available at: sites.stat.columbia.edu/gelman/research/unpublished/p_hacking.pdf</p>
+<p><strong>ENHANCE trial and publication delay:</strong> Kastelein JJP et al. "Simvastatin with or without Ezetimibe in Familial Hypercholesterolemia." <em>New England Journal of Medicine</em>, 2008; 358: 1431–1443. On the delay: Drazen JM et al. "Ezetimibe and the Regression of Atherosclerosis." <em>NEJM</em>, 2008. The eighteen-month delay and its consequences are documented in congressional testimony and covered in: PMC4215424.</p>
+<p><strong>Time period cherry-picking in economics:</strong> Economics Help. "Cherry picking of data." economicshelp.org. Discusses the UK government economic record example and the effect of start-date selection on apparent GDP performance.</p>
+<p><strong>Pre-registration:</strong> ClinicalTrials.gov (US registry): clinicaltrials.gov. ISRCTN Registry (UK/international): isrctn.com.</p>
+<p><strong>Cherry-picking in pharmaceutical subgroup reporting:</strong> Vedula SS et al. "Outcome Reporting in Industry-Sponsored Trials of Gabapentin for Off-Label Use." <em>New England Journal of Medicine</em>, 2009; 361: 1963–1971. Covers systematic divergence between registered outcomes and published results.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/3-2">https://everydaystatistics.com/unit/3-2</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

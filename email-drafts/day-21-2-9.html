@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypothesis Testing: The Full Framework — Everyday Statistics Day 21</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 21 of 44 &nbsp;·&nbsp; Unit 2.9 &nbsp;·&nbsp; 48% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:48%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Today we assemble the full null-hypothesis significance testing procedure: confidence intervals, p-values, error types, one-tailed versus two-tailed tests, and multiple comparisons. The multiple comparisons problem alone accounts for a significant fraction of the replication crisis — and it requires no fraud to operate.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>Here is a passage from the methods section of a real paper. The kind of thing you would encounter in a health journal, a psychology study, or an economics working paper:</p>
+<p>"Independent samples t-tests were performed to assess differences in cortisol response between the intervention and control groups (t(38) = 2.14, p = 0.038, two-tailed). Secondary outcomes were assessed using one-way ANOVA with Bonferroni correction for multiple comparisons. Effect sizes are reported as Cohen's d."</p>
+<p>To a reader without training, this paragraph is a wall. It contains six distinct technical terms, each doing specific work, and if you do not know what they mean you cannot evaluate whether the finding is real. You have to trust the authors. That is exactly the position the authors would prefer you to be in.</p>
+<p>By the end of this unit, you will be able to decode every piece of that passage. More importantly, you will be able to spot what is missing from it, and why what is missing matters.</p>
+<h2>The Concept</h2>
+<p>Null-hypothesis significance testing, or NHST, is the dominant procedure in published science. It is the machinery behind most of the p-values and significance claims you have encountered in Units 2.7 and 2.8. What those units introduced separately, this one assembles into a single procedure. Here is how it works, step by step.</p>
+<p><strong>Step one: state the hypotheses.</strong> Every NHST starts with two competing claims. The null hypothesis, written H₀, is the default position being tested. It typically states that there is no effect, no difference, no relationship. The alternative hypothesis, written H₁ or Hₐ, states that there is an effect. In the cortisol example above, the null hypothesis would be: cortisol response is the same in the intervention and control groups. The alternative hypothesis would be: cortisol response differs between the groups.</p>
+<p>This framing matters. You are not testing whether your hypothesis is true. You are testing whether the data is inconsistent with the null. The procedure never confirms your theory; it either fails to disprove the null, or it finds the data unlikely enough under the null to reject it.</p>
+<p><strong>Step two: choose a test.</strong> Different questions about different kinds of data require different test statistics. A t-test (specifically the independent samples version named in the example above) compares the means of two groups when the data is roughly normally distributed. A chi-squared test asks whether the distribution of a categorical variable is what you would expect under the null. An ANOVA, which stands for analysis of variance, compares means across three or more groups simultaneously. Each of these produces a number, the test statistic, that summarises how far your data sits from what the null hypothesis would predict. The choice of test is a commitment. You make it before looking at the results, or you should.</p>
+<p><strong>Step three: collect data.</strong> The sample is drawn. The data is what it is. This step sounds trivial but contains the most important protections in the whole procedure: random assignment, pre-registration of the analysis plan, and blinding. Cut corners here and everything downstream is compromised.</p>
+<p><strong>Step four: compute the test statistic.</strong> The t-statistic in the example, t(38) = 2.14, is a ratio. The numerator is the difference between the two group means. The denominator is a measure of how much variability there is within each group, adjusted for sample size. A large t-statistic means the difference between groups is large relative to the noise in the data. The number 38 in parentheses is the degrees of freedom, explained below.</p>
+<p><strong>Step five: compare to the distribution.</strong> Under the null hypothesis, the test statistic would follow a known mathematical distribution: the t-distribution, or the chi-squared distribution, or the F-distribution, depending on the test. You ask: if the null hypothesis were true, how often would a test statistic this large or larger arise by chance? That probability is the p-value. In the example, p = 0.038. This means that if there were truly no difference in cortisol response between the groups, you would get a t-statistic of 2.14 or larger in roughly 3.8 percent of samples drawn from that population.</p>
+<p><strong>Step six: conclude.</strong> If p is below the conventional threshold of 0.05, the result is declared statistically significant and the null hypothesis is rejected. If p is above the threshold, the result is not significant and the null is not rejected. Note the wording: not rejected, not confirmed. Failing to reject the null does not mean the null is true. It means the data did not provide sufficient evidence to abandon it.</p>
+<p><strong>One-tailed versus two-tailed tests.</strong> The example specifies a two-tailed test. This is a choice about the shape of the question. A two-tailed test asks: is the effect in either direction, larger or smaller, unusually large? A one-tailed test asks only: is the effect in one specific direction unusually large? Two-tailed tests are the default and the more honest approach when you do not have a strong theoretical reason to predict the direction of an effect in advance. One-tailed tests have a lower threshold for significance, because they commit all of the 5 percent allowance to one side of the distribution rather than splitting it across both. That makes them more likely to find significance, which is why researchers occasionally choose them after seeing which way the data pointed. Choosing the direction of the test after looking at the results is one of the softer forms of p-hacking covered in Unit 3.10.</p>
+<p><strong>Degrees of freedom.</strong> The t(38) in the example contains a number that confuses many readers. Degrees of freedom is the number of values in a calculation that are free to vary once you know certain constraints. The intuitive version: if you have four numbers that must sum to ten, and you know the first three, the fourth is completely determined. You have three degrees of freedom, not four. In a two-sample t-test with two groups of twenty participants each, the degrees of freedom equals the total number of participants minus two: 40 minus 2 equals 38. The reason it matters is that the exact shape of the t-distribution depends on degrees of freedom. Small samples produce wider, flatter distributions, which means you need a larger test statistic to achieve the same p-value. With more data, the distribution narrows, and the same effect size becomes easier to detect. The degrees of freedom is, in practical terms, a measure of how much information you have.</p>
+<p><strong>The relationship between confidence intervals and hypothesis tests.</strong> These are not two separate procedures; they are two ways of presenting the same underlying calculation. A 95 percent confidence interval contains exactly the set of values for which a two-tailed test at the 5 percent level would fail to reject the null. If the interval excludes zero (for a difference) or one (for a ratio), the test is significant at p < 0.05. This connection is important because confidence intervals show you the uncertainty around an estimate, while a bare p-value discards all of that information and gives you only a yes-or-no answer. The confidence interval is almost always more informative.</p>
+<p><strong>Multiple comparisons.</strong> This is where the framework becomes treacherous, and where a great deal of published science goes wrong. The false positive rate of 5 percent is not 5 percent per study. It is 5 percent per test. If you run twenty independent tests, each at the 5 percent threshold, the probability that at least one of them produces a false positive result by chance alone is not 5 percent. It is roughly 64 percent. This is not a researcher error; it is a mathematical certainty. Testing many hypotheses simultaneously inflates the rate of false discoveries, even if every single test is conducted perfectly and reported honestly.</p>
+<p>The Bonferroni correction mentioned in the example is one response to this problem. It divides the significance threshold by the number of tests being run. If you run twenty tests, the threshold for each individual test becomes 0.05 divided by 20, which is 0.0025. This controls the overall false positive rate at 5 percent across all twenty tests combined. The correction is conservative, meaning it trades an increase in false negatives for a decrease in false positives, and it has competitors, but the underlying principle is sound: the threshold must account for the number of tests being run.</p>
+<h2>Why It Matters</h2>
+<p>The multiple comparisons problem is the structural crack in the scientific literature, and it causes damage at scale.</p>
+<p>When a study tests a single pre-specified hypothesis, the 5 percent threshold is what it claims to be. But the practice of testing many outcomes, many subgroups, and many secondary hypotheses, and then reporting the ones that achieved significance, systematically corrupts the threshold. Each unreported test is a hidden coin flip. The reported result looks like evidence when it is partly noise.</p>
+<p>The particle physics community understood this early and handled it correctly. When searching for a new particle, physicists look across enormous ranges of energies and particle types. Any given energy level might show an apparent signal by chance. The field adopted a convention of requiring 5-sigma significance, meaning the result would be expected by chance only once in 3.5 million trials, before announcing a discovery. This is the "look elsewhere effect": the more places you look, the more likely you are to find something that looks significant but is not. Physicists build this inflation into their threshold. Most fields do not.</p>
+<p>The misapplication of the framework goes beyond multiple comparisons. The binary threshold of p = 0.05 has acquired a significance it was never meant to carry. Ronald Fisher, who introduced the p-value, described it as an informal index, one tool among several, not a bright line between discovery and non-discovery. He never intended 0.049 to mean "published" and 0.051 to mean "failed." The practice of treating the threshold as a pass-fail cutoff produces perverse incentives: data collection stops when significance is achieved, analyses are tweaked until significance appears, and results that would be informative but non-significant go unreported.</p>
+<p>NHST also says nothing about whether the null hypothesis is actually likely to be true. A p-value of 0.03 tells you only that data this extreme would appear 3 percent of the time if the null were true. It tells you nothing about the probability that the null is true in the first place. If you are testing a hypothesis with very low prior plausibility, a p-value of 0.03 should update your belief much less than if you are testing a hypothesis with strong prior theoretical support. This is the limitation that Bayesian approaches address, and the topic of Unit 2.10.</p>
+<h2>How to Spot It</h2>
+<p>The canonical case of multiple comparisons misuse in the public record is the story of Diederik Stapel, a Dutch social psychologist who published dozens of papers reporting clean, statistically significant results across a range of social psychology experiments. His results were consistent to a degree that itself became a warning sign: real data is messy. Real p-values cluster near 0.05 with noise around them. Stapel's p-values were suspiciously clean, suspiciously significant, suspiciously consistent across variations. In 2011, three junior researchers raised concerns. An investigation found he had fabricated data entirely, sometimes inventing complete datasets from scratch. He was stripped of his PhD and his position, and 58 papers were eventually retracted.</p>
+<p>But the tell for multiple comparisons abuse does not require fraud. The tell is in the paper's methods section, and it is this: were the hypotheses, tests, and outcomes specified before the data was collected, and has the analysis been corrected for the number of tests run?</p>
+<p>Look for the absence of pre-registration. Look for secondary outcomes that appear significant while the primary outcome did not reach threshold. Look for subgroup analyses that are described as exploratory in the limitations section but headlined in the abstract. Look for the number of variables tested relative to the number of findings reported: if a study measured fifteen outcomes and reports one significant result without correction, the probability that the finding is a false positive is very high. Look for whether a Bonferroni correction or equivalent was applied, and if not, whether the authors justify that choice.</p>
+<p>The paper in the opening hook mentions Bonferroni correction explicitly. That is a good sign. What is missing is any mention of how many secondary outcomes were tested. A correction dividing by three when there were actually fifteen tests would understate the multiple comparisons problem. The honest reader of a methods section does not just look for what is there. They look for what would need to be there for the analysis to be trustworthy, and ask whether it is present.</p>
+<h2>Your Challenge</h2>
+<p>A pharmaceutical company funds a study testing a new supplement for cognitive performance. The researchers administer a battery of twenty cognitive tests to two groups: supplement and placebo. The results come back. Nineteen of the twenty tests show no statistically significant difference between the groups. One test, measuring verbal memory recall at 48 hours, achieves p = 0.04.</p>
+<p>The company prepares a press release: "New study finds significant improvement in verbal memory with daily supplement use."</p>
+<p>No correction for multiple comparisons has been applied. No pre-registration was filed before the study began.</p>
+<p>What is the actual probability that this result is a false positive? What would the p-value need to be, after Bonferroni correction, to maintain an overall false positive rate of 5 percent across all twenty tests? What additional information would you need before treating this finding as genuine evidence?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>The cortisol t-test example is a constructed illustrative case modelled on common methods section language in psychology and clinical research. The structure is generic.</p>
+<p>Ronald Fisher on the p-value as informal index, not a bright line: Fisher, R.A., Statistical Methods for Research Workers (Oliver and Boyd, 1925). Fisher's intentions are discussed in: Hubbard, R. and Bayarri, M.J., "Confusion over measures of evidence (p's) versus errors (alpha's) in classical statistical testing," American Statistician, 57 (2003), 171–177.</p>
+<p>Multiple comparisons inflation and the Bonferroni correction: Miller, R.G., Simultaneous Statistical Inference (Springer, 1981). For a readable treatment: Gelman, A. and Loken, E., "The statistical crisis in science," American Scientist, 102 (2014), 460–465. URL: https://www.americanscientist.org/article/the-statistical-crisis-in-science</p>
+<p>The look elsewhere effect in particle physics: CERN, "The look-elsewhere effect explained" (2011). URL: https://home.cern/news/series/lhc-physics-results/look-elsewhere-effect-explained. Gross, E. and Vitells, O., "Trial factors for the look elsewhere effect in high energy physics," European Physical Journal C, 70 (2010), 525–530. URL: https://link.springer.com/article/10.1140/epjc/s10052-010-1470-8</p>
+<p>The five-sigma standard in particle physics and the Higgs boson announcement: CERN press release, "CERN experiments observe particle consistent with long-sought Higgs boson" (4 July 2012). URL: https://press.cern/news/press-release/cern/cern-experiments-observe-particle-consistent-long-sought-higgs-boson</p>
+<p>Diederik Stapel fraud case: Levelt Committee, Noort Committee, Drenth Committee, "Flawed science: the fraudulent research practices of social psychologist Diederik Stapel" (November 2012). URL: https://pubman.mpdl.mpg.de/pubman/item/item<em>1569964/component/file</em>1569966/Stapel<em>Investigation</em>Final_report.pdf. Callaway, E., "Report finds massive fraud at Dutch universities," Nature (November 2011). URL: https://www.nature.com/articles/479015a</p>
+<p>Degrees of freedom, intuitive treatment: Frost, J., "Degrees of Freedom in Statistics," Statistics By Jim. URL: https://statisticsbyjim.com/hypothesis-testing/degrees-freedom-statistics/</p>
+<p>Relationship between confidence intervals and hypothesis tests: Cumming, G. and Finch, S., "Inference by eye: confidence intervals and how to read pictures of data," American Psychologist, 60 (2005), 170–180.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/2-9">https://everydaystatistics.com/unit/2-9</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P-Values: The Most Abused Number in Science — Everyday Statistics Day 19</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 19 of 44 &nbsp;·&nbsp; Unit 2.7 &nbsp;·&nbsp; 43% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:43%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>The p-value is the most cited and most misunderstood number in public science. Almost everyone who uses it is using it wrong — including many scientists who publish with it. Today you learn what it actually means, why the 0.05 threshold is completely arbitrary, and why a result can be both statistically significant and completely worthless.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>"Scientists find new drug significantly cuts risk of disease X." You have seen this headline. You probably interpreted it to mean that the drug works, that the evidence is strong, and that the result is unlikely to be a fluke. Each of those interpretations is understandable. Each is wrong.</p>
+<p>The word "significantly" in that sentence is doing almost no work. It does not mean the effect is large. It does not mean the drug is worth taking. It does not even mean the result is likely to hold up if the study were run again. It means one specific, narrow, technical thing, and that thing is far weaker than the word suggests.</p>
+<p>This is not a minor confusion. It is a systematic misunderstanding that is widespread among journalists, policymakers, and a significant proportion of practising scientists. Understanding what the p-value actually says, and what it does not, is one of the most useful acts of statistical self-defence you can perform.</p>
+<h2>The Concept</h2>
+<p>To understand the p-value, you first need to understand what it is measuring against. Every statistical test starts with a <strong>null hypothesis</strong>: the default assumption that nothing interesting is happening. In a drug trial, the null hypothesis is that the drug has no effect. In a study of two groups, the null hypothesis is that there is no difference between them. The null hypothesis is not chosen because anyone believes it. It is chosen because it gives a precise starting point for calculation. It is the assumption you are trying to generate evidence against.</p>
+<p>Now suppose you run the trial and observe a difference between the treated group and the untreated group. The question is: how surprising is that difference, assuming the null hypothesis is actually true? The p-value is precisely the answer to that question.</p>
+<p>The formal definition: <strong>the p-value is the probability of observing data at least as extreme as what you observed, if the null hypothesis were true.</strong> That is a long sentence, and every word matters.</p>
+<p>Here is what the p-value is not. It is not the probability that the null hypothesis is true. It is not the probability that your result is due to chance. It is not the probability that a future study will find the same result. These are the things most people think it means. They are all wrong. The p-value tells you nothing directly about the probability of any hypothesis being true or false. It tells you only how surprising your data would be in a world where the null hypothesis holds.</p>
+<p>If p = 0.05, it means: if the null hypothesis were true, you would see data this extreme or more extreme 5 percent of the time by chance alone. That is the full content of the number. Nothing more.</p>
+<p><strong>The 0.05 threshold</strong> is the conventional line between "statistically significant" and "not statistically significant." Cross below it and your result gets the word "significant." Stay above it and your result is dismissed, often unpublished, often forgotten. This threshold has enormous power over what gets into journals and what gets cited in newspapers.</p>
+<p>It was set by Ronald Fisher in his 1925 textbook <em>Statistical Methods for Research Workers</em>. His reasoning was explicitly practical rather than principled: "It is convenient to take this point as a limit in judging whether a deviation is to be considered significant or not." Convenient. Not theoretically justified. Not derived from any deeper principle. Fisher himself warned that no fixed threshold should replace scientific judgement. He was ignored. The 0.05 number became canonical, spread across every scientific discipline, and is now treated as if it were a law of nature rather than a pedagogical convenience from a century ago.</p>
+<p>One consequence is the absurdity of the boundary effect. A result with p = 0.049 is "statistically significant." A result with p = 0.051 is not. These two numbers are effectively indistinguishable, reflecting the same quantity of evidence to any honest analyst. But on one side of 0.05 lies publication, headlines, and drug approvals. On the other side lies the file drawer. The binary treatment of a continuous quantity produces systematic distortions in the scientific literature, and this is not a theoretical concern. It is observable in published data, which shows a suspicious spike in results just below 0.05 that is too dense to be coincidental.</p>
+<p><strong>Statistical significance and practical significance are not the same thing.</strong> This distinction is, arguably, the single most important thing in this unit.</p>
+<p>Statistical significance tells you whether an effect is distinguishable from noise. Practical significance tells you whether the effect is large enough to matter. With a large enough sample, you can achieve statistical significance for an effect so small it has no bearing on any real-world decision.</p>
+<p><strong>Effect size</strong> is the concept that captures practical significance. An effect size is simply a measure of how large the observed difference actually is, expressed in meaningful units. A drug may significantly lower blood pressure, but what matters is whether it lowers it by 0.5 mmHg or by 15 mmHg. The p-value tells you whether the effect is detectable. The effect size tells you whether it is worth caring about. You need both numbers. Almost all press coverage gives you only one.</p>
+<h2>Why It Matters</h2>
+<p>Consider what happens near the threshold. A pharmaceutical company runs a clinical trial with 50,000 participants. The drug produces a statistically significant reduction in the outcome, with p = 0.03. The result clears the standard bar for approval. What the press release does not highlight is the effect size: the drug reduces the probability of the outcome by 0.2 percentage points in absolute terms. At the population level, this sounds like a lot. For any individual patient, it is marginal. The NNT, number needed to treat, is 500: five hundred people must take the drug for one person to benefit. With a large enough trial, a real but tiny effect will always produce a small p-value. The p-value cannot warn you that the effect is too small to be clinically useful.</p>
+<p>Now consider the reverse. A small trial of 30 patients finds a large and medically meaningful effect, but with p = 0.07. The result falls above the threshold. It will not be published in a major journal. It may not be published at all. The drug may be abandoned. The p-value cannot tell you that the effect is real but that the trial was too small to detect it reliably.</p>
+<p>Both errors follow directly from treating the p-value as the single gate through which scientific findings must pass. The threshold was never designed to do this job. It was a rule of thumb for a single researcher deciding whether to pursue a line of inquiry further.</p>
+<h2>How to Spot It</h2>
+<p>The most instructive documented case is a 2007 phase III trial of erlotinib plus gemcitabine for advanced pancreatic cancer, published in the <em>Journal of Clinical Oncology</em> by Moore et al. The trial enrolled 569 patients and found that overall survival was "significantly prolonged" in the combination treatment arm, with a p-value of 0.038. The result was published, reported, and eventually contributed to a regulatory approval.</p>
+<p>The effect size: median survival in the erlotinib arm was 6.24 months. Median survival in the control arm was 5.91 months. The statistically significant benefit was 0.33 months, approximately ten days.</p>
+<p>The tell is the absence of effect size reporting in the headline claim. When you read "significantly prolonged survival" in a cancer study, your job is to ask immediately: prolonged by how much, in absolute terms? A difference of ten days may be worth the toxicity of the treatment for some patients and not others, and different patients will weigh this differently. But that is a conversation that can only be had if the effect size is front and centre. When the word "significant" appears without the size of the effect, you are being given half the information, and the more misleading half.</p>
+<p>The pattern is consistent. "Statistically significant" in a headline means: the result cleared the p = 0.05 threshold. It tells you nothing about whether the result is worth acting on. Every time you see the phrase, ask for the effect size.</p>
+<h2>Your Challenge</h2>
+<p>A pharmaceutical company announces that a new cholesterol-lowering drug has been approved following a trial of 80,000 participants. The press release states that the drug "significantly reduced major cardiovascular events" with p = 0.001. The company describes this as "highly statistically significant" and "compelling evidence of benefit."</p>
+<p>The trial data, buried in the supplementary material, shows the following: major cardiovascular events occurred in 3.1 percent of patients on the drug and 3.4 percent of patients on placebo over five years.</p>
+<p>Before you read any further coverage or form any view about whether this drug represents an advance, write down what you would calculate and what you would want to know. What is the absolute risk reduction? What is the number needed to treat? Does the p-value of 0.001 change your view of whether this drug is useful? Why might a result with p = 0.001 require more scrutiny, not less, when the trial has 80,000 participants?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>Fisher, R.A. (1925). <em>Statistical Methods for Research Workers</em>. Oliver and Boyd, Edinburgh. The 0.05 threshold is discussed in Chapter III. Fisher's framing of the threshold as a matter of "convenience" rather than theoretical necessity is documented in the historical analysis by Lakens et al. URL: https://pmc.ncbi.nlm.nih.gov/articles/PMC6693672/</p>
+<p>Moore, M.J. et al. (2007). Erlotinib plus gemcitabine compared with gemcitabine alone in patients with advanced pancreatic cancer: a phase III trial of the National Cancer Institute of Canada Clinical Trials Group. <em>Journal of Clinical Oncology</em>, 25(15), 1960–1966. URL: https://pubmed.ncbi.nlm.nih.gov/17452677/ The trial reported median survival of 6.24 months versus 5.91 months (p = 0.038).</p>
+<p>Maher, B. (2016). "Documents that changed the world: Sir Ronald Fisher defines 'statistical significance,' 1925." University of Washington News. URL: https://www.washington.edu/news/2016/12/21/documents-that-changed-the-world-sir-ronald-fisher-defines-statistical-significance-1925/</p>
+<p>Greenland, S. et al. (2016). Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations. <em>European Journal of Epidemiology</em>, 31(4), 337–350. URL: https://pmc.ncbi.nlm.nih.gov/articles/PMC6532382/ Comprehensive treatment of what p-values do and do not mean.</p>
+<p>Dahiru, T. (2008). P-value, a true test of statistical significance? A cautionary note. <em>Annals of Ibadan Postgraduate Medicine</em>, 6(1), 21–26. URL: https://pmc.ncbi.nlm.nih.gov/articles/PMC4504060/ Covers the clinical versus statistical significance distinction with drug study examples including the hypertension blood pressure example (0.5 mmHg difference, p = 0.001).</p>
+<p>Wasserstein, R.L. and Lazar, N.A. (2016). The ASA statement on p-values: context, process, and purpose. <em>The American Statistician</em>, 70(2), 129–133. The American Statistical Association's formal statement on p-value misuse. Published by the professional body for statisticians.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/2-7">https://everydaystatistics.com/unit/2-7</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

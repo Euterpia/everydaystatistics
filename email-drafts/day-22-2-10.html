@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayes vs Null-Hypothesis Testing — Everyday Statistics Day 22</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 22 of 44 &nbsp;·&nbsp; Unit 2.10 &nbsp;·&nbsp; 50% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:50%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>Null-hypothesis testing tells you how surprising your data would be if nothing were going on. Bayesian inference tells you how probable your hypothesis is, given what you now know. These are not the same thing — and the difference matters every time a drug is approved, a trial proceeds to verdict, or a screening programme is designed.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>Here is a question that sounds like it should be straightforward: "What is the probability that this drug works?"</p>
+<p>You run a clinical trial. You collect the data. You hand it to a statistician trained in the standard methods. The answer you get back is not a probability that the drug works. It is a probability of observing data at least this extreme if the drug does nothing. That is a very different thing.</p>
+<p>This substitution is not a bug. It is a fundamental property of the frequentist statistical framework, which is the framework that underpins almost all published clinical research, almost all regulatory approvals, and almost all the science journalism you have ever read. The framework was designed to answer a different question from the one most people assume it is answering. Understanding that gap is one of the more quietly important things you can do with fifteen minutes.</p>
+<p>The Bayesian framework was designed to answer the question people actually want to ask. It has a different set of difficulties. And the tension between the two frameworks is not a technical dispute between statisticians. It is a live question about how evidence should be weighed, what prior knowledge is worth, and who gets to decide.</p>
+<h2>The Concept</h2>
+<p>You have already met Bayes' theorem intuitively in Unit 1.7, where it showed up as the insight that your belief after seeing evidence should depend on your belief before seeing it. Here it gets formalised.</p>
+<p>The core statement is this: the probability of a hypothesis given the data is proportional to the probability of the data given the hypothesis, multiplied by the prior probability of the hypothesis. Written more compactly:</p>
+<p><strong>P(hypothesis | data) ∝ P(data | hypothesis) × P(hypothesis)</strong></p>
+<p>Three terms. Each deserves a sentence.</p>
+<p>The <strong>prior probability</strong>, P(hypothesis), is what you believed before the data arrived. It might come from previous studies, from theoretical reasoning, from base rates in the relevant field, or from an explicit statement of uncertainty. The prior is the Bayesian's way of saying: we do not begin from nowhere. All inference starts from somewhere.</p>
+<p>The <strong>likelihood</strong>, P(data | hypothesis), is the quantity that frequentist and Bayesian methods share. It answers: if this hypothesis were true, how probable would the observed data be? This is the term that connects the hypothesis to the experiment.</p>
+<p>The <strong>posterior probability</strong>, P(hypothesis | data), is what you should believe after seeing the data. It is the output. It is a probability distribution over hypotheses, not a single yes-or-no verdict.</p>
+<p>The proportionality sign means the posterior is not literally the prior times the likelihood. There is a normalising constant that ensures the probabilities sum to one across all possible hypotheses. But the key insight is in the proportionality: the posterior reflects both the evidence in the data and the plausibility of the hypothesis before the data arrived.</p>
+<p>Frequentist null-hypothesis significance testing works differently. The procedure you learned in Unit 2.9 asks: assume the null hypothesis is true. How probable is data at least as extreme as ours? If that probability, the p-value, falls below the threshold of 0.05, the result is "statistically significant," meaning the null is rejected. The null hypothesis is never assigned a probability. The alternative hypothesis is never assigned a probability. The probability of the data, not the hypothesis, is what the machinery produces.</p>
+<p>This is not wrong. It is a coherent framework. But it cannot answer the question "what is the probability the drug works?" in any direct sense. A p-value of 0.03 does not mean there is a 97 percent probability the drug is effective. It means that, if the drug had no effect, you would observe results this extreme only 3 percent of the time. This distinction sounds pedantic. In practice, it is the difference between a result that should change your mind and one that should not.</p>
+<p>The Bayesian alternative to the p-value is the <strong>Bayes factor</strong>. It is a ratio: how much more probable is the observed data under the hypothesis that the drug works, compared to the hypothesis that it does not? A Bayes factor of 10 means the data is ten times more probable under the alternative hypothesis than under the null. A Bayes factor of 1 means the data is equally compatible with both. Unlike the p-value, the Bayes factor directly addresses the relative support for competing hypotheses.</p>
+<p>There is a complication. It is called the <strong>prior problem</strong>, and it is the reason Bayesian statistics remained controversial for most of the twentieth century.</p>
+<p>To compute a posterior, you need a prior. Where does the prior come from? In ideal circumstances, from accumulated knowledge: previous experiments, theoretical reasoning, established base rates. But priors can also be chosen to steer the conclusion. An "uninformative" prior, which some analysts use when they claim to have no prior knowledge, is itself a choice with consequences. A prior that assigns high probability to large effects will produce different posteriors from one that assigns high probability to small effects, even when the data are identical. Bayesian inference is transparent about the role of prior knowledge. It is not, however, immune to having that transparency exploited.</p>
+<p>The practical answer to when to use each framework is roughly this. If you are running a one-off decision and you want to incorporate prior knowledge or communicate probability statements about hypotheses directly, Bayesian inference is the more natural tool. If you need a framework that is free from explicit prior specification, and where the long-run frequency of errors is the target property, frequentist methods are defensible and widely understood. Many modern analyses use both. The dispute is less about which framework is correct in principle than about which assumptions are made and whether they are declared.</p>
+<h2>Why It Matters</h2>
+<p>The most vivid demonstration of what happens when the prior problem is ignored comes from homeopathy research.</p>
+<p>Homeopathy proposes that water retains a memory of substances that have been dissolved in it, and that these memories can treat illness. This is inconsistent with everything known about chemistry, physics, and the mechanism of drug action. Setting aside the meta-analysis evidence entirely, the prior probability that any given homeopathic treatment outperforms placebo is very low: the theoretical mechanism does not exist.</p>
+<p>Frequentist trials of homeopathic treatments have occasionally produced p-values below 0.05. Advocates of homeopathy cite these as evidence that the treatments work. The Bayesian problem is immediately apparent. A p=0.04 result in any single trial is expected to occur by chance alone one time in twenty-five, even when there is no effect. Across the large literature of homeopathy trials, a handful of significant results is exactly what random noise produces. The prior probability of the mechanism being real is so low that even a genuine p=0.04, not the result of chance, would still barely shift the posterior probability of efficacy. The Shang et al. 2005 Lancet meta-analysis of 110 randomised homeopathy trials found that the overall effect, across the best-quality trials, was compatible with chance. The prior and the posterior were telling the same story. The individual significant results were not.</p>
+<p>Clinical decision-making offers a parallel lesson in the other direction. When a test for a rare condition returns positive, the frequentist framework has nothing to say about what the clinician should actually do. It was designed to evaluate procedures across many trials, not to reason about single cases. Bayesian inference, by contrast, gives the clinician exactly the tool she needs: given the prior probability of this condition in this patient, and given the sensitivity and specificity of this test, what is the posterior probability that the condition is present? The answer varies enormously with the base rate. For a condition present in 1 in 10,000 people, even a 99 percent accurate test will generate more false positives than true positives. The Bayesian calculation makes this explicit. Frequentist framing suppresses it.</p>
+<p>Prior manipulation is the dark side of Bayesian transparency. Because the prior must be specified, a motivated analyst can choose a prior that is technically defensible but steers the posterior toward a preferred conclusion. Using an "optimistic prior" derived from cherry-picked historical data, an analyst can inflate the posterior probability of efficacy from a borderline trial. Regulatory agencies are aware of this and require that Bayesian analyses in drug submissions document and justify their prior choices. But outside regulated contexts, where priors are chosen without scrutiny, this lever is available to anyone who knows it exists.</p>
+<h2>How to Spot It</h2>
+<p>The frequentist-Bayesian confusion most commonly surfaces as the misinterpretation of p-values described in Unit 2.7: treating p < 0.05 as the probability that the null hypothesis is true, or as the probability that the result is a false positive. Both misreadings are Bayesian-flavoured questions being answered with a frequentist number. When a scientist says "there is only a 4 percent chance this result is due to chance," they are not reporting what their p-value says. They are reporting what they wish it said.</p>
+<p>The documented case that illustrates the prior problem most starkly is the Ioannidis 2005 paper "Why Most Published Research Findings Are False." Ioannidis showed, using the mathematics of Bayes' theorem, that a research literature dominated by small studies, flexible analysis, and low prior probabilities of true effects would produce mostly false positives even if every individual study was conducted honestly. The p < 0.05 threshold selects for surprising results. In a low-prior-probability domain, most surprising results are false positives. The frequentist framework, focused on controlling the long-run false positive rate across a fixed test, is not designed to protect against the cumulative distortion produced by selectively publishing from a large space of tested hypotheses.</p>
+<p>The tell is a claim of statistical significance presented without any acknowledgment of the prior probability of the hypothesis. "This study found a significant result" describes the p-value. It says nothing about whether the result should substantially update your beliefs. In a domain where the prior probability is low, a p-value of 0.04 may be almost uninformative. In a domain where the prior is high, the same p-value may add little to what you already knew.</p>
+<p>When you see a significant result for something implausible, ask: what prior probability would you need to assign to this hypothesis before the data arrived, for this result to shift the posterior meaningfully? If the answer is "implausibly high," the result is a weak reed to lean on.</p>
+<h2>Your Challenge</h2>
+<p>A physiotherapy clinic publishes a study of a new treatment for lower back pain. The trial enrolled 60 patients. The primary outcome was pain reduction on a 10-point scale after eight weeks. The result was p = 0.048. The effect size was 0.9 points on the scale, which is below the 2-point threshold clinicians typically regard as the minimum clinically important difference.</p>
+<p>The treatment is based on a theoretical mechanism that is contested in the physiotherapy literature. Two previous small trials found no significant effect. One found a marginal significant result.</p>
+<p>Apply Bayesian thinking to this claim. What prior probability would you assign to a meaningful clinical effect, given the theoretical uncertainty and the existing trial record? How should the p-value be interpreted in light of that prior? What is the relevant Bayes factor, qualitatively? Would you recommend this treatment to a patient?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>Bayes' theorem formalised and the frequentist-Bayesian distinction: Harrell, F.E., "Bayesian vs. Frequentist Statements About Treatment Efficacy," Statistical Thinking blog (2020). URL: https://www.fharrell.com/post/bayes-freq-stmts/. Kelter, R., "Bayesian and frequentist testing for differences between two groups," WIREs Computational Statistics, 13 (2021), e1523. URL: https://doi.org/10.1002/wics.1523.</p>
+<p>Bayes factor and Bayesian hypothesis testing: Kelter, R., "Bayesian alternatives to null hypothesis significance testing in biomedical research," BMC Medical Research Methodology, 20 (2020), 142. URL: https://doi.org/10.1186/s12874-020-00980-6.</p>
+<p>Homeopathy meta-analysis: Shang, A. et al., "Are the clinical effects of homoeopathy placebo effects? Comparative study of placebo-controlled trials of homoeopathy and allopathy," The Lancet, 366 (2005), 726–732. URL: https://doi.org/10.1016/S0140-6736(05)67878-6. Lüdtke, R. and Rutten, A.L.B., "The conclusions on the effectiveness of homeopathy highly depend on the set of analyzed trials," Journal of Clinical Epidemiology, 61 (2008), 1197–1204. URL: https://doi.org/10.1016/j.jclinepi.2008.06.015.</p>
+<p>Prior probability and implausible hypotheses: Gorski, D. and Novella, S., "Prior Probability: The Dirty Little Secret of 'Evidence-Based Alternative Medicine'," Science-Based Medicine (2014). URL: https://sciencebasedmedicine.org/prior-probability-the-dirty-little-secret-of-evidence-based-alternative-medicine-2/.</p>
+<p>Ioannidis and false research findings: Ioannidis, J.P.A., "Why Most Published Research Findings Are False," PLOS Medicine, 2 (2005), e124. URL: https://doi.org/10.1371/journal.pmed.0020124.</p>
+<p>Prior manipulation in Bayesian clinical trials: Schoenfeld, D.A. and Grunwald, G.K., "Decision-theoretic approach to Bayesian clinical trial design and evaluation of robustness to prior-data conflict," Biostatistics, 23 (2022), 328–347. URL: https://doi.org/10.1093/biostatistics/kxaa027. Kelter, R., "Understanding the Differences Between Bayesian and Frequentist Statistics," International Journal of Radiation Oncology, Biology, Physics, 112 (2022), 1076–1078. URL: https://doi.org/10.1016/j.ijrobp.2021.12.011.</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/2-10">https://everydaystatistics.com/unit/2-10</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

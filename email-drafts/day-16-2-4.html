@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampling: What a Study Tells You — Everyday Statistics Day 16</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 16 of 44 &nbsp;·&nbsp; Unit 2.4 &nbsp;·&nbsp; 36% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:36%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>In 1936, the Literary Digest polled ten million Americans to predict the presidential election — and got it spectacularly wrong, while a smaller sample of 50,000 got it right. Today's unit uses this disaster to explain population vs sample, random sampling, convenience sampling, and self-selection bias.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>In 1936, the American magazine <em>The Literary Digest</em> conducted the largest opinion poll ever attempted. It mailed out ten million ballot cards to households across the United States, asking each recipient who they intended to vote for in the upcoming presidential election. Two and a half million people mailed their ballot back. By any measure of scale, this was an extraordinary undertaking. No poll before or since has returned that volume of responses.</p>
+<p>The <em>Digest</em> tabulated the results and published its prediction: Alf Landon, the Republican governor of Kansas, would defeat the incumbent president Franklin Roosevelt, winning 57 percent of the vote to Roosevelt's 43 percent. The magazine had correctly predicted the last five presidential elections. Its reputation was formidable.</p>
+<p>Roosevelt won with 62 percent of the popular vote. Landon got 37 percent. It was one of the largest landslides in American electoral history, and the <em>Digest</em> had called it almost exactly backwards. The magazine folded the following year.</p>
+<p>The poll had not failed because it was small. It had failed because of who was in it, and who was not.</p>
+<h2>The Concept</h2>
+<p>Every study, every survey, every poll, every clinical trial faces the same foundational problem: the researcher wants to know something about a large group of people, but can only directly measure a smaller subset of them. The large group is called the <strong>population</strong>, the term for whatever category of people or things the researcher is trying to draw conclusions about. The subset that actually gets measured is the <strong>sample</strong>.</p>
+<p>The fundamental question of sampling is whether the sample accurately reflects the population. If it does, the findings from the sample can reasonably be applied to the population as a whole. If it does not, any conclusions drawn from the sample will be distorted, and no amount of careful analysis can fix that distortion after the fact. A bad sample is damage that cannot be repaired downstream.</p>
+<p><strong>Simple random sampling</strong> is the gold standard. In a simple random sample, every member of the population has an equal probability of being selected. This matters because randomness is the only mechanism that reliably cancels out systematic differences between the sample and the population. When selection is genuinely random, any quirks in one direction are as likely to be balanced by quirks in the other, and the sample will, on average, resemble the whole. A random sample of one thousand people can accurately represent a nation of sixty million, not because one thousand is a large fraction of sixty million, but because randomness eliminates the systematic tilt that corrupts other methods.</p>
+<p>In practice, genuine random sampling is harder to achieve than it sounds. It requires a complete list of everyone in the population, so that each person can be assigned a number and selected by chance. Such lists rarely exist. When they do not, researchers turn to approximations, and approximations have gaps.</p>
+<p><strong>Convenience sampling</strong> is what happens when researchers recruit whoever is easiest to reach. Medical studies recruit from patients attending a particular clinic. Psychology experiments recruit undergraduates from a first-year psychology course. Market researchers interview shoppers at a particular shopping centre on a Tuesday afternoon. The sample is whoever showed up, whoever agreed, whoever was available. The result is a sample that systematically differs from the population in ways the researcher may not even notice, because they are always looking at the same convenient slice of the world.</p>
+<p><strong>Self-selection bias</strong> is a specific and particularly severe version of the same problem. It occurs when the act of participating in the study is itself a choice made by the participants, and when that choice is correlated with the thing being measured. Online polls are the clearest example. A news website publishes a poll about a political controversy. The people who click through to vote are people who feel strongly enough about the issue to bother. The people who are moderately engaged, ambivalent, or simply do not notice the poll, do not vote. The resulting sample is not a cross-section of the readership. It is a self-selected group of people with strong opinions, and their responses will not reflect what most readers actually think.</p>
+<p>The <em>Literary Digest</em> disaster had both kinds of problem at once. The magazine sourced its mailing list from telephone directories, automobile registration records, and club membership lists. In 1936, at the peak of the Great Depression, owning a telephone and a car and belonging to a club were markers of affluence. The mailing list was therefore not a sample of American voters. It was a sample of relatively comfortable, predominantly Republican-leaning American voters. That was the selection problem. On top of it sat a response problem: of the ten million people who received a ballot, only about a quarter replied. Those who took the time to return the card were disproportionately people who felt motivated to do so, which in the context of a bitterly contested election during an economic crisis, meant people with the strongest views. The final sample of 2.4 million was the product of two successive filters, each pushing it away from the population it purported to represent.</p>
+<p>George Gallup, who was at the time running a much newer and smaller polling organisation, predicted Roosevelt would win with 56 percent of the vote. He was polling fewer than 50,000 people, using a method that deliberately sought to match the demographic composition of the electorate. His sample was roughly fifty times smaller than the <em>Digest</em>'s. It was far more accurate, because the problem was never the size. It was the composition.</p>
+<p><strong>Stratified sampling</strong> is the formal method for addressing this. Rather than drawing randomly from the whole population and hoping the right proportions emerge by chance, stratified sampling divides the population into distinct subgroups (strata) and then samples proportionally from each. If the population is 52 percent women, the sample will be 52 percent women. If 30 percent of voters are under 40, the sample will include 30 percent of people under 40. This guarantees that the sample mirrors the population on the dimensions the researcher considers important. It does not eliminate sampling error entirely, but it eliminates the most predictable sources of structural tilt.</p>
+<h2>Why It Matters</h2>
+<p>The sampling problem is not a historical curiosity. It is live and active in almost every domain where statistics are used to influence behaviour.</p>
+<p>Online polls are perhaps the most obvious ongoing example. Every day, news websites and social media platforms publish polls with headline results. "73 percent of readers say X." "65 percent support Y." These numbers are generated by whoever chose to respond, which is a self-selected, non-representative group almost by definition. People with strong opinions are more likely to click. People who have already formed a view compatible with the framing of the question are more likely to engage. The 73 percent figure tells you something about the people who clicked the poll, which may be quite different from the people the headline implies.</p>
+<p>Medical research has a systematic sampling problem that is less visible but more consequential. Studies that recruit from hospital patients, clinic attenders, or people who have sought treatment are not drawing from the general population. They are drawing from people who were unwell enough to seek help, or who were in a particular geographic area, or who could afford to access a particular health service. Findings from such studies are then reported as if they apply to people in general. When a study of hospital patients finds that outcome X is associated with factor Y, the conclusion that "factor Y is associated with outcome X in the population" may not follow. The patients who ended up in that hospital are not a random sample of people with that condition.</p>
+<p>Customer satisfaction surveys have a version of the same problem that runs in the opposite direction. A company that surveys its own customers is sampling from people who chose to remain customers, which excludes the most dissatisfied former customers who have already left. The people most motivated to respond to a satisfaction survey are often those with either very positive or very negative experiences, while the majority who were adequately but unremarkably served tend not to bother. The resulting satisfaction figure reflects the sample that self-selected into the survey, not the full range of customer experience.</p>
+<p>The deeper principle is this: when you read the results of any study, the first question is not "what did they find?" but "who were they measuring?" The finding is only as good as the sample, and the sample is only as good as the process that generated it.</p>
+<h2>How to Spot It</h2>
+<p>The 1948 United States presidential election offers a second case study in sampling failure, and it illustrates a different but related mechanism.</p>
+<p>Three of the major polling organisations, including Gallup, predicted a clear victory for the Republican candidate Thomas Dewey over the incumbent Democrat Harry Truman. The <em>Chicago Daily Tribune</em> was sufficiently confident that it printed its election-night edition before the results were in, producing the famous photograph of a jubilant Truman holding up the front page with its banner headline: "DEWEY DEFEATS TRUMAN."</p>
+<p>Truman won, with nearly 50 percent of the popular vote to Dewey's 45 percent.</p>
+<p>The polling failure had two causes. The first was that the polls relied heavily on telephone interviews, and in 1948 telephones were concentrated in wealthier households that leaned Republican. The sampling method tilted the sample toward the more prosperous, and therefore toward one party. This was almost exactly the mechanism that had destroyed the <em>Literary Digest</em> twelve years earlier. The lesson had not been fully applied.</p>
+<p>The second cause was that Gallup and other pollsters stopped polling several weeks before election day and missed a late swing toward Truman in the final fortnight of the campaign. A snapshot taken at the wrong moment had been treated as a description of the population's eventual choice.</p>
+<p>The tell for a sampling problem is always a question about mechanism: how were the participants selected, and who was excluded by that mechanism? If a study says "we recruited participants from X," the next question is "who would not be at X, or would not agree to participate at X, and how do they differ from those who were?" If those excluded people might feel or behave differently on the thing being measured, the sample has a problem.</p>
+<p>For polls specifically, the tell is whether the sample is a probability sample or a self-selected sample. A probability sample has a defined mechanism by which every member of the population had a known chance of inclusion. A self-selected sample is one where participants chose to participate. The latter cannot be rescued by a large response count. Two million ballots in a biased sample remains a biased sample.</p>
+<h2>Your Challenge</h2>
+<p>A private health clinic conducts a study into the relationship between diet and cardiovascular health. It sends a questionnaire to all patients who attended the clinic for a heart-related consultation in the previous three years and received a recommendation to change their diet. Of the 800 questionnaires sent, 340 are returned. The study finds that 71 percent of respondents reported changing their diet, and that those who did reported significantly better health outcomes.</p>
+<p>The clinic issues a press release: "Our study finds that dietary intervention is highly effective, with 71 percent of patients successfully changing their diet and experiencing improved outcomes."</p>
+<p>Before you accept or repeat this finding, what are the sampling questions you would ask? Who is in this sample and who is not? What are the specific mechanisms by which the sample might differ from the population you would need to know about? And what would a better-designed study look like?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p>1936 Literary Digest poll figures and methodology: Squire, P., "Why the 1936 Literary Digest Poll Failed," <em>Public Opinion Quarterly</em> 52, no. 1 (1988): 125–133. The poll sent 10 million ballots, received approximately 2.4 million responses, and predicted Landon 57 percent to Roosevelt's 43 percent; Roosevelt won 62 percent to 37 percent. Summary at University of Pennsylvania: https://www2.math.upenn.edu/~deturck/m170/wk4/lecture/case1.html</p>
+<p>Gallup's 1936 prediction methodology: The Gallup Organization's approach is described in Crossley, A.M., "Straw Polls in 1936," <em>Public Opinion Quarterly</em> 1, no. 1 (1937): 24–35. Gallup's sample was under 50,000 and used quota-based demographic matching. Overview at History Matters, George Mason University: https://historymatters.gmu.edu/d/5168/</p>
+<p>1948 Dewey defeats Truman polling failure and telephone sampling bias: Open Data Science, "Dewey Defeats Truman: How Sampling Bias can Ruin Your Model": https://odsc.medium.com/dewey-defeats-truman-how-sampling-bias-can-ruin-your-model-f4f67989709e. Truman received 49.6 percent of the popular vote; Dewey received 45.1 percent. The telephone-ownership bias and the premature end of polling are documented in Mosteller, F. et al., <em>The Pre-election Polls of 1948: Report to the Committee on Analysis of Pre-election Polls and Forecasts</em> (Social Science Research Council, 1949).</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/2-4">https://everydaystatistics.com/unit/2-4</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>

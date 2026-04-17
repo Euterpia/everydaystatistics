@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Misleading Graph — A Comprehensive Guide — Everyday Statistics Day 26</title>
+<style>
+
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+.wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.header {
+    background-color: #1a1a2e;
+    padding: 28px 40px;
+}
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.progress-bar {
+    background-color: #2a2a4a;
+    padding: 10px 40px;
+}
+.progress-bar p {
+    margin: 0;
+    color: #9999cc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.progress-track {
+    background-color: #3a3a5a;
+    border-radius: 3px;
+    height: 4px;
+    margin-top: 8px;
+}
+.progress-fill {
+    background-color: #6699ff;
+    border-radius: 3px;
+    height: 4px;
+}
+.opener {
+    padding: 32px 40px 0;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 28px;
+}
+.opener p {
+    margin: 0;
+    color: #555566;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.content {
+    padding: 32px 40px;
+    color: #222233;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 36px 0 14px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content h2:first-child {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+.content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 28px 0 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+.content p {
+    margin: 0 0 18px;
+}
+.content ul, .content ol {
+    margin: 0 0 18px;
+    padding-left: 24px;
+}
+.content li {
+    margin-bottom: 8px;
+}
+.content strong {
+    color: #1a1a2e;
+}
+.content em {
+    font-style: italic;
+}
+.content hr {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 32px 0;
+}
+.content code {
+    background: #f0f0f8;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+.content a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.footer {
+    background-color: #f8f8fc;
+    border-top: 1px solid #e0e0ee;
+    padding: 28px 40px;
+}
+.footer p {
+    margin: 0 0 10px;
+    color: #888899;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer p:last-child {
+    margin-bottom: 0;
+}
+.footer a {
+    color: #3355bb;
+    text-decoration: underline;
+}
+.web-link {
+    background-color: #f0f4ff;
+    border: 1px solid #ccd4ff;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 0 40px 28px;
+}
+.web-link p {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #445588;
+}
+.web-link a {
+    color: #3355bb;
+    font-weight: 600;
+}
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="header">
+    <a href="https://everydaystatistics.com">Everyday Statistics</a>
+  </div>
+
+  <div class="progress-bar">
+    <p>Day 26 of 44 &nbsp;·&nbsp; Unit 3.3 &nbsp;·&nbsp; 59% complete</p>
+    <div class="progress-track">
+      <div class="progress-fill" style="width:59%;"></div>
+    </div>
+  </div>
+
+  <div class="opener">
+    <p>We started with graph reading in Unit 0.4. Today we go deep: every major technique for visual manipulation, with real examples from politics, media, and corporate communications. By the end, you'll be reading graphs the way a forensic accountant reads balance sheets.</p>
+  </div>
+
+  <div class="content">
+<h2>Opening Hook</h2>
+<p>On 31 July 2012, Fox Business aired a bar chart that would become a textbook case in statistical self-defence. Two bars sat side by side. The left bar, labelled "Now," showed the top income tax rate then in effect: 35 percent. The right bar, labelled "Jan 1, 2013," showed what would happen if the Bush-era tax cuts were allowed to expire: 39.6 percent. A real difference of 4.6 percentage points, worth illustrating.</p>
+<p>Except the y-axis started at 34 percent, not zero.</p>
+<p>The visual effect was that the right bar appeared to be roughly six times the height of the left bar. A viewer who glanced at the screen for two seconds, which is most viewers, would absorb the impression that the tax rate was about to explode. The reality was a rise of 4.6 percentage points. The numbers were printed right there on the chart. The picture said something completely different.</p>
+<p>That gap between what the numbers say and what the picture shows can be engineered. Once you know how, you find it everywhere.</p>
+<h2>The Concept</h2>
+<p>A graph is a translation. It converts numbers into a visual impression. That translation can be done honestly or it can be done to serve a predetermined conclusion. What follows is the complete toolkit: every main technique through which the translation gets corrupted. There are seven of them, and they can be combined.</p>
+<p><strong>The truncated y-axis</strong> is the workhorse of visual manipulation, and the one that worked so reliably on that 2012 Fox Business chart. The y-axis is the vertical axis, and it normally starts at zero. When it starts above zero, any change in the data gets visually amplified. A trend that moved from 96 to 99 will, on a chart that starts at 94, appear to have roughly tripled. On a chart that starts at zero, it barely registers.</p>
+<p>This is not always dishonest. Medical data where the clinically meaningful range is genuinely narrow may legitimately use a truncated axis to show variation that would otherwise be invisible. The question is whether the axis choice is serving the data or serving a narrative. The test is simple: look at where the axis starts, calculate the actual percentage change, and ask whether the visual impression you just absorbed corresponds to that number.</p>
+<p><strong>The inverted axis</strong> is less common and more audacious. In February 2014, Reuters published a chart of gun deaths in Florida by year, presented as a red area graph. On every chart you have seen in your life, lines that go up mean more of the thing being measured. On this chart, designed by Christine Chan, the y-axis ran from zero at the top downward, with higher death counts at the bottom. Gun deaths rose sharply after Florida's Stand Your Ground law passed in 2005, so the red area fell sharply toward the bottom of the frame, which viewers naturally read as a decline. Chan said she preferred to show deaths "in negative terms" and described the choice as a preference. The accompanying article stated correctly that deaths had increased. The chart showed the opposite. The visual impression and the text were pointing in different directions, and for most readers the visual impression wins.</p>
+<p><strong>The dual axis</strong> is the most flexible manipulation in the toolkit because it can be adjusted after the fact to produce virtually any implied relationship. A dual-axis chart puts two different datasets on the same graphic, each with its own scale: one on the left side of the chart, one on the right. By adjusting either scale, the designer can make the two lines converge, cross, diverge, or run exactly in parallel. Two completely unrelated trends can be made to look as though they move in lockstep. Two trends that genuinely track each other can be made to look as though they have nothing to do with one another. The implied correlation is not a property of the data. It is a product of axis choice. When you see two y-axes on a single chart, the visual relationship between the lines is not trustworthy until you have checked both scales independently.</p>
+<p><strong>The logarithmic scale</strong> is the trickiest case in the toolkit because it has a legitimate use. On a linear scale, every step up the axis represents an equal addition: from 10 to 20 is the same visual distance as from 100 to 110. On a logarithmic scale (log scale), every step represents an equal multiplication: from 10 to 100 is the same distance as from 100 to 1,000. This is genuinely appropriate when data spans several orders of magnitude, or when you want to show rates of change rather than raw values. During the early phase of the Covid-19 pandemic, public health communicators used log scales to display case growth rates, a defensible choice for a specialist audience.</p>
+<p>The problem is what happens when a log scale is used on a general audience without explanation, or used deliberately to flatten a curve that should look alarming. Purdue Pharma, the manufacturer of OxyContin, used a log-scale chart in marketing material sent to doctors to argue that the drug's blood concentration levels remained stable over time, without the peaks and troughs that characterise addictive substances. On a linear scale, the same data showed OxyContin levels rising sharply and then dropping quickly, a pattern consistent with the craving and withdrawal cycle that drives addiction. The log scale smoothed that away. Sales representatives used the chart with doctors who did not know they were looking at a log scale. Purdue pleaded guilty in 2007 and paid $600 million in fines. The chart was a central element of the case against the company.</p>
+<p>Research published in Behavioral Science and Policy in 2020 by William Ryan and Ellen Evers found that log-scale Covid graphs produced systematically lower estimates of danger, lower support for public health measures, and lower stated intention to wear masks, compared to the same data on a linear scale. The scale was technically accurate. The communication was not.</p>
+<p><strong>Area distortion</strong> exploits a reliable quirk of human perception: we estimate the size of shapes by their area, not their height. When a graphic shows two barrels to represent oil production in two years, and doubles the height of the smaller barrel to represent double the volume, it is not doubling the visual area. It is quadrupling it. The viewer's eye reads a four-to-one difference where the data says two-to-one. Three-dimensional pie charts and bar charts apply the same principle in different directions: slices near the front of a tilted pie appear larger than slices of equal value at the back. Three-dimensional presentation almost never adds information to a chart. It reliably adds distortion.</p>
+<p><strong>Missing uncertainty</strong> is the trick of presenting a line and implying it represents precise knowledge when it is an estimate with a range around it. Every economic forecast, every survey result, every reported measurement carries uncertainty. A graph that shows only the central estimate creates an impression of knowledge that is not there. When a polling graphic places two candidates at 46 and 44 percent without showing a margin of error, it creates the impression of a meaningful gap when the two numbers may be statistically indistinguishable. The Financial Conduct Authority in the UK has published explicit guidance on misleading financial charts precisely because the systematic suppression of uncertainty is so consistent in investment marketing.</p>
+<p><strong>Chart type selection</strong> is the subtlest manipulation because it operates before a single number is displayed. Different chart types carry different default meanings. A line chart implies continuity and trend. A bar chart implies comparison and ranking. A pie chart draws the eye to the largest segment and implies that the segments add up to a meaningful whole. These conventions can be exploited. Plotting discrete, unrelated categories as a line chart implies a trend that does not exist in the data. Using a pie chart with many small segments creates an illusion of dominance for the largest slice that a bar chart of the same data would not produce. The choice of chart type is a framing decision, and it is made before the reader ever sees the numbers.</p>
+<h2>The Visualisation</h2>
+<p>Below, the same data has been graphed six different ways. Notice how your visual impression changes even though the numbers do not.</p>
+<p>Version one, with a zero-baseline y-axis and the full ten-year range, shows a modest fluctuation. The story it tells: things varied, but not dramatically. Version two, with the axis starting at 94 percent, turns the same modest fluctuation into what looks like a crisis and a subsequent recovery. Version three, with the axis inverted, turns that recovery into a collapse. Versions four through six each tell a different story again. Nothing in the underlying data has changed. The numbers are identical across all six. The picture is different every time.</p>
+<h2>Why It Matters</h2>
+<p>These tricks are not aesthetic curiosities. They operate in domains where the stakes are high and the audience is large.</p>
+<p>In political communication, graph manipulation shapes how citizens assess the performance of governments. A governing party presenting economic data will choose the axis range, the start date, and the chart type that flatters the trend. An opposition party will make the opposite choices with the identical numbers. Neither is technically lying. Both are engineering an impression. A second Fox News case from 2014 shows the pattern clearly. When Affordable Care Act enrolments reached 6 million against a target of 7.066 million, Fox aired a bar chart in which the y-axis was unlabelled and appeared to begin somewhere around 6 million. The visual gap between the two bars looked enormous, implying that enrolment had fallen catastrophically short. The actual shortfall was 1 million out of 7 million, roughly 14 percent. Anchor Bill Hemmer issued a correction the following day: "That was our mistake. Correction noted."</p>
+<p>In financial marketing, the same tricks determine how investment products are sold. Performance graphs frequently cover time periods chosen to start just before a strong run and end at a peak. Compressed y-axes make smooth returns look dramatically superior to alternatives. Uncertainty is never shown. The FCA's published guidance on misleading financial promotions treats chart manipulation as a substantive conduct issue, not a design nicety.</p>
+<p>In health communication, the OxyContin case shows the consequences at their worst: a log-scale chart deployed as a sales tool contributed to a mass-casualty drug crisis. The same techniques appear routinely in drug advertising, cancer screening promotion, and dietary supplement marketing, usually in ways that are harder to attribute to deliberate fraud but nonetheless misleading in practice.</p>
+<p>The Fox News charts are documented because Fox is a major network whose graphics attract scrutiny. The technique is not partisan. The same set of manipulations appears across news organisations, political parties, industries, and countries. The documentation is uneven. The behaviour is not.</p>
+<h2>How to Spot It</h2>
+<p>Three questions expose the majority of misleading graphs, and they take about fifteen seconds to apply.</p>
+<p>The first question is: where does the y-axis start? If it does not start at zero, calculate the actual size of the change being shown and ask whether the visual impression you just had corresponds to that number. If the chart shows what looks like a dramatic rise but the actual change is from 96 to 98, the truncated axis is doing work that the data cannot support on its own.</p>
+<p>The second question is: how many axes are there? If there are two y-axes with different scales, the implied relationship between the two lines is partly a product of design choice. Treat any correlation or divergence shown on a dual-axis chart as unverified until you have looked at the two series independently.</p>
+<p>The third question is: what is missing? Where is the uncertainty? Where is the baseline? What period is being compared to what, and what came before the chart begins? Missing information is as consequential as present information. A trend line that begins at a carefully chosen start date, without showing the prior context, is an edited version of the evidence.</p>
+<p>For each specific trick, the tell is specific. For the truncated axis: look at the axis label, find the starting point, and mentally rescale the chart to zero. For the inverted axis: check whether "up" means more of the thing being measured, since it should in almost every context. For the dual axis: look for two scales on either side of the frame and ask whether the visual alignment is a property of the data or of the axis settings. For the log scale: look for the word "log" on the axis, or for tick marks that increase by multiplication rather than addition (1, 10, 100, 1,000 rather than 10, 20, 30, 40); ask whether the audience the chart is designed for understands what they are looking at. For area distortion: when comparing two shapes, ask whether you are comparing height or area, and whether the designer has made the same distinction. For missing uncertainty: ask what the margin of error or confidence interval is, and whether showing it would change your reading. For chart type: ask whether the chart type implies a continuity, trend, or composition that the underlying data does not actually support.</p>
+<h2>Your Challenge</h2>
+<p>A government department publishes a chart showing public satisfaction with a new healthcare policy. It is a line graph, covering fourteen months, beginning two months after the policy launched. The line starts at 62 percent and rises to 71 percent. The y-axis begins at 60 percent. No confidence intervals are shown. The x-axis label reads "Months since policy introduction."</p>
+<p>How many manipulations are present? What would you need to see to form an honest assessment of whether satisfaction has genuinely improved? What questions would you ask about how the data was collected, who was sampled, and what the question actually asked?</p>
+<p>There is no answer on this page. That is the point.</p>
+<h2>References</h2>
+<p><strong>Fox Business Bush tax cuts chart (July 2012):</strong> The chart aired on Fox Business with Neil Cavuto on 31 July 2012. Media Matters for America documented it: "Dishonest Fox Chart: Bush Tax Cut Edition." https://www.mediamatters.org/fox-business/dishonest-fox-chart-bush-tax-cut-edition. SimplyStatistics analysis: "The statisticians at Fox News use classic and novel graphical techniques to lead with data" (November 2012). https://simplystatistics.org/posts/2012-11-26-the-statisticians-at-fox-news-use-classic-and-novel-graphical-techniques-to-lead-with-data/</p>
+<p><strong>Fox News ACA enrolment chart (2014):</strong> Media Matters for America, "Dishonest Fox Charts: Obamacare Enrollment Edition." https://www.mediamatters.org/fox-news/dishonest-fox-charts-obamacare-enrollment-edition. Correction confirmed by anchor Bill Hemmer and reported by multiple outlets including Talking Points Memo: https://talkingpointsmemo.com/livewire/fox-corrects-misleading-graphic</p>
+<p><strong>Reuters Florida gun deaths inverted axis chart (2014):</strong> Reuters graphic by Christine Chan. Analysed in Live Science, "Misleading Gun-Death Chart Draws Fire" (2014): https://www.livescience.com/45083-misleading-gun-death-chart.html. Sociological Images, "How to Lie with Statistics: Stand Your Ground and Gun Deaths" (December 2014): https://thesocietypages.org/socimages/2014/12/28/how-to-lie-with-statistics-stand-your-ground-and-gun-deaths/</p>
+<p><strong>Purdue Pharma / OxyContin log-scale chart:</strong> CBS News, "How Purdue Used Misleading Charts to Hide OxyContin's Addictive Power": https://www.cbsnews.com/news/how-purdue-used-misleading-charts-to-hide-oxycontins-addictive-power/. Purdue Pharma pleaded guilty in 2007 and paid $600 million in fines for misrepresenting the addiction risk of OxyContin.</p>
+<p><strong>Logarithmic scale and public understanding:</strong> Ryan, W.H. and Evers, E.R.K., "Graphs with logarithmic axes distort lay judgments," Behavioral Science and Policy (2020): https://journals.sagepub.com/doi/10.1177/237946152000600203. Romano, A. et al., "The scale of COVID-19 graphs affects understanding, attitudes, and policy preferences," Health Economics (2020): https://onlinelibrary.wiley.com/doi/10.1002/hec.4143</p>
+<p><strong>Area distortion and three-dimensional charts:</strong> Wilke, C.O., Fundamentals of Data Visualization, Chapter 26: Don't use 3D position scales (O'Reilly, 2019): https://clauswilke.com/dataviz/no-3d.html</p>
+<p><strong>General record of misleading graphs:</strong> Media Matters for America, "A History of Dishonest Fox Charts": https://www.mediamatters.org/fox-friends/history-dishonest-fox-charts. FlowingData, "Fox News continues charting excellence" (August 2012): https://flowingdata.com/2012/08/06/fox-news-continues-charting-excellence/</p>
+  </div>
+
+  <div class="web-link">
+    <p>Read this unit on the web: <a href="https://everydaystatistics.com/unit/3-3">https://everydaystatistics.com/unit/3-3</a></p>
+  </div>
+
+  <div class="footer">
+    <p>You're receiving this because you signed up for the Everyday Statistics 44-day course at <a href="https://everydaystatistics.com">everydaystatistics.com</a>.</p>
+    <p>The full curriculum is free to read any time at <a href="https://everydaystatistics.com/reference">everydaystatistics.com/reference</a>.</p>
+    <p><a href="{{unsubscribe}}">Unsubscribe</a> &nbsp;·&nbsp; Everyday Statistics, c/o Euterpia Ltd, Scotland, UK</p>
+  </div>
+
+</div>
+</body>
+</html>
