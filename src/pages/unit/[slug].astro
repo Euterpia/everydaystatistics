@@ -1,0 +1,128 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import TierBadge from '../../components/TierBadge.astro';
+import BayesBadge from '../../components/BayesBadge.astro';
+
+export async function getStaticPaths() {
+  const units = await getCollection('units');
+  units.sort((a, b) => {
+    const [aArea, aUnit] = a.data.unitId.split('.').map(Number);
+    const [bArea, bUnit] = b.data.unitId.split('.').map(Number);
+    return aArea !== bArea ? aArea - bArea : aUnit - bUnit;
+  });
+  return units.map((unit, index) => ({
+    params: { slug: unit.data.unitId.replace('.', '-') },
+    props: {
+      unit,
+      prev: units[index - 1] ?? null,
+      next: units[index + 1] ?? null,
+    },
+  }));
+}
+
+const { unit, prev, next } = Astro.props;
+const { Content } = await render(unit);
+
+const areaColors: Record<number, string> = {
+  0: 'var(--area-0)',
+  1: 'var(--area-1)',
+  2: 'var(--area-2)',
+  3: 'var(--area-3)',
+  4: 'var(--area-4)',
+};
+
+const areaColor = areaColors[unit.data.area] ?? 'var(--text-faint)';
+
+const areaNames: Record<number, string> = {
+  0: 'Level 0: Zero-Knowledge On-Ramp',
+  1: 'Area 1: Foundations',
+  2: 'Area 2: Measurement and Its Limits',
+  3: 'Area 3: Applied Detection',
+  4: 'Area 4: The Anti-Curriculum',
+};
+
+const displayAreaName = unit.data.areaName ?? areaNames[unit.data.area] ?? `Area ${unit.data.area}`;
+
+function slugify(id: string) { return id.replace('.', '-'); }
+---
+
+<Base title={unit.data.title} description={unit.data.summary}>
+  <div class="unit-page">
+
+    <!-- Breadcrumb -->
+    <nav class="unit-page__breadcrumb" aria-label="Breadcrumb">
+      <a href="/curriculum">Curriculum</a>
+      <span aria-hidden="true">›</span>
+      <span style={`color: ${areaColor}; font-weight: 600;`}>{displayAreaName}</span>
+      <span aria-hidden="true">›</span>
+      <span>{unit.data.unitId}</span>
+    </nav>
+
+    <!-- Badges -->
+    <div class="unit-page__meta">
+      <TierBadge tier={unit.data.tier} />
+      <BayesBadge encounter={unit.data.bayesEncounter} />
+      {unit.data.draft && <span class="badge badge--draft">In progress</span>}
+    </div>
+
+    <!-- Title -->
+    <h1 class="unit-page__title">{unit.data.title}</h1>
+
+    <!-- Summary -->
+    <p class="unit-page__summary">{unit.data.summary}</p>
+
+    <!-- Info row -->
+    <div class="unit-page__info">
+      <div class="unit-page__info-item">
+        <span class="unit-page__info-label">Time:</span>
+        <span>{unit.data.duration} minutes</span>
+      </div>
+      {unit.data.prerequisites.length > 0 && (
+        <div class="prereqs">
+          <span class="prereqs__label">Requires:</span>
+          {unit.data.prerequisites.map(prereqId => (
+            <a href={`/unit/${slugify(prereqId)}`} class="prereqs__link">
+              Unit {prereqId}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <!-- Body content -->
+    <div class="unit-page__body">
+      <Content />
+    </div>
+
+    {unit.data.draft && (
+      <div class="unit-page__stub">
+        <p style="font-weight: 600; margin-bottom: 0.25rem;">Full content coming soon.</p>
+        <p>This unit is part of the curriculum skeleton. The complete explainer, interactive visualisation, and detection challenge will be added here.</p>
+      </div>
+    )}
+
+    <!-- Prev / Next navigation -->
+    <nav class="unit-nav" aria-label="Unit navigation">
+      {prev ? (
+        <a href={`/unit/${slugify(prev.data.unitId)}`} class="unit-nav__item unit-nav__item--prev">
+          <span class="unit-nav__direction">← Previous</span>
+          <span class="unit-nav__title">{prev.data.title}</span>
+          <span class="unit-nav__id">Unit {prev.data.unitId}</span>
+        </a>
+      ) : (
+        <div class="unit-nav__item--empty" aria-hidden="true"></div>
+      )}
+      {next ? (
+        <a href={`/unit/${slugify(next.data.unitId)}`} class="unit-nav__item unit-nav__item--next">
+          <span class="unit-nav__direction">Next →</span>
+          <span class="unit-nav__title">{next.data.title}</span>
+          <span class="unit-nav__id">Unit {next.data.unitId}</span>
+        </a>
+      ) : (
+        <div class="unit-nav__item--empty" aria-hidden="true"></div>
+      )}
+    </nav>
+
+  </div>
+</Base>
