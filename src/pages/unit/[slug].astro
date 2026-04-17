@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import TierBadge from '../../components/TierBadge.astro';
 import BayesBadge from '../../components/BayesBadge.astro';
+import SignupForm from '../../components/SignupForm.astro';
 
 export async function getStaticPaths() {
   const units = await getCollection('units');
@@ -142,6 +143,8 @@ const jsonLd = {
         <p>This unit is part of the curriculum skeleton. The complete explainer, interactive visualisation, and detection challenge will be added here.</p>
       </div>
     )}
+
+    <SignupForm variant="unit" />
 
     <!-- Prev / Next navigation -->
     <nav class="unit-nav" aria-label="Unit navigation">
