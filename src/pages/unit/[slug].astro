@@ -25,25 +25,16 @@ export async function getStaticPaths() {
 const { unit, prev, next } = Astro.props;
 const { Content } = await render(unit);
 
-const areaColors: Record<number, string> = {
-  0: 'var(--area-0)',
-  1: 'var(--area-1)',
-  2: 'var(--area-2)',
-  3: 'var(--area-3)',
-  4: 'var(--area-4)',
-};
-
-const areaColor = areaColors[unit.data.area] ?? 'var(--text-faint)';
-
 const areaNames: Record<number, string> = {
-  0: 'Level 0: Zero-Knowledge On-Ramp',
-  1: 'Area 1: Foundations',
-  2: 'Area 2: Measurement and Its Limits',
-  3: 'Area 3: Applied Detection',
-  4: 'Area 4: The Anti-Curriculum',
+  0: 'Level 0',
+  1: 'Area 1',
+  2: 'Area 2',
+  3: 'Area 3',
+  4: 'Area 4',
 };
-
-const displayAreaName = unit.data.areaName ?? areaNames[unit.data.area] ?? `Area ${unit.data.area}`;
+const areaLabel = unit.data.areaName
+  ? unit.data.areaName.split(':')[0].trim()
+  : (areaNames[unit.data.area] ?? `Area ${unit.data.area}`);
 
 function slugify(id: string) { return id.replace('.', '-'); }
 
@@ -63,26 +54,13 @@ const jsonLd = {
     "@type": "Course",
     "name": "Everyday Statistics",
     "url": "https://everydaystatistics.com/curriculum/",
-    "provider": {
-      "@type": "Organization",
-      "name": "Everyday Statistics",
-      "url": "https://everydaystatistics.com"
-    }
+    "provider": { "@type": "Organization", "name": "Everyday Statistics", "url": "https://everydaystatistics.com" }
   },
-  "author": {
-    "@type": "Person",
-    "name": "David Mackay"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Everyday Statistics",
-    "url": "https://everydaystatistics.com"
-  },
+  "author": { "@type": "Person", "name": "David Mackay" },
+  "publisher": { "@type": "Organization", "name": "Everyday Statistics", "url": "https://everydaystatistics.com" },
   "timeRequired": `PT${unit.data.duration}M`,
   ...(unit.data.prerequisites.length > 0 && {
-    "competencyRequired": unit.data.prerequisites.map(
-      id => `https://everydaystatistics.com/unit/${slugify(id)}/`
-    )
+    "competencyRequired": unit.data.prerequisites.map(id => `https://everydaystatistics.com/unit/${slugify(id)}/`)
   }),
 };
 ---
@@ -90,82 +68,75 @@ const jsonLd = {
 <Base title={unit.data.title} description={unit.data.summary}>
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
-  <div class="unit-page">
+  <div class="eds-main eds-main--narrow">
 
-    <!-- Breadcrumb -->
-    <nav class="unit-page__breadcrumb" aria-label="Breadcrumb">
-      <a href="/curriculum">Curriculum</a>
-      <span aria-hidden="true">›</span>
-      <span style={`color: ${areaColor}; font-weight: 600;`}>{displayAreaName}</span>
-      <span aria-hidden="true">›</span>
-      <span>{unit.data.unitId}</span>
-    </nav>
-
-    <!-- Badges -->
-    <div class="unit-page__meta">
-      <TierBadge tier={unit.data.tier} />
-      <BayesBadge encounter={unit.data.bayesEncounter} />
-      {unit.data.draft && <span class="badge badge--draft">In progress</span>}
-    </div>
-
-    <!-- Title -->
-    <h1 class="unit-page__title">{unit.data.title}</h1>
-
-    <!-- Summary -->
-    <p class="unit-page__summary">{unit.data.summary}</p>
-
-    <!-- Info row -->
-    <div class="unit-page__info">
-      <div class="unit-page__info-item">
-        <span class="unit-page__info-label">Time:</span>
-        <span>{unit.data.duration} minutes</span>
+    <header class="eds-lessonheader">
+      <div class="eyebrow">Unit {unit.data.unitId} · {areaLabel}</div>
+      <h1>{unit.data.title}</h1>
+      <p class="lede">{unit.data.summary}</p>
+      <div class="eds-lessonheader__meta">
+        <span class="chip chip--source">Reading time · {unit.data.duration} min</span>
+        <TierBadge tier={unit.data.tier ?? undefined} />
+        <BayesBadge encounter={unit.data.bayesEncounter} />
+        {unit.data.draft && <span class="chip chip--draft">In progress</span>}
       </div>
       {unit.data.prerequisites.length > 0 && (
-        <div class="prereqs">
-          <span class="prereqs__label">Requires:</span>
+        <div class="eds-lessonheader__prereqs">
+          <span>Requires:</span>
           {unit.data.prerequisites.map(prereqId => (
-            <a href={`/unit/${slugify(prereqId)}`} class="prereqs__link">
-              Unit {prereqId}
-            </a>
+            <a href={`/unit/${slugify(prereqId)}`}>Unit {prereqId}</a>
           ))}
         </div>
       )}
-    </div>
+    </header>
 
-    <!-- Body content -->
-    <div class="unit-page__body">
+    <article class="prose eds-prose">
       <Content />
-    </div>
+    </article>
 
     {unit.data.draft && (
-      <div class="unit-page__stub">
-        <p style="font-weight: 600; margin-bottom: 0.25rem;">Full content coming soon.</p>
+      <div class="eds-stub">
+        <p style="font-weight: 600;">Full content coming soon.</p>
         <p>This unit is part of the curriculum skeleton. The complete explainer, interactive visualisation, and detection challenge will be added here.</p>
       </div>
     )}
 
     <SignupForm variant="unit" />
 
-    <!-- Prev / Next navigation -->
-    <nav class="unit-nav" aria-label="Unit navigation">
-      {prev ? (
-        <a href={`/unit/${slugify(prev.data.unitId)}`} class="unit-nav__item unit-nav__item--prev">
-          <span class="unit-nav__direction">← Previous</span>
-          <span class="unit-nav__title">{prev.data.title}</span>
-          <span class="unit-nav__id">Unit {prev.data.unitId}</span>
-        </a>
-      ) : (
-        <div class="unit-nav__item--empty" aria-hidden="true"></div>
-      )}
-      {next ? (
-        <a href={`/unit/${slugify(next.data.unitId)}`} class="unit-nav__item unit-nav__item--next">
-          <span class="unit-nav__direction">Next →</span>
-          <span class="unit-nav__title">{next.data.title}</span>
-          <span class="unit-nav__id">Unit {next.data.unitId}</span>
-        </a>
-      ) : (
-        <div class="unit-nav__item--empty" aria-hidden="true"></div>
-      )}
+    <nav class="eds-lessonnav" aria-label="Unit navigation">
+      <div class="eds-lessonnav__grid">
+        {prev ? (
+          <a href={`/unit/${slugify(prev.data.unitId)}`} class="eds-lessonnav__item">
+            <div class="eds-lessonnav__dir">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 6 9 12 15 18"/>
+              </svg>
+              Previous
+            </div>
+            <div class="eds-lessonnav__title">{prev.data.title}</div>
+            <div class="eds-lessonnav__id">Unit {prev.data.unitId}</div>
+          </a>
+        ) : (
+          <div class="eds-lessonnav__item--empty" aria-hidden="true"></div>
+        )}
+        {next ? (
+          <a href={`/unit/${slugify(next.data.unitId)}`} class="eds-lessonnav__item eds-lessonnav__item--next">
+            <div class="eds-lessonnav__dir">
+              Next
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 6 15 12 9 18"/>
+              </svg>
+            </div>
+            <div class="eds-lessonnav__title">{next.data.title}</div>
+            <div class="eds-lessonnav__id">Unit {next.data.unitId}</div>
+          </a>
+        ) : (
+          <a href="/reference" class="eds-lessonnav__item eds-lessonnav__item--next">
+            <div class="eds-lessonnav__dir">You've finished the curriculum</div>
+            <div class="eds-lessonnav__title">Browse the reference library</div>
+          </a>
+        )}
+      </div>
     </nav>
 
   </div>

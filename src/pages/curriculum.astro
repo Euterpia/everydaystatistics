@@ -5,8 +5,6 @@ import TierBadge from '../components/TierBadge.astro';
 import BayesBadge from '../components/BayesBadge.astro';
 
 const allUnits = await getCollection('units');
-
-// Sort by unitId numerically: "0.1" < "0.2" < "1.1" etc.
 allUnits.sort((a, b) => {
   const [aArea, aUnit] = a.data.unitId.split('.').map(Number);
   const [bArea, bUnit] = b.data.unitId.split('.').map(Number);
@@ -14,78 +12,72 @@ allUnits.sort((a, b) => {
 });
 
 const areas = [
-  { id: 0, label: 'Level 0', title: 'Zero-Knowledge On-Ramp', desc: 'No prior knowledge required. Five units to build the basic vocabulary.' },
-  { id: 1, label: 'Area 1', title: 'Foundations', desc: 'Probability, uncertainty, and the laws of chance.' },
-  { id: 2, label: 'Area 2', title: 'Measurement and Its Limits', desc: 'The formal toolkit — sampling, distributions, confidence, p-values.' },
-  { id: 3, label: 'Area 3', title: 'Applied Detection', desc: 'Twelve tricks used in the wild, with real examples and detection tests.' },
-  { id: 4, label: 'Area 4', title: 'The Anti-Curriculum', desc: 'Cognitive failure modes and their corrections. Ends with Bayes as the synthesis.' },
+  { id: 0, label: 'Level 0', title: 'Zero-Knowledge On-Ramp', desc: 'Five units. No prior knowledge required. Numbers at scale, percentages, the three averages, graphs, and intuitive risk.' },
+  { id: 1, label: 'Area 1', title: 'Foundations', desc: 'Probability, uncertainty, and the laws of chance. The philosophical and intuitive bedrock.' },
+  { id: 2, label: 'Area 2', title: 'Measurement and Its Limits', desc: 'The formal toolkit — sampling, distributions, confidence intervals, p-values, and the replication crisis.' },
+  { id: 3, label: 'Area 3', title: 'Applied Detection', desc: 'Twelve specific tricks used in medicine, politics, finance, and science — with real examples and a detection test for each.' },
+  { id: 4, label: 'Area 4', title: 'The Anti-Curriculum', desc: 'How human beings fail at statistical reasoning, and the correction for each failure. Ends with Bayes as the synthesis.' },
 ];
 
-function slugify(id: string) {
-  return id.replace('.', '-');
-}
+const offsets = [0, 22, -18, 14, -10, 24, -22, 8, 16, -14, 20, -8];
+
+function slugify(id: string) { return id.replace('.', '-'); }
 ---
 
 <Base
   title="Curriculum"
   description="The full Everyday Statistics curriculum — 44 units across five areas, from zero prior knowledge to statistical self-defence."
 >
-  <div class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+  <div class="eds-main eds-main--wide">
 
-    <div style="max-width: 640px; margin-bottom: 3rem;">
-      <h1 style="font-size: var(--text-3xl); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 1rem;">
-        The Curriculum
-      </h1>
-      <p style="font-size: var(--text-lg); color: var(--text-muted); line-height: 1.7;">
-        44 units. One per day, fifteen minutes each. Ten weeks to statistical self-defence.
-        Follow the sequence or jump to any unit from the reference library.
+    <header class="eds-pageheader">
+      <div class="eyebrow">The curriculum</div>
+      <h1>Forty-four units. <em>In order.</em></h1>
+      <p class="lede">
+        Each unit takes about fifteen minutes. Follow them top to bottom and you'll have a
+        genuine statistical education, one that most people never get, in roughly ten weeks.
       </p>
-      <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 0.4rem; font-size: var(--text-sm);">
-          <span class="badge badge--tier-1">★ Essential</span>
-          <span style="color: var(--text-muted);">Tier 1 — highest Pareto return</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 0.4rem; font-size: var(--text-sm);">
-          <span class="badge badge--tier-2">◆ Powerful</span>
-          <span style="color: var(--text-muted);">Tier 2 — strong return</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 0.4rem; font-size: var(--text-sm);">
-          <span class="badge badge--bayes">⬡ Bayes</span>
-          <span style="color: var(--text-muted);">Bayes thread</span>
-        </div>
-      </div>
-    </div>
+    </header>
 
     {areas.map(area => {
       const units = allUnits.filter(u => u.data.area === area.id);
       return (
-        <section class="area-section">
-          <div class="area-header" data-area={area.id}>
-            <div>
-              <div class="area-header__label">{area.label} · {units.length} units</div>
-              <div class="area-header__title">{area.title}</div>
-              <div class="area-header__desc">{area.desc}</div>
-            </div>
-          </div>
-          <div class="unit-list">
-            {units.map(unit => (
-              <a
-                href={`/unit/${slugify(unit.data.unitId)}`}
-                class="unit-card"
-                data-area={unit.data.area}
-              >
-                <div class="unit-card__id">{unit.data.unitId}</div>
-                <div>
-                  <div class="unit-card__title">{unit.data.title}</div>
-                  <div class="unit-card__meta">
-                    {unit.data.tier && <TierBadge tier={unit.data.tier} />}
-                    {unit.data.bayesEncounter && <BayesBadge encounter={unit.data.bayesEncounter} />}
-                    <span class="unit-card__duration">{unit.data.duration} min</span>
-                  </div>
+        <section class="eds-area">
+          <header class="eds-area__header">
+            <div class="eyebrow">{area.label} · {units.length} units</div>
+            <h2 class="eds-area__title">{area.title}</h2>
+            <p class="eds-area__desc">{area.desc}</p>
+          </header>
+
+          <div class="eds-pathway">
+            {units.map((unit, i) => {
+              const offset = offsets[i % offsets.length];
+              return (
+                <div class="eds-step" style={`--off: ${offset}px`}>
+                  <div class="eds-step__node">{unit.data.unitId}</div>
+                  <a href={`/unit/${slugify(unit.data.unitId)}`} class="eds-step__card card">
+                    <div class="eyebrow">{area.label}</div>
+                    <h3>{unit.data.title}</h3>
+                    {unit.data.summary && (
+                      <p style="font-size: 15px; color: var(--ink-soft); margin-bottom: var(--s-3); line-height: 1.55;">{unit.data.summary}</p>
+                    )}
+                    <div class="eds-step__meta">
+                      <div class="eds-step__badges">
+                        <TierBadge tier={unit.data.tier ?? undefined} />
+                        <BayesBadge encounter={unit.data.bayesEncounter} />
+                        {unit.data.draft && <span class="chip chip--draft">In progress</span>}
+                      </div>
+                      <span class="eds-step__cta">
+                        {unit.data.duration} min
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <polyline points="9 6 15 12 9 18"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
                 </div>
-                <p class="unit-card__summary">{unit.data.summary}</p>
-              </a>
-            ))}
+              );
+            })}
           </div>
         </section>
       );

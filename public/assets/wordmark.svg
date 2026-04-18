@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 140" width="600" height="140">
+  <defs>
+    
+  </defs>
+  <text x="300" y="68" class="wm-title" text-anchor="middle">Every Day Statistics</text>
+  <g transform="translate(300, 100)">
+    <line x1="-110" y1="0" x2="-78" y2="0" stroke="#B08A3E" stroke-width="1"></line>
+    <text x="0" y="4" class="wm-sub" text-anchor="middle">Statistical Self-Defence</text>
+    <line x1="78" y1="0" x2="110" y2="0" stroke="#B08A3E" stroke-width="1"></line>
+  </g>
+</svg>

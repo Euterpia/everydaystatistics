@@ -8,53 +8,117 @@ allUnits.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
 function slugify(id: string) { return id.replace('.', '-'); }
 
-const areaLabels: Record<number, string> = {
-  0: 'Level 0',
-  1: 'Area 1',
-  2: 'Area 2',
-  3: 'Area 3',
-  4: 'Area 4',
+const areaLabels: Record<number, string> = { 0: 'Level 0', 1: 'Area 1', 2: 'Area 2', 3: 'Area 3', 4: 'Area 4' };
+const areaNames: Record<number, string> = {
+  0: 'On-Ramp', 1: 'Foundations', 2: 'Measurement', 3: 'Detection', 4: 'Anti-Curriculum'
 };
 
-function areaLabel(unit: typeof allUnits[0]) {
-  if (unit.data.areaName) return unit.data.areaName.split(':')[0].trim();
-  return areaLabels[unit.data.area] ?? `Area ${unit.data.area}`;
-}
+const tags = ['All', 'On-Ramp', 'Foundations', 'Measurement', 'Detection', 'Anti-Curriculum'];
 ---
 
 <Base
   title="Reference Library"
-  description="Browse every statistical concept in the Everyday Statistics curriculum, alphabetically."
+  description="Every statistical concept from the Everyday Statistics curriculum, plainly defined and alphabetically listed."
 >
-  <div class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
-    <div style="max-width: 640px; margin-bottom: 3rem;">
-      <h1 style="font-size: var(--text-3xl); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 1rem;">
-        Reference Library
-      </h1>
-      <p style="font-size: var(--text-lg); color: var(--text-muted); line-height: 1.7;">
-        Every concept in the curriculum, in alphabetical order. Each page is self-contained —
-        arrive from a search engine and find enough context to understand, plus links to prerequisites.
+  <div class="eds-main eds-main--wide">
+
+    <header class="eds-pageheader">
+      <div class="eyebrow">The reference library</div>
+      <h1>Concepts, <em>plainly defined.</em></h1>
+      <p class="lede">
+        Every concept in the curriculum. Each one a single idea, in plain words.
+        Use the curriculum to learn; use the library to remember.
       </p>
+    </header>
+
+    <div class="eds-libtools">
+      <div class="eds-libsearch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="20" y2="20"/>
+        </svg>
+        <input
+          id="lib-search"
+          type="search"
+          placeholder="Search the library — try 'risk' or 'average'"
+          autocomplete="off"
+          aria-label="Search concepts"
+        />
+      </div>
+      <div class="eds-libtags" role="list" aria-label="Filter by area">
+        {tags.map(tag => (
+          <button
+            class={`eds-libtag${tag === 'All' ? ' is-on' : ''}`}
+            data-tag={tag}
+            type="button"
+            role="listitem"
+          >{tag}</button>
+        ))}
+      </div>
     </div>
 
-    <div class="unit-list">
-      {allUnits.map(unit => (
-        <a
-          href={`/unit/${slugify(unit.data.unitId)}`}
-          class="unit-card"
-          data-area={unit.data.area}
-        >
-          <div class="unit-card__id">{unit.data.unitId}</div>
-          <div>
-            <div class="unit-card__title">{unit.data.title}</div>
-            <div class="unit-card__meta">
-              <TierBadge tier={unit.data.tier} />
-              <span class="badge badge--area">{areaLabel(unit)}</span>
+    <div class="eds-liblist" id="lib-list">
+      {allUnits.map(unit => {
+        const areaName = areaNames[unit.data.area] ?? 'Other';
+        return (
+          <a
+            href={`/unit/${slugify(unit.data.unitId)}`}
+            class="eds-libentry"
+            data-title={unit.data.title.toLowerCase()}
+            data-desc={unit.data.summary.toLowerCase()}
+            data-area={areaName}
+          >
+            <div class="eds-libentry__title">{unit.data.title}</div>
+            <div class="eds-libentry__desc">{unit.data.summary}</div>
+            <div class="eds-libentry__tags">
+              <span class="chip">{areaName}</span>
+              {unit.data.tier === 1 && <span class="chip chip--tier-1">Essential</span>}
+              {unit.data.bayesEncounter && <span class="chip chip--bayes">Bayes {unit.data.bayesEncounter}/4</span>}
             </div>
-          </div>
-          <p class="unit-card__summary">{unit.data.summary}</p>
-        </a>
-      ))}
+          </a>
+        );
+      })}
     </div>
+
+    <div id="lib-empty" class="eds-libempty" style="display: none;">
+      Nothing here matches. Try a shorter word.
+    </div>
+
   </div>
 </Base>
+
+<script>
+  const search = document.getElementById('lib-search') as HTMLInputElement;
+  const list = document.getElementById('lib-list')!;
+  const empty = document.getElementById('lib-empty')!;
+  const tagBtns = document.querySelectorAll<HTMLButtonElement>('.eds-libtag');
+  const entries = list.querySelectorAll<HTMLAnchorElement>('.eds-libentry');
+
+  let activeTag = 'All';
+
+  function filter() {
+    const q = search.value.toLowerCase().trim();
+    let visible = 0;
+    entries.forEach(el => {
+      const title = el.dataset.title ?? '';
+      const desc = el.dataset.desc ?? '';
+      const area = el.dataset.area ?? '';
+      const matchQ = !q || title.includes(q) || desc.includes(q);
+      const matchTag = activeTag === 'All' || area === activeTag;
+      const show = matchQ && matchTag;
+      el.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    empty.style.display = visible === 0 ? '' : 'none';
+  }
+
+  search.addEventListener('input', filter);
+
+  tagBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tagBtns.forEach(b => b.classList.remove('is-on'));
+      btn.classList.add('is-on');
+      activeTag = btn.dataset.tag ?? 'All';
+      filter();
+    });
+  });
+</script>

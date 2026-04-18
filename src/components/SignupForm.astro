@@ -1,8 +1,4 @@
 ---
-// SignupForm.astro
-// Inline signup form for the 44-day email course.
-// Submits to /api/subscribe (Cloudflare Pages Function).
-
 interface Props {
   variant?: 'hero' | 'unit';
 }
@@ -21,11 +17,7 @@ const { variant = 'unit' } = Astro.props;
       <p class="signup-form__sub">Get one unit delivered to your inbox every day for 44 days. Free. No spam. Unsubscribe any time.</p>
     </>
   )}
-  <form
-    class="signup-form__form"
-    action="/api/subscribe"
-    method="POST"
-  >
+  <form class="signup-form__form" action="/api/subscribe" method="POST">
     <div class="signup-form__fields">
       <input
         class="signup-form__input"
@@ -37,137 +29,9 @@ const { variant = 'unit' } = Astro.props;
         aria-label="Email address"
       />
       <button class="signup-form__btn" type="submit">
-        Start the course →
+        Start the course
       </button>
     </div>
     <p class="signup-form__note">44 units · one per day · free forever</p>
   </form>
 </div>
-
-<style>
-  .signup-form {
-    margin: 2.5rem 0;
-  }
-
-  .signup-form--hero {
-    background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4a 100%);
-    border-radius: 12px;
-    padding: 2.5rem;
-    color: #ffffff;
-    margin: 3rem 0;
-  }
-
-  .signup-form--unit {
-    background: var(--surface, #f8f8fc);
-    border: 1px solid var(--border, #e0e0ee);
-    border-radius: 10px;
-    padding: 2rem;
-  }
-
-  .signup-form__heading {
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin: 0 0 0.5rem;
-    letter-spacing: -0.015em;
-  }
-
-  .signup-form--hero .signup-form__heading {
-    color: #ffffff;
-  }
-
-  .signup-form--unit .signup-form__heading {
-    color: var(--text, #1a1a2e);
-  }
-
-  .signup-form__sub {
-    font-size: 0.925rem;
-    line-height: 1.6;
-    margin: 0 0 1.25rem;
-  }
-
-  .signup-form--hero .signup-form__sub {
-    color: #b0b0cc;
-  }
-
-  .signup-form--unit .signup-form__sub {
-    color: var(--text-muted, #666680);
-  }
-
-  .signup-form__form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .signup-form__fields {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .signup-form__input {
-    flex: 1 1 220px;
-    padding: 0.65rem 1rem;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.15s;
-  }
-
-  .signup-form--hero .signup-form__input {
-    border: 1.5px solid rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.08);
-    color: #ffffff;
-  }
-  .signup-form--hero .signup-form__input::placeholder {
-    color: rgba(255,255,255,0.4);
-  }
-  .signup-form--hero .signup-form__input:focus {
-    border-color: #6699ff;
-    background: rgba(255,255,255,0.12);
-  }
-
-  .signup-form--unit .signup-form__input {
-    border: 1.5px solid var(--border, #d0d0e8);
-    background: #ffffff;
-    color: var(--text, #1a1a2e);
-  }
-  .signup-form--unit .signup-form__input:focus {
-    border-color: #3355bb;
-  }
-
-  .signup-form__btn {
-    padding: 0.65rem 1.4rem;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    border: none;
-    transition: opacity 0.15s;
-  }
-  .signup-form__btn:hover { opacity: 0.88; }
-
-  .signup-form--hero .signup-form__btn {
-    background: #5577ee;
-    color: #ffffff;
-  }
-
-  .signup-form--unit .signup-form__btn {
-    background: #1a1a2e;
-    color: #ffffff;
-  }
-
-  .signup-form__note {
-    font-size: 0.78rem;
-    margin: 0;
-  }
-
-  .signup-form--hero .signup-form__note {
-    color: rgba(255,255,255,0.35);
-  }
-
-  .signup-form--unit .signup-form__note {
-    color: var(--text-faint, #9999bb);
-  }
-</style>

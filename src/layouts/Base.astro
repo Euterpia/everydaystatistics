@@ -8,6 +8,8 @@ interface Props {
 
 const { title, description = 'Statistical literacy for everyone. Free. No prior knowledge required.' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
 ---
 
 <!doctype html>
@@ -27,25 +29,53 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <slot name="head" />
 </head>
 <body>
-  <nav class="site-nav" aria-label="Site navigation">
-    <div class="site-nav__inner">
-      <a href="/" class="site-nav__logo">Everyday Statistics</a>
-      <ul class="site-nav__links">
-        <li><a href="/curriculum">Curriculum</a></li>
-        <li><a href="/reference">Reference</a></li>
-      </ul>
+  <header class="eds-header">
+    <div class="eds-header__inner">
+      <a href="/" class="eds-mark">
+        <div class="eds-mark__title">Every Day Statistics</div>
+        <div class="eds-mark__sub">
+          <span class="rule"></span>
+          <span>Statistical Self-Defence</span>
+          <span class="rule"></span>
+        </div>
+      </a>
+      <nav class="eds-nav" aria-label="Site navigation">
+        <a href="/curriculum" class={`nav-link${isActive('/curriculum') ? ' is-active' : ''}`}>Curriculum</a>
+        <a href="/reference" class={`nav-link${isActive('/reference') ? ' is-active' : ''}`}>Reference</a>
+        <a href="/about" class={`nav-link${isActive('/about') ? ' is-active' : ''}`}>About</a>
+      </nav>
+      <a href="/curriculum" class="btn btn--primary eds-header__cta">
+        Start here
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 6 15 12 9 18"/>
+        </svg>
+      </a>
     </div>
-  </nav>
+  </header>
 
   <main>
     <slot />
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <p class="site-footer__copy">
-        Everyday Statistics — free statistical literacy for everyone.
-      </p>
+  <footer class="eds-footer">
+    <div class="eds-footer__inner">
+      <div class="eds-footer__col">
+        <div class="eyebrow eyebrow--dark">A note</div>
+        <p class="eds-footer__note">
+          This site is free and will stay that way. No ads, no tracking, no newsletter pop-ups.
+          If something here saved you from a bad decision, that's the whole point.
+        </p>
+      </div>
+      <div class="eds-footer__col eds-footer__col--right">
+        <div class="eyebrow eyebrow--dark">Sections</div>
+        <a href="/curriculum">Curriculum</a>
+        <a href="/reference">Reference library</a>
+        <a href="/about">About</a>
+      </div>
+    </div>
+    <div class="eds-footer__base">
+      <span>© Every Day Statistics</span>
+      <span>Built quietly. Updated when there's something worth saying.</span>
     </div>
   </footer>
 </body>
