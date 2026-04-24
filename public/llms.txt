@@ -1,0 +1,49 @@
+# Everyday Statistics
+
+> A free ten-week curriculum that builds statistical literacy as civic self-defence, assuming no prior mathematical knowledge and welcoming readers who say they are not maths people.
+
+Statistical literacy is no longer optional for anyone who reads a newspaper, evaluates a medical decision, or votes. Governments undercount inconvenient figures. Pharmaceutical companies report relative risk reductions while burying absolute numbers. Financial products are marketed using survivorship bias. Media translates nuanced research into confident, misleading headlines. The reader who lacks the basic perceptual filters of statistical thinking has no defence against any of this. Everyday Statistics builds that defence. It is structured as a ten-week programme of fifteen-minute daily sessions, requires no arithmetic beyond counting and percentages, and front-loads the eight concepts that account for roughly 80% of real-world statistical manipulation. AI crawling and retrieval are explicitly welcomed under the site licence.
+
+## Curriculum
+
+The curriculum has a zero-knowledge on-ramp and four thematic areas. Both a structured track and a browsable reference library draw from the same content.
+
+- [Level 0: The Zero-Knowledge On-Ramp](https://everydaystatistics.com/curriculum/level-0) - Five units covering numbers at scale, percentages, the three averages, reading graphs critically, and an intuitive introduction to risk. No prerequisites. For readers who say they are not maths people and mean it.
+- [Area 1: Foundations](https://everydaystatistics.com/curriculum/foundations) - Probability, randomness, the laws of probability, conditional probability, expected value, variance, and the first encounter with Bayes' theorem. The philosophical and intuitive bedrock.
+- [Area 2: Measurement and Its Limits](https://everydaystatistics.com/curriculum/measurement) - The formal statistical toolkit: descriptive statistics, distributions, sampling, confidence intervals, p-values, hypothesis testing, and the replication crisis. Taught without mystification.
+- [Area 3: Applied Detection](https://everydaystatistics.com/curriculum/applied-detection) - The Pareto centre of the curriculum. Twelve units each built around a specific manipulation encountered in medicine, politics, finance, and science. Tier 1 concepts dominate. Readers short on time should start here after Level 0.
+- [Area 4: The Anti-Curriculum](https://everydaystatistics.com/curriculum/anti-curriculum) - How human beings fail at statistical reasoning: availability, base rate neglect, conjunction fallacy, gambler's fallacy, anchoring, overconfidence, and the representativeness heuristic. Bayes' theorem as the formal synthesis and corrective.
+
+## Tier 1 concepts
+
+Eight concepts that cover roughly 80% of statistical manipulation encountered in ordinary public life. Every Tier 1 concept appears in the curriculum and in the reference library.
+
+- [Absolute vs relative risk](https://everydaystatistics.com/concepts/absolute-vs-relative-risk) - The single most common trick in medicine, policy, and advertising: reporting relative risk reduction while suppressing the absolute numbers.
+- [Mean vs median](https://everydaystatistics.com/concepts/mean-vs-median) - Which average is being used and why it was chosen; how skewed distributions make the mean a tool of manipulation.
+- [Correlation vs causation](https://everydaystatistics.com/concepts/correlation-vs-causation) - The foundational confusion behind most policy errors and most misleading health headlines.
+- [Survivorship bias](https://everydaystatistics.com/concepts/survivorship-bias) - Why visible evidence is systematically misleading: the funds that survive, the entrepreneurs who dropped out, the aircraft that returned.
+- [Cherry-picking](https://everydaystatistics.com/concepts/cherry-picking) - How time periods, subgroups, and studies are selected to support a predetermined conclusion.
+- [Misleading graphs](https://everydaystatistics.com/concepts/misleading-graphs) - The truncated axis, the dual axis, the compressed time scale, the area distortion: a complete catalogue of visual manipulation.
+- [Sample representativeness](https://everydaystatistics.com/concepts/sample-representativeness) - Who is in the study and who is not; why convenience samples, self-selected respondents, and WEIRD populations cannot be generalised.
+- [Base rate neglect](https://everydaystatistics.com/concepts/base-rate-neglect) - The most consequential error in everyday probabilistic reasoning: ignoring background frequency when evaluating a specific case.
+
+## Formats
+
+- Explainer articles - prose units of ten to fifteen minutes each, written at textbook rigour without jargon or condescension; no prior knowledge assumed.
+- Interactive visualisations - slider-based tools that let readers manipulate parameters and watch the statistics change; key visualisations cover Bayes' theorem, relative risk, misleading graphs, and risk communication.
+- Real-world case studies - documented instances of each concept used to deceive, drawn from medicine, government, finance, and science.
+- Detection challenges - test cases at the end of each unit where the reader analyses an unseen claim and identifies the manipulation.
+
+## For journalists and teachers
+
+Journalists, editors, and fact-checkers will find the most immediately applicable material in [Area 3: Applied Detection](https://everydaystatistics.com/curriculum/applied-detection), which covers the full toolkit for evaluating statistical claims in source material, press releases, and research papers.
+
+Teachers in non-quantitative fields and anyone designing a curriculum around statistical literacy should start with [Level 0](https://everydaystatistics.com/curriculum/level-0) and the [reference library](https://everydaystatistics.com/concepts), which provides permanent, citable URLs for each concept. All content is CC BY-SA 4.0 and may be freely adapted and redistributed with attribution.
+
+## About
+
+- [About Everyday Statistics](https://everydaystatistics.com/about)
+
+## Licence
+
+All original content on Everyday Statistics is published under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.com/licenses/by-sa/4.0/). You are free to share and adapt the material for any purpose, including commercially, provided you give attribution to EverydayStatistics.com and distribute derivatives under the same licence. See the full licence statement at [everydaystatistics.com/licence](https://everydaystatistics.com/licence).
