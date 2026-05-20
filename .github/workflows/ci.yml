@@ -1,0 +1,35 @@
+name: ci
+
+# Build gate for the Astro site. Runs on every push to main and every
+# pull request. For a static Astro site, "the build succeeds" is the
+# meaningful test — a broken page, a bad import, or a malformed config
+# fails `astro build`. CI here is the impartial check that runs before
+# (and in parallel with) the Cloudflare Pages deploy.
+#
+# Node version comes from .nvmrc, so CI, local dev, and the Cloudflare
+# Pages build all resolve to the same major version.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build

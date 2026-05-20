@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Pre-commit gate: `astro build` must succeed when site source or config
+# is staged. Commits touching only drafts / tooling / docs skip the gate.
+#
+# Enable once per clone:  git config core.hooksPath .githooks
+# Emergency bypass:       git commit --no-verify   (rare; CI still catches it)
+
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+# Only gate when site source or build config is staged.
+if ! git diff --cached --name-only \
+    | grep -qE '^(src/|public/|astro\.config\.|package\.json|package-lock\.json|tsconfig\.json|\.nvmrc)'; then
+    exit 0
+fi
+
+cd "$REPO_ROOT"
+
+if [ ! -d node_modules ]; then
+    echo "pre-commit: node_modules missing — run 'npm ci' first." >&2
+    exit 1
+fi
+
+echo "pre-commit: npm run build ..."
+if ! build_out=$(npm run build 2>&1); then
+    echo "$build_out" >&2
+    echo "pre-commit BLOCKED: astro build failed. Fix it, or --no-verify." >&2
+    exit 1
+fi
+
+echo "pre-commit: build passed."
