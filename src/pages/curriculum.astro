@@ -22,12 +22,43 @@ const areas = [
 const offsets = [0, 22, -18, 14, -10, 24, -22, 8, 16, -14, 20, -8];
 
 function slugify(id: string) { return id.replace('.', '-'); }
+
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Everyday Statistics',
+  description:
+    'A free curriculum of 44 units across five areas — from zero prior knowledge to statistical self-defence. About fifteen minutes a day for roughly ten weeks.',
+  url: 'https://everydaystatistics.com/curriculum/',
+  inLanguage: 'en-GB',
+  isAccessibleForFree: true,
+  license: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  educationalLevel: 'Beginner to Advanced',
+  teaches: [
+    'Absolute vs relative risk',
+    'Mean vs median',
+    'Correlation vs causation',
+    'Survivorship bias',
+    'Cherry-picking',
+    'Misleading graphs',
+    'Sample representativeness',
+    'Base rate neglect',
+  ],
+  provider: { '@type': 'Organization', name: 'Everyday Statistics', url: 'https://everydaystatistics.com' },
+  hasCourseInstance: {
+    '@type': 'CourseInstance',
+    courseMode: 'online',
+    courseWorkload: 'PT15M',
+    description: 'Self-paced: about fifteen minutes a day for roughly ten weeks.',
+  },
+};
 ---
 
 <Base
   title="Curriculum"
   description="The full Everyday Statistics curriculum — 44 units across five areas, from zero prior knowledge to statistical self-defence."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} slot="head" />
   <div class="eds-main eds-main--wide">
 
     <header class="eds-pageheader">

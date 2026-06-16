@@ -46,7 +46,10 @@ const jsonLd = {
   "headline": unit.data.title,
   "description": unit.data.summary,
   "url": canonicalUrl,
+  "image": "https://everydaystatistics.com/og-image.jpg",
   "inLanguage": "en-GB",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
   "educationalLevel": unit.data.area === 0 ? "Beginner" : unit.data.area <= 2 ? "Intermediate" : "Advanced",
   "learningResourceType": "Article",
   "teaches": unit.data.title,
@@ -65,7 +68,7 @@ const jsonLd = {
 };
 ---
 
-<Base title={unit.data.title} description={unit.data.summary}>
+<Base title={unit.data.title} description={unit.data.summary} ogType="article">
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
 
   <div class="eds-main eds-main--narrow">

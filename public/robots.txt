@@ -1,0 +1,10 @@
+# Everyday Statistics — all original content is licensed CC BY-SA 4.0.
+# Search indexing, AI retrieval, and AI training of this openly licensed content
+# are explicitly welcomed. See /llms.txt for a structured summary and /licence.
+# Content signals follow the convention at https://contentsignals.org.
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+Sitemap: https://everydaystatistics.com/sitemap-index.xml
