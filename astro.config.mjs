@@ -2,10 +2,13 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://everydaystatistics.com',
   output: 'static',
+
   integrations: [
     sitemap({
       // /subscribed is a noindex post-signup confirmation page; keep it out of the sitemap.
@@ -17,4 +20,6 @@ export default defineConfig({
       },
     }),
   ],
+
+  adapter: cloudflare(),
 });
